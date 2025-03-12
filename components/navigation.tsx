@@ -25,7 +25,7 @@ export function Navigation() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
-          MRC
+          MRC | Full Stack
         </Link>
 
         {/* Desktop Navigation */}
