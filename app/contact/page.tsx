@@ -7,7 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Github, Linkedin, Mail, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from 'next/link';
 
 export default function Contact() {
@@ -36,7 +37,7 @@ export default function Contact() {
         <div className="flex flex-col gap-4 mb-12 text-center">
           <h1 className="text-3xl font-bold">Get in Touch</h1>
           <p className="text-muted-foreground">
-            Have a question or want to work together? I'd love to hear from you.
+            Have a question or want to work together? I would love to hear from you.
           </p>
         </div>
 
@@ -58,21 +59,21 @@ export default function Contact() {
                   contact@example.com
                 </Link>
                 <Link
-                  href="https://github.com"
+                  href="https://github.com/mateusribeirocampos"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <Github className="h-4 w-4" />
+                  <FaGithub className="h-4 w-4" />
                   GitHub Profile
                 </Link>
                 <Link
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <Linkedin className="h-4 w-4" />
+                  <FaLinkedin className="h-4 w-4" />
                   LinkedIn Profile
                 </Link>
               </CardContent>
@@ -83,7 +84,7 @@ export default function Contact() {
             <CardHeader>
               <CardTitle>Send a Message</CardTitle>
               <CardDescription>
-                Fill out the form below and I'll get back to you as soon as possible.
+                Fill out the form below and I will get back to you as soon as possible.
               </CardDescription>
             </CardHeader>
             <CardContent>
