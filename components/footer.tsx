@@ -5,8 +5,8 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="border-t bg-background border-border">
-      <div className="container mx-32 px-4 py-8 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center md:justify-items-start">
+      <div className="container flex justify-center mx-auto px-4 py-8 max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
             <h3 className="text-lg font-semibold">Portfolio</h3>

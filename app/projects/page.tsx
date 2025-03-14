@@ -6,12 +6,29 @@ import Link from 'next/link';
 const projects = [
   {
     title: 'Project 1',
-    description: 'A full-stack web application built with Next.js and Supabase',
+    description: 'Digital healthcare revolutionizes the way we deliver and experience healthcare with a paradigm shift to more accessible, personalized and efficient approaches for all.',
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97',
-    tags: ['Next.js', 'React', 'Supabase', 'Tailwind CSS'],
-    github: 'https://github.com',
+    tags: ['React-native', 'Reactjs', 'Bootstrap', 'Node.js', 'Express', 'Sqlite'],
+    github: 'https://github.com/mateusribeirocampos/dragenda',
     demo: 'https://example.com',
   },
+  {
+    title: 'Project 2',
+    description: 'An innovative e-commerce platform that enhances online shopping experiences with personalized recommendations.',
+    image: 'https://images.unsplash.com/photo-1573164574572-f9c65a4d7c8e',
+    tags: ['Next.js', 'React', 'Node.js', 'Express'],
+    github: 'https://github.com/project2',
+    demo: 'https://project2demo.com',
+  },
+  {
+    title: 'Project 3',
+    description: 'A cutting-edge social media application that connects users with shared interests in a fun and engaging way.',
+    image: 'https://images.unsplash.com/photo-1600585154339-7452cdb40c30',
+    tags: ['React', 'Firebase', 'CSS'],
+    github: 'https://github.com/project3',
+    demo: 'https://project3demo.com',
+  },
+  
   // Add more projects here
 ];
 
