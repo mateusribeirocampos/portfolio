@@ -11,6 +11,7 @@ import { Mail, Send } from 'lucide-react';
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from 'next/link';
 
+
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();

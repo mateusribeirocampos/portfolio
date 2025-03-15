@@ -1,0 +1,19 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "general": {
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}
