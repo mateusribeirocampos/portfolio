@@ -1,8 +1,16 @@
 {
   "home": {
     "title": "Olá, eu sou Mateus R Campos",
-    "subtitle": "Estudante de Ciência da Computação | Full Stack | Cientista de Dados | Desenvolvedor e Entusiasta de Tecnologia | Engenheiro Agrônomo",
+    "pTitle": "Estudante de Ciência da Computação | Full Stack | Cientista de Dados | Desenvolvedor e Entusiasta de Tecnologia | Engenheiro Agrônomo",
     "contact_button": "Entrar em Contato",
-    "projects_button": "Ver Projetos"
+    "projects_button": "Ver Projetos",
+    "subtitle": "Habilidades e conhecimentos especializados",
+    "pSubtitle": "Sou um estudante de Ciência da Computação com sólida formação em Agronomia e Entomologia, com especialização em ecotoxicologia e controle biológico. Estou em uma posição única para unir insights científicos com tecnologia moderna. Transição para TI com foco em análise de dados e desenvolvimento de software full stack, ao mesmo tempo em que expando continuamente minhas habilidades em React, React Native e tecnologias de backend.",
+    "TitleCard1": "Desenvolvimento Full Stack",
+    "pCard1": "Construindo aplicações web modernas com React, Next.js e Node.js",
+    "TitleCard2": "Desenvolvimento móvel",
+    "pCard2": "Construindo aplicativos móveis multiplataforma com React Native",
+    "TitleCard3": "Agronomia",
+    "pCard3": "Trazendo pensamento analítico e resolução de problemas da ciência agrícola"
   }
 }

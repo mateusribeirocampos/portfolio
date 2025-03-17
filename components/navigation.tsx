@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
@@ -13,28 +13,28 @@ import { useTranslation } from "react-i18next";
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const { theme, setTheme } = useTheme();
-  //const [currentLang, setCurrentLang] = useState("en");
   const { t, i18n } = useTranslation('common');
 
-  // Separação dos estados para desktop e
-  const [isDesktopLangDropdownOpen, setIsDesktopLangDropdownOpen] =
-    useState(false);
-  const [isMobileLangDropdownOpen, setIsMobileLangDropdownOpen] =
-    useState(false);
+  // Language dropdown states
+  const [isDesktopLangDropdownOpen, setIsDesktopLangDropdownOpen] = useState(false);
+  const [isMobileLangDropdownOpen, setIsMobileLangDropdownOpen] = useState(false);
 
   const langDesktopDropdownRef = useRef<HTMLDivElement | null>(null);
   const langMobileDropdownRef = useRef<HTMLDivElement | null>(null);
 
+  const currentLocale = i18n.language || 'en';
+
   const navItems = [
-    { href: "/", label: t("navigation.home") },
-    { href: "/projects", label: t("navigation.projects") },
-    { href: "/about", label: t("navigation.about") },
-    { href: "/blog", label: t("navigation.blog") },
-    { href: "/contact", label: t("navigation.contact") },
+    { href: `/${currentLocale}`, label: t("navigation.home") },
+    { href: `/${currentLocale}/projects`, label: t("navigation.projects") },
+    { href: `/${currentLocale}/about`, label: t("navigation.about") },
+    { href: `/${currentLocale}/blog`, label: t("navigation.blog") },
+    { href: `/${currentLocale}/contact`, label: t("navigation.contact") },
   ];
 
-  // Detectar cliques fora do dropdown para fechá-lo
+  // Handle clicks outside dropdown
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -58,33 +58,40 @@ export function Navigation() {
     };
   }, []);
 
-  // Separate click handlers for better debugging
-  const handleEnglishClick = (e: React.MouseEvent, isMobile: boolean) => {
-    e.stopPropagation(); // Prevent event bubbling
-    console.log("English button clicked", isMobile ? "mobile" : "desktop");
-    i18n.changeLanguage('en');
-    if (isMobile) {
-      setIsMobileLangDropdownOpen(false);
-    } else {
-      setIsDesktopLangDropdownOpen(false);
-    }
-  };
+  // Handle language change via URL navigation
+  const handleLanguageChange = (locale: string, isMobile: boolean) => {
+    // Get the path without the locale prefix
+    //const currentPathname = pathname;
+    //let newPathname = currentPathname;
+    
+    // Extract the path after the locale
+    //const localePattern = /^\/(en|pt-BR)(\/.*)?$/;
+    //const match = currentPathname.match(localePattern);
+    
+    //if (match) {
+    //  const pathAfterLocale = match[2] || '';
+    //  newPathname = `/${locale}${pathAfterLocale}`;
+    //} else {
+    //  newPathname = `/${locale}${currentPathname}`;
+    //}
 
-  const handlePortugueseClick = (e: React.MouseEvent, isMobile: boolean) => {
-    e.stopPropagation(); // Prevent event bubbling
-    console.log("Portuguese button clicked", isMobile ? "mobile" : "desktop");
-    i18n.changeLanguage('pt-BR');
+    // Close dropdown
     if (isMobile) {
       setIsMobileLangDropdownOpen(false);
     } else {
       setIsDesktopLangDropdownOpen(false);
     }
+
+    // set cookie
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
+    //router.push(newPathname);
+    router.push(`/${locale}`);
   };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
+        <Link href={`/${currentLocale}`} className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
           MRC | Full Stack
         </Link>
 
@@ -119,7 +126,7 @@ export function Navigation() {
             >
               <BiWorld className="h-5 w-5" />
               <span className="ml-1 text-xs">
-                {/*{currentLang === "pt-BR" ? "🇧🇷" : "🇺🇸"} */}
+                {currentLocale === "pt-BR" ? "🇧🇷" : "🇺🇸"}
               </span>
             </Button>
 
@@ -127,20 +134,20 @@ export function Navigation() {
               <div className="absolute top-full right-0 mt-2 w-32 bg-background rounded-md shadow-lg border border-border z-50">
                 <div className="py-1">
                   <button
-                    onClick={(e) => handleEnglishClick(e, false)}
+                    onClick={() => handleLanguageChange('en', false)}
                     className={cn(
-                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent"
-                      //currentLang === "en" ? "bg-accent/50" : ""
+                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent",
+                      currentLocale === "en" ? "bg-accent/50" : ""
                     )}
                   >
                     <span className="mr-2 font-bold">🇺🇸</span>
                     <span>English</span>
                   </button>
                   <button
-                    onClick={(e) => handlePortugueseClick(e, false)}
+                    onClick={() => handleLanguageChange('pt-BR', false)}
                     className={cn(
-                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent"
-                      //currentLang === "pt-BR" ? "bg-accent/50" : ""
+                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent",
+                      currentLocale === "pt-BR" ? "bg-accent/50" : ""
                     )}
                   >
                     <span className="mr-2 font-bold">🇧🇷</span>
@@ -175,7 +182,7 @@ export function Navigation() {
             >
               <BiWorld className="h-5 w-5" />
               <span className="ml-1 text-xs">
-                {/*{currentLang === 'pt-BR' ? '🇧🇷' : '🇺🇸'}*/}
+                {currentLocale === 'pt-BR' ? '🇧🇷' : '🇺🇸'}
               </span>
             </Button>
 
@@ -183,20 +190,20 @@ export function Navigation() {
               <div className="absolute top-full right-0 mt-2 w-32 bg-background rounded-md shadow-lg border border-border z-50">
                 <div className="py-1">
                   <button
-                    onClick={(e) => handleEnglishClick(e, true)}
+                    onClick={() => handleLanguageChange('en', true)}
                     className={cn(
-                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent"
-                      //currentLang === "en" ? "bg-accent/50" : ""
+                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent",
+                      currentLocale === "en" ? "bg-accent/50" : ""
                     )}
                   >
                     <span className="mr-2 font-bold">🇺🇸</span>
                     <span>English</span>
                   </button>
                   <button
-                    onClick={(e) => handlePortugueseClick(e, true)}
+                    onClick={() => handleLanguageChange('pt-BR', true)}
                     className={cn(
-                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent"
-                      //currentLang === "pt-BR" ? "bg-accent/50" : ""
+                      "flex items-center w-full px-4 py-2 text-sm text-left hover:bg-accent",
+                      currentLocale === "pt-BR" ? "bg-accent/50" : ""
                     )}
                   >
                     <span className="mr-2 font-bold">🇧🇷</span>
