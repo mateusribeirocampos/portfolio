@@ -5,6 +5,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { i18n, initI18n } from './i18n';
+
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,13 +16,17 @@ export const metadata: Metadata = {
   keywords: ['Full Stack Developer', 'React', 'Next.js', 'Agronomy', 'Web Development'],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { lang },
 }: {
   children: React.ReactNode;
+  params: {lang: string}
 }) {
+  await initI18n(lang);
+
   return (
-    <html lang="en" suppressHydrationWarning className="h-full">
+    <html lang={i18n.language} suppressHydrationWarning className="h-full">
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex-1 flex flex-col">

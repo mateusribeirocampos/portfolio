@@ -1,27 +1,31 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Leaf, Smartphone } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation('home');
+
   return (
     <>
       <div className="flex-1">
         <section className="container flex flex-col items-center justify-center gap-4 py-24 md:py-32">
           <div className="flex flex-col items-center gap-4 text-center">
             <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl">
+              {t('home.title')}
               Hi, I&apos;m Mateus R Campos
             </h1>
             <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+              {t('home.subtitle')}
               Science Computer Student | Full Stack | Data Scientist | Developer
               and Tech Enthusiast | Agronomist
             </p>
             <div className="flex gap-4">
               <Button variant="outline" asChild>
-                <Link href="/contact">Get in Touch</Link>
+                <Link href="/contact">{t('home.contact_button')} Get in Touch</Link>
               </Button>
               <Button asChild>
-                <Link href="/projects">
-                  View Projects <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href="/projects">{t('home.projects_button')}  View Projects <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>

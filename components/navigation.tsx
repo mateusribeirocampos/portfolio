@@ -8,12 +8,14 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { BiWorld } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   //const [currentLang, setCurrentLang] = useState("en");
+  const { t, i18n } = useTranslation('common');
 
   // Separação dos estados para desktop e
   const [isDesktopLangDropdownOpen, setIsDesktopLangDropdownOpen] =
@@ -25,11 +27,11 @@ export function Navigation() {
   const langMobileDropdownRef = useRef<HTMLDivElement | null>(null);
 
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/about", label: "About" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: t("navigation.home") },
+    { href: "/projects", label: t("navigation.projects") },
+    { href: "/about", label: t("navigation.about") },
+    { href: "/blog", label: t("navigation.blog") },
+    { href: "/contact", label: t("navigation.contact") },
   ];
 
   // Detectar cliques fora do dropdown para fechá-lo
@@ -60,6 +62,7 @@ export function Navigation() {
   const handleEnglishClick = (e: React.MouseEvent, isMobile: boolean) => {
     e.stopPropagation(); // Prevent event bubbling
     console.log("English button clicked", isMobile ? "mobile" : "desktop");
+    i18n.changeLanguage('en');
     if (isMobile) {
       setIsMobileLangDropdownOpen(false);
     } else {
@@ -70,6 +73,7 @@ export function Navigation() {
   const handlePortugueseClick = (e: React.MouseEvent, isMobile: boolean) => {
     e.stopPropagation(); // Prevent event bubbling
     console.log("Portuguese button clicked", isMobile ? "mobile" : "desktop");
+    i18n.changeLanguage('pt-BR');
     if (isMobile) {
       setIsMobileLangDropdownOpen(false);
     } else {
