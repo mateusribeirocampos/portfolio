@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "home": "Início",
+    "projects": "Projetos",
+    "about": "Sobre",
+    "blog": "Blog",
+    "contact": "Contato",
+    "language": "Idioma"
+  },
+  "general": {
+    "language": "Idioma",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Escuro"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados",
+    "QuickLinks": "Links Rápidos",
+    "About": "Sobre",
+    "Projects": "Projetos",
+    "Contact": "Contato"
+  }
+}
