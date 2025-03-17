@@ -1,13 +1,10 @@
-const { i18n } = require('./next-i18next.config.js');
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  eslint: {
-    ignoreDuringBuilds: true,
+export const i18nConfig = {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'pt-BR'],
+    localeDetection: false,
   },
-  images: { unoptimized: true },
-  i18n,
+  reloadOnPrerender: process.env.NODE_ENV === 'development',
 };
 
-module.exports = nextConfig;
+export default i18nConfig;

@@ -1,0 +1,16 @@
+{
+  "home": {
+    "title": "Hi, I'm Mateus R Campos",
+    "pTitle": "Science Computer Student | Full Stack | Data Scientist | Developer and Tech Enthusiast | Agronomist",
+    "contact_button": "Get in Touch",
+    "projects_button": "View Projects",
+    "subtitle": "Skills & Expertise",
+    "pSubtitle": "I am a Computer Science student with a robust background in Agronomy and Entomology—specializing in ecotoxicology and biological control. I am uniquely positioned to merge scientific insight with modern technology. Transitioning into IT with focuses on data analysis and full stack software development while continually expanding my skills in React, React Native, and backend technologies.",
+    "TitleCard1": "Full Stack Development",
+    "pCard1": "Building modern web applications with React, Next.js, and Node.js",
+    "TitleCard2": "Mobile development",
+    "pCard2": "Building cross-platform mobile apps with React Native",
+    "TitleCard3": "Agronomy Background",
+    "pCard3": "Bringing analytical thinking and problem-solving from agricultural science"
+  }
+}
