@@ -1,6 +1,10 @@
 import './globals.css'; 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Navigation } from '@/components/navigation';
+import { Footer } from '@/components/footer';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +22,18 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning className="h-full">
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex-1 flex flex-col">
+            <Navigation />
+            <main className="flex-1 flex flex-col">
+              <div className="container flex-1 mx-auto px-4 sm:px-6 lg:px-8">
+                {children}
+              </div>
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
