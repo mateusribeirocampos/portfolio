@@ -1,3 +1,5 @@
+'use client';
+
 import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";

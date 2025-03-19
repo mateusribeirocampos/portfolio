@@ -8,11 +8,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '@/data/projects';
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export function ProjectsContent() {
   const { t } = useTranslation("projects");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (src: string) => {
+    setImageErrors(prev => ({ ...prev, [src]: true }));
+  };
 
   return (
     <div className="container py-12">
@@ -36,21 +41,25 @@ export function ProjectsContent() {
             </CardHeader>
             <CardContent>
               <div className="relative w-full h-48 mb-4">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={500}
-                  height={300}
-                  className={`w-full h-full object-cover rounded-md transition-opacity duration-300 ${
-                    hoveredIndex === index && project.secondImage ? 'opacity-0' : 'opacity-100'
-                  }`}
-                />
-                {project.secondImage && (
+                {!imageErrors[project.image] && (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={500}
+                    height={300}
+                    onError={() => handleImageError(project.image)}
+                    className={`w-full h-full object-cover rounded-md transition-opacity duration-300 ${
+                      hoveredIndex === index && project.secondImage ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  />
+                )}
+                {project.secondImage && !imageErrors[project.secondImage] && (
                   <Image
                     src={project.secondImage}
                     alt={`${project.title} - Second view`}
                     width={500}
                     height={300}
+                    onError={() => project.secondImage && handleImageError(project.secondImage)}
                     className={`absolute top-0 left-0 w-full h-full object-cover rounded-md transition-opacity duration-300 ${
                       hoveredIndex === index ? 'opacity-100' : 'opacity-0'
                     }`}

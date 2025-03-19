@@ -1,7 +1,7 @@
 'use client';
 
 import { I18nextProvider } from 'react-i18next';
-import { createI18nInstance } from './app/[lang]/i18n';
+import { createI18nInstance } from './i18n';
 import { useEffect, useState } from 'react';
 
 export function Providers({ 

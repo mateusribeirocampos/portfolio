@@ -12,16 +12,5 @@
     "theme": "Theme",
     "light": "Light",
     "dark": "Dark"
-  },
-  "footer": {
-<<<<<<< HEAD
-    "rights": "All rights reserved"
-=======
-    "rights": "All rights reserved",
-    "QuickLinks": "Quick Links",
-    "About": "About",
-    "Projects": "Projects",
-    "Contact": "Contact"
->>>>>>> main
   }
 }

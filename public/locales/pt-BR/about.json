@@ -1,0 +1,36 @@
+{
+  "about": {
+    "title": "Sobre Mim",
+    "journey": {
+      "title": "Minha Jornada",
+      "description": "Sou estudante de Ciência da Computação com sólida formação em Agronomia e Entomologia, com foco em ecotoxicologia e controle biológico. Estou em transição para a área de TI, com ênfase em análise de dados e desenvolvimento de software. Meu trabalho integra a pesquisa científica à tecnologia, utilizando linguagens como C, C++, Java, Python e Kotlin, além de frameworks como React, React Native e Node.js. Procuro oportunidades de estágio que me permitam aplicar essas habilidades, tanto no Brasil quanto no exterior"
+    },
+    "education": {
+      "title": "Formação",
+      "computerScience": {
+        "title": "Ciência da Computação",
+        "description": "Atualmente cursando Ciência da Computação"
+      },
+      "agronomy": {
+        "title": "Bacharel em Agronomia",
+        "description": "Especializado em manejo de pragas e desenvolvimento de produtos agrícolas"
+      }
+    },
+    "skills": {
+      "title": "Habilidades Técnicas",
+      "frontend": {
+        "title": "Frontend",
+        "description": "React, Next.js, TypeScript, React Native"
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Node.js, Express, SQLite, Python, C, C++, Java, Kotlin"
+      },
+      "tools": {
+        "title": "Ferramentas",
+        "description": "Git, Docker, AWS"
+      }
+    },
+    "downloadResume": "Baixar Currículo"
+  }
+}
