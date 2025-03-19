@@ -1,0 +1,9 @@
+{
+  "blog": {
+    "title": "Blog",
+    "description": "Articles and tutorials about software development, technology, and more.",
+    "readMore": "Read more",
+    "comingSoon": "Coming Soon",
+    "comingSoonDescription": "New articles will be published soon. Stay tuned!"
+  }
+}

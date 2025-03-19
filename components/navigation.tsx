@@ -60,32 +60,16 @@ export function Navigation() {
 
   // Handle language change via URL navigation
   const handleLanguageChange = (locale: string, isMobile: boolean) => {
-    // Get the path without the locale prefix
-    //const currentPathname = pathname;
-    //let newPathname = currentPathname;
-    
-    // Extract the path after the locale
-    //const localePattern = /^\/(en|pt-BR)(\/.*)?$/;
-    //const match = currentPathname.match(localePattern);
-    
-    //if (match) {
-    //  const pathAfterLocale = match[2] || '';
-    //  newPathname = `/${locale}${pathAfterLocale}`;
-    //} else {
-    //  newPathname = `/${locale}${currentPathname}`;
-    //}
-
-    // Close dropdown
     if (isMobile) {
       setIsMobileLangDropdownOpen(false);
     } else {
       setIsDesktopLangDropdownOpen(false);
     }
-
-    // set cookie
     document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
-    //router.push(newPathname);
-    router.push(`/${locale}`);
+    
+    // Get the current path without the locale
+    const currentPath = pathname.replace(`/${currentLocale}`, '');
+    router.push(`/${locale}${currentPath}`);
   };
 
   return (

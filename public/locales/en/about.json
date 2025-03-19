@@ -1,0 +1,36 @@
+{
+  "about": {
+    "title": "About Me",
+    "journey": {
+      "title": "My Journey",
+      "description": "I am a Computer Science student with a solid background in Agronomy and Entomology, focusing on ecotoxicology and biological control. I am transitioning into IT with an emphasis on data analysis and software development. My work bridges scientific research with technology, using languages like C, C++, Java, Python, and Kotlin, and frameworks such as React, React Native, and Node.js. I seek internship opportunities where I can apply these skills in both local and international settings."
+    },
+    "education": {
+      "title": "Education",
+      "computerScience": {
+        "title": "Computer Science",
+        "description": "Currently pursuing studies in Computer Science"
+      },
+      "agronomy": {
+        "title": "B.S. in Agronomy",
+        "description": "Specialized in pest management and development of agricultural products"
+      }
+    },
+    "skills": {
+      "title": "Technical Skills",
+      "frontend": {
+        "title": "Frontend",
+        "description": "React, Next.js, TypeScript, React Native"
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Node.js, Express, SQLite, Python, C, C++, Java, Kotlin"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Git, Docker, AWS"
+      }
+    },
+    "downloadResume": "Download Resume"
+  }
+}

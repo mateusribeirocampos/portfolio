@@ -1,0 +1,9 @@
+{
+  "blog": {
+    "title": "Blog",
+    "description": "Artigos e tutoriais sobre desenvolvimento de software, tecnologia e mais.",
+    "readMore": "Ler mais",
+    "comingSoon": "Em breve",
+    "comingSoonDescription": "Novos artigos serão publicados em breve. Fique atento!"
+  }
+}

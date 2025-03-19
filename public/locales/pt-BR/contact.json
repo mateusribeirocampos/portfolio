@@ -1,0 +1,21 @@
+{
+  "title": "Contato",
+  "description": "Entre em contato comigo para oportunidades de trabalho, colaborações ou apenas para dizer olá!",
+  "form": {
+    "name": "Nome",
+    "namePlaceholder": "Digite seu nome",
+    "email": "Email",
+    "emailPlaceholder": "Digite seu email",
+    "message": "Mensagem",
+    "messagePlaceholder": "Digite sua mensagem",
+    "send": "Enviar mensagem",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Erro ao enviar mensagem. Tente novamente."
+  },
+  "social": {
+    "title": "Redes Sociais",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter"
+  }
+}

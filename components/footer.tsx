@@ -1,8 +1,13 @@
+'use client';
+
 import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export function Footer() {
+  const { t } = useTranslation('footer');
+
   return (
     <footer className="border-t bg-background border-border">
       <div className="container flex justify-center mx-auto px-4 py-8 max-w-7xl">
@@ -10,20 +15,20 @@ export function Footer() {
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
             <h3 className="text-lg font-semibold">Portfolio</h3>
-            <p className="text-sm text-foreground/60">© 2025 Mateus R Campos | All rights reserved.</p>
+            <p className="text-sm text-foreground/60">© 2025 Mateus R Campos | {t("footer.rights")}</p>
           </div>
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold">{t("footer.QuickLinks")}</h3>
             <div className="flex flex-col space-y-2">
-              <Link className="text-sm text-foreground/60 hover:text-foreground" href="/about">About</Link>
-              <Link className="text-sm text-foreground/60 hover:text-foreground" href="/contact">Contact</Link>
-              <Link className="text-sm text-foreground/60 hover:text-foreground" href="/projects">Projects</Link>
+              <Link className="text-sm text-foreground/60 hover:text-foreground" href="/about">{t("footer.About")}</Link>
+              <Link className="text-sm text-foreground/60 hover:text-foreground" href="/contact">{t("footer.Contact")}</Link>
+              <Link className="text-sm text-foreground/60 hover:text-foreground" href="/projects">{t("footer.Projects")}</Link>
             </div>
           </div>
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
-            <h3 className="text-lg font-semibold">Contact</h3>
+            <h3 className="text-lg font-semibold">{t("footer.Contact")}</h3>
             <div className="flex gap-4 justify-center md:justify-start">
               <Link
                 href="https://github.com/mateusribeirocampos"
