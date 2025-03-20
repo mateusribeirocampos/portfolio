@@ -19,7 +19,7 @@ export const projects: Project[] = [
     demo: 'https://dragenda.vercel.app',
   },
   {
-    title: 'Santa Rita',
+    title: 'Website - Santa Rita church',
     description: 'A modern cross-platform website for the Santa Rita Church, built with cutting-edge technologies to provide a beautiful and responsive experience for the faithful.',
     image: '/images/projects/websiteSantaRita.png',
     secondImage: '/images/projects/websiteSantaRita1.png',
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     demo: 'https://santaritaourofino.vercel.app',
   },
   {
-    title: 'DioLLM',
+    title: 'DIO - Machine Learning',
     description: 'A modern portfolio website showcasing my technical projects and development work, built with Next.js and Tailwind CSS for a beautiful and responsive experience.',
     image: '/images/projects/diollm.gif',
     secondImage: '/images/projects/diollm1.png',
