@@ -3,6 +3,7 @@
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { Providers } from '@/providers';
+import MatrixRain from './matrixRain';
 
 export function LayoutClient({
   children,
@@ -13,6 +14,7 @@ export function LayoutClient({
 }) {
   return (
     <Providers lang={lang}>
+      <MatrixRain />
       <div className="flex-1 flex flex-col">
         <Navigation />
         <main className="flex-1 flex flex-col">

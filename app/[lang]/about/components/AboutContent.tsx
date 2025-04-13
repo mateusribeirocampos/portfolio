@@ -16,7 +16,7 @@ export function AboutContent() {
         <div className="prose dark:prose-invert max-w-none">
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t("about.journey.title")}</h2>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-4 bg-card text-justify p-4">
               {t("about.journey.description")}
             </p>
           </div>

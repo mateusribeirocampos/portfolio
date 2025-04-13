@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <div className="flex-1">
-        <section className="container flex flex-col items-center justify-center gap-4 py-24 md:py-32">
+        <section className="container flex flex-col items-center justify-center gap-4 py-24 md:py-72">
           <div className="flex flex-col items-center gap-4 text-center">
             <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl">
               {t('home.title')}

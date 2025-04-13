@@ -18,6 +18,8 @@
 
 @layer base {
   :root {
+    --transparent-matrix: rgba(255, 255, 255, 0.101);
+    --fillstyle: rgb(210, 210, 210);
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -45,6 +47,8 @@
     --radius: 0.5rem;
   }
   .dark {
+    --transparent-matrix: rgba(0, 0, 0, 0.05);
+    --fillstyle: rgba(8, 103, 8, 0.8);
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -72,14 +76,17 @@
   }
 }
 
-/*@layer base {
-  * {
-    @apply border-border;
+@layer base {
+  a {
+    @apply text-foreground;
+    transition: background-color 300ms ease;
   }
-  body {
-    @apply bg-background text-foreground;
+  
+  a:hover {
+    @apply bg-secondary; /* Usando a cor secondary que é cinza escuro no tema dark */
+    transition: background-color 300ms ease;
   }
-}*/
+}
 
 @layer base {
   * {
