@@ -30,9 +30,9 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="w-full max-w-3xl mt-8">
+          {/*<div className="w-full max-w-3xl mt-8">
             <Animation />
-          </div>
+          </div>*/}
         </section>
         <section className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-primary/5 to-background">
           <div className="absolute inset-0 w-full h-full">
