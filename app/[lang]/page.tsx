@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Leaf, Smartphone } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Animation from "@/components/animation";
 
 export default function Home() {
   const { t } = useTranslation('home');
@@ -29,8 +30,10 @@ export default function Home() {
               </Button>
             </div>
           </div>
+          {/*<div className="w-full max-w-3xl mt-8">
+            <Animation />
+          </div>*/}
         </section>
-
         <section className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-primary/5 to-background">
           <div className="absolute inset-0 w-full h-full">
             <div className="absolute right-0 top-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -a-10"></div>
