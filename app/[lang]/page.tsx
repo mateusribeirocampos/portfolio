@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Leaf, Smartphone } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import Animation from "@/components/animation";
+//import Animation from "@/components/animation";
 
 export default function Home() {
   const { t } = useTranslation('home');
