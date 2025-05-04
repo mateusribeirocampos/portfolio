@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning className="h-full">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider defaultTheme="system" enableSystem>
           {children}
           <Toaster />
         </ThemeProvider>

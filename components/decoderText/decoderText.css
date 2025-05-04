@@ -1,44 +1,26 @@
-.gliphy  {
-  color: #0f0;
-  text-shadow: 0 0 4px #0f0;
-  font-family: monospace;
-}
-
-/*.decoder-text-glyph {
-  color: #39ff14; /* Verde neon Matrix */
-  /*opacity: 0.7;
-  text-shadow:
-    0 0 2px #39ff14,
-    0 0 5px #39ff14,
-    0 0 10px #39ff14;
-  transition: color 0.2s, opacity 0.2s;
-}*/
-
 .decoder-text-glyph {
-  color: #fff !important;
+  color: #222; /* cinza escuro para fundo claro */
   opacity: 1;
   font-weight: bold;
-  text-shadow:
-    0 0 4px #39ff14;
+  text-shadow: 0 0 4px #39ff14;
   transition: color 0.2s, opacity 0.1s;
 }
-
-/*.decoder-text-value {
-  color: #eaffd0; /* Verde claro quase branco */
-  /*opacity: 1;
-  font-weight: bold;
-  text-shadow:
-    0 0 4px #39ff14,
-    0 0 8px #39ff14,
-    0 0 16px #39ff14;
-  transition: color 0.2s, opacity 0.1s;
-}*/
 
 .decoder-text-value {
-  color: #fff !important;
+  color: #222;
   opacity: 1;
   font-weight: bold;
-  text-shadow:
-    0 0 4px #fff;
+  text-shadow: 0 0 4px #fff;
   transition: color 0.2s, opacity 0.1s;
+}
+
+/* Tema escuro */
+.dark .decoder-text-glyph {
+  color: #efffec; /* verde neon para fundo escuro */
+  text-shadow: 0 0 8px #39ff14;
+}
+
+.dark .decoder-text-value {
+  color: #efffec; /* verde claro quase branco */
+  text-shadow: 0 0 8px #39ff14;
 }
