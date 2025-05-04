@@ -12,7 +12,7 @@ export default function Home() {
   const title = t('home.title');
   const subtitle = t('home.subtitle');
 
-  const { ref: subtitleRef, inView: subtitleInView } = useInView({ triggerOnce: true, threshold: 0.3 });
+  const { ref: subtitleRef, inView: subtitleInView } = useInView({ triggerOnce: true, threshold: .9});
 
   return (
     <>
