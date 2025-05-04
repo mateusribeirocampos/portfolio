@@ -1,0 +1,100 @@
+'use client'
+
+import { useReducedMotion, useSpring } from 'framer-motion';
+import { memo, useEffect, useRef } from 'react';
+import './decoderText.css';
+
+// Mapeamento entre o tipo do caractere e a classe CSS correspondente
+const styles = {
+  glyph: 'decoder-text-glyph',   // Classe CSS para caracteres embaralhados (efeito Matrix)
+  value: 'decoder-text-value',   // Classe CSS para caracteres já decodificados
+};
+
+const glyphs: string[] = [
+  'ア', ' あ', 'Ɐ', '4', '=', 
+  '?', '/', '~', '`', '§', 
+  '±', '¡', '¿', '€', '£', '¥', 
+  '₩', '₽', '¢', '🤪',
+  '©', '®', '℃', '℉', '°',
+];
+
+const CharType = {
+  Glyph: 'glyph',
+  Value: 'value',
+} as const;
+
+type CharTypeKey = keyof typeof CharType;
+type CharTypeValue = (typeof CharType)[CharTypeKey];
+
+interface OutputItem {
+  type: CharTypeValue;
+  value: string;
+}
+
+function shuffle(content: string[], output: OutputItem[], pos: number): OutputItem[] {
+  return content.map((char, i) => {
+    if (i < pos) {
+      return { type: CharType.Glyph, value: char };
+    }
+    if (pos % 1 < 0.5) {
+      return { type: CharType.Value, value: glyphs[Math.floor(Math.random() * glyphs.length)] };
+    }
+    return { type: CharType.Glyph, value: output[i].value };
+  });
+}
+
+interface Props {
+  text: string;
+  start?: boolean;
+  delay?: number;
+}
+
+export const DecoderText = memo(({ text, start = true, delay: startDelay = 0 }: Props) => {
+  const output = useRef<OutputItem[]>([]);
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const reduceMotion = useReducedMotion();
+  const spring = useSpring(0, { stiffness: 10, damping: 5 });
+
+  useEffect(() => {
+    const content = text.split('');
+    output.current = content.map(_ => ({ type: CharType.Glyph, value: '' }));
+    // Função responsável por renderizar o texto animado
+    // Cada caractere é envolvido por um <span> com a classe CSS apropriada
+    const render = () => {
+      if (!containerRef.current) return;
+      containerRef.current.innerHTML = output.current
+        // Aqui, para cada caractere, criamos um <span>:
+        // - Se item.type === 'glyph', aplica a classe 'decoder-text-glyph'
+        // - Se item.type === 'value', aplica a classe 'decoder-text-value'
+        .map(item => `<span class="${styles[item.type as 'glyph' | 'value']}">${item.value}</span>`)
+        .join('');
+    };
+
+    const unsub = spring.on('change', v => {
+      output.current = shuffle(content, output.current, v);
+      render();
+    });
+
+    if (start && !reduceMotion) {
+      (async () => {
+        if (startDelay > 0) {
+          await new Promise(resolve => setTimeout(resolve, startDelay));
+        }
+        spring.set(content.length);
+      })();
+    } else {
+      output.current = content.map(c => ({ type: CharType.Value, value: c }));
+      render();
+    }
+
+    return () => unsub();
+  }, [text, start, startDelay, spring, reduceMotion]);
+
+  return <span aria-hidden ref={containerRef} />;
+});
+
+DecoderText.displayName = 'DecoderText';
+
+// Certifique-se de que seu CSS tenha as classes:
+// .decoder-text-glyph { ... }
+// .decoder-text-value { ... }
