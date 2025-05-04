@@ -9,6 +9,8 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { BiWorld } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
+import { DecoderGlyphLetter } from "@/components/decoderLetter/DecoderGlyphLetter";
+import { glyphsM, glyphsR, glyphsC } from "@/components/decoderLetter/glyphs";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,7 +78,10 @@ export function Navigation() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href={`/${currentLocale}`} className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
-          MRC | Full Stack
+          <DecoderGlyphLetter glyphs={glyphsM} className="decoder-m-glyph" />
+          <DecoderGlyphLetter glyphs={glyphsR} className="decoder-m-glyph" />
+          <DecoderGlyphLetter glyphs={glyphsC} className="decoder-m-glyph" />
+          | Full Stack
         </Link>
 
         {/* Desktop Navigation */}
