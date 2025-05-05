@@ -8,7 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -58,6 +59,7 @@
     "lucide-react": "^0.446.0",
     "next": "^15.2.2",
     "next-i18next": "^15.4.2",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.3.0",
     "ni18n": "^1.1.0",
     "postcss": "^8.5.3",
