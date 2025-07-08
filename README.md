@@ -9,7 +9,7 @@ A modern, internationalized personal portfolio showcasing full-stack development
 
 ## 🚀 Live Demo
 
-**Portfolio Website**: [https://portfolio-jhgo4132v-mateusribeirocampos-projects.vercel.app/](https://portfolio-jhgo4132v-mateusribeirocampos-projects.vercel.app/)
+**Portfolio Website**: [https://portfolio-mateusribeirocampos-projects.vercel.app/](https://portfolio-mateusribeirocampos.vercel.app/projects)
 
 ## 👨‍💻 About Me
 
