@@ -25,7 +25,7 @@ export const projects: Project[] = [
     secondImage: '/images/projects/websiteSantaRita1.png',
     tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Vite'],
     github: 'https://github.com/mateusribeirocampos/santarita',
-    demo: 'https://santaritaourofino.vercel.app',
+    demo: 'https://igrejasantaritaourofino.vercel.app/',
   },
   {
     title: 'DIO - Machine Learning',
