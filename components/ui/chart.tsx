@@ -69,32 +69,72 @@ ChartContainer.displayName = 'Chart';
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
-    ([_, config]) => config.theme || config.color
+    ([_, config]) => config.theme || config.color // Filtra apenas configs com tema ou cor
   );
 
   if (!colorConfig.length) {
-    return null;
+    return null; // Retorna null se não há configurações de cor
   }
+
+  // Função para sanitizar valores CSS e prevenir injeção
+  const sanitizeCSSValue = (value: string): string => {
+    // Remove caracteres perigosos que podem quebrar CSS ou injetar código
+    return value.replace(/[<>{};"'`\\]/g, ''); // Remove chars perigosos
+  };
+
+  // Função para validar se é uma cor CSS válida
+  const isValidColor = (color: string): boolean => {
+    // Verifica se é uma cor hexadecimal válida
+    if (/^#[0-9A-Fa-f]{3,6}$/.test(color)) return true;
+    // Verifica se é uma cor RGB/RGBA válida
+    if (/^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*(,\s*[\d.]+)?\s*\)$/.test(color)) return true;
+    // Verifica se é uma cor HSL válida
+    if (/^hsla?\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*(,\s*[\d.]+)?\s*\)$/.test(color)) return true;
+    // Verifica se é uma cor CSS nomeada (básica)
+    const namedColors = ['red', 'blue', 'green', 'yellow', 'black', 'white', 'gray', 'orange', 'purple', 'pink'];
+    if (namedColors.includes(color.toLowerCase())) return true;
+    // Verifica se é uma variável CSS válida
+    if (/^var\(--[\w-]+\)$/.test(color)) return true;
+    return false;
+  };
+
+  // Gera CSS de forma segura, validando cada valor
+  const generateSafeCSS = (): string => {
+    return Object.entries(THEMES)
+      .map(([theme, prefix]) => {
+        const sanitizedId = sanitizeCSSValue(id); // Sanitiza o ID do chart
+        const cssVars = colorConfig
+          .map(([key, itemConfig]) => {
+            const color =
+              itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+              itemConfig.color;
+            
+            if (!color) return null; // Pula se não há cor
+            
+            const sanitizedColor = sanitizeCSSValue(color); // Sanitiza a cor
+            const sanitizedKey = sanitizeCSSValue(key); // Sanitiza a chave
+            
+            // Valida se a cor é segura antes de usar
+            if (!isValidColor(sanitizedColor)) {
+              console.warn(`Invalid color detected: ${color}`); // Log de warning
+              return null; // Pula cores inválidas
+            }
+            
+            return `  --color-${sanitizedKey}: ${sanitizedColor};`; // Retorna CSS válido
+          })
+          .filter(Boolean) // Remove valores null
+          .join('\n'); // Junta as linhas
+        
+        return cssVars ? `${prefix} [data-chart="${sanitizedId}"] {\n${cssVars}\n}` : '';
+      })
+      .filter(Boolean) // Remove blocos vazios
+      .join('\n'); // Junta todos os blocos CSS
+  };
 
   return (
     <style
       dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
-          .map(
-            ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-  .map(([key, itemConfig]) => {
-    const color =
-      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-      itemConfig.color;
-    return color ? `  --color-${key}: ${color};` : null;
-  })
-  .join('\n')}
-}
-`
-          )
-          .join('\n'),
+        __html: generateSafeCSS() // Usa função segura para gerar CSS
       }}
     />
   );

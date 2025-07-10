@@ -83,13 +83,14 @@ export const DecoderText = memo(({ text, start = true, delay: startDelay = 0 }: 
     // Função responsável por renderizar o texto animado
     // Cada caractere é envolvido por um <span> com a classe CSS apropriada
     const render = () => {
-      if (!containerRef.current) return;
-      containerRef.current.innerHTML = output.current
-        // Aqui, para cada caractere, criamos um <span>:
-        // - Se item.type === 'glyph', aplica a classe 'decoder-text-glyph'
-        // - Se item.type === 'value', aplica a classe 'decoder-text-value'
-        .map(item => `<span class="${styles[item.type as 'glyph' | 'value']}">${item.value}</span>`)
-        .join('');
+      if (!containerRef.current) return; // Verifica se o container existe
+      const spans = output.current.map((item, index) => {
+        const span = document.createElement('span'); // Cria elemento span seguro
+        span.className = styles[item.type as 'glyph' | 'value']; // Aplica classe CSS
+        span.textContent = item.value; // Usa textContent (seguro contra XSS)
+        return span; // Retorna o elemento criado
+      });
+      containerRef.current.replaceChildren(...spans); // Substitui todos os filhos
     };
 
     const unsub = spring.on('change', v => {

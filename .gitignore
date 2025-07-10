@@ -34,4 +34,38 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.cursorules
+# IDE and Editor files
+.vscode/         # VS Code settings
+.idea/           # IntelliJ IDEA settings
+*.swp            # Vim swap files
+*.swo            # Vim swap files
+*~               # Backup files
+
+# AI Tools and IDE configurations
+.cursorules      # Cursor IDE rules
+.cursor/         # Cursor IDE cache
+.windsurf/       # Windsurf IDE settings
+
+# macOS specific
+.DS_Store        # Already included above but ensuring it's here
+.AppleDouble
+.LSOverride
+._*
+
+# Documentation and memo files (sensitive)
+memo/            # Internal documentation and AI context
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Environment and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS generated files
+Thumbs.db        # Windows thumbnail cache

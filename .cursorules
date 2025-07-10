@@ -1,0 +1,126 @@
+# Project Overview
+
+This project, named portfolio, is a personal portfolio built with Next.js (React framework) and TypeScript, styled with Tailwind CSS and internationalized via next-i18next. It features MDX-powered blog content, a component-based architecture, custom hooks, and data fetched from local JSON files. The folder structure and key scripts are documented, along with deployment steps to Vercel and contribution guidelines.
+
+## Key URLs
+
+- [Portfolio site on Vercel](https://portfolio-mateusribeirocampos.vercel.app/en)
+- [GitHub Repository](https://github.com/mateusribeirocampos/portfolio)
+- [GitHub Profile](https://github.com/mateusribeirocampos)
+
+## Project Structure
+
+- **/components**: Reusable UI components (including decoderLetter, decoderText, and UI library components).
+- **/app**: Next.js app directory for routing and page structure (with dynamic [lang] routes for i18n, and subfolders for blog, projects, contact, about).
+- **/hooks**: Custom React hooks (e.g., use-toast).
+- **/data**: Local TypeScript files for blog and project mock data.
+- **/public**: Static assets, images, and localization files (i18n JSONs for pt-BR and en).
+- **/styles**: Global and utility styles (mainly Tailwind CSS config).
+- **/lib**: Utility functions and helpers.
+- **/@types**: Custom TypeScript type definitions (e.g., i18next.d.ts).
+
+## Development Guidelines
+
+- Use TypeScript for type safety (strict mode enabled).
+- Follow the coding standards defined in the ESLint configuration (extends next/core-web-vitals).
+- Ensure all components are responsive and accessible.
+- Use Tailwind CSS for styling, adhering to the defined color palette and config.
+- Organize code by feature and responsibility (components, hooks, data, etc.).
+
+## Important Scripts
+
+- `dev`: Starts the development server.
+- `build`: Builds the application for production.
+- `start`: Runs next start.
+- `lint`: Runs next lint.
+
+## AI Interaction Guidelines
+
+- When generating code, prioritize TypeScript and React best practices.
+- Ensure that any new components are reusable and follow the existing design patterns.
+- Minimize the use of AI-generated comments; instead, use clearly named variables and functions.
+- Always validate user inputs and handle errors gracefully.
+- Use the existing components and pages as a reference for new components and pages.
+
+## Component Generation Rules
+
+- Analyze component requirements thoroughly.
+- Specify desired Tailwind CSS classes for styling.
+- Mention any required TypeScript types or interfaces.
+- Include instructions for responsive design.
+- Suggest appropriate Next.js features if applicable.
+- Specify any necessary state management or hooks.
+- Include accessibility considerations.
+- Mention any required icons or assets.
+- Suggest error handling and loading states.
+- Include instructions for animations or transitions if needed.
+- Specify any required API integrations or data fetching.
+- Mention performance optimization techniques if applicable.
+- Include instructions for testing the component.
+- Suggest documentation requirements for the component.
+
+## General Component Creation Guidelines
+
+- Prioritize reusability and modularity.
+- Ensure consistent naming conventions.
+- Follow React best practices and patterns.
+- Implement proper prop validation.
+- Consider internationalization requirements (i18n).
+- Optimize for SEO when applicable.
+- Ensure compatibility with different browsers and devices.
+
+## General Rules
+
+- Enable strict TypeScript (strict: true in tsconfig.json).
+- Avoid 'any', prefer 'unknown' with runtime checks.
+- Explicitly type function inputs and outputs.
+- Use advanced TypeScript features (type guards, mapped types, conditional types).
+- Organize project structure: components, app, hooks, data, public, styles, lib, @types.
+- Separate concerns: presentational components, business logic, side effects.
+- Use Biome (or Prettier/ESLint) for code formatting and linting.
+- Configure formatting/linting as a pre-commit hook if possible.
+
+## Next.js Rules
+
+- Use dynamic routes with bracket notation ([lang], [id].tsx, etc.).
+- Validate and sanitize route parameters.
+- Prefer flat, descriptive routes.
+- Use getServerSideProps for dynamic data, getStaticProps/getStaticPaths for static data.
+- Implement Incremental Static Regeneration (ISR) where appropriate.
+- Use next/image for optimized images.
+- Configure image layout, priority, sizes, and srcSet attributes.
+
+## TypeScript Rules
+
+- Enable all strict mode options in tsconfig.json.
+- Explicitly type all variables, parameters, and return values.
+- Use utility types, mapped types, and conditional types.
+- Prefer 'interface' for extendable object shapes.
+- Use 'type' for unions, intersections, and primitive compositions.
+- Document complex types with JSDoc.
+- Avoid ambiguous union types; use discriminated unions when necessary.
+
+## TailwindCSS
+
+- Use TailwindCSS utility classes for styling.
+- Avoid custom CSS unless absolutely necessary.
+- Maintain consistent order of utility classes.
+- Use Tailwind's responsive variants for adaptive designs.
+- Define and use design tokens in tailwind.config.ts.
+
+## Development Process
+
+- Conduct thorough code reviews via Pull Requests.
+- Include clear PR descriptions with context and screenshots when relevant.
+- Implement automated testing (unit, integration, e2e) as the project evolves.
+- Prioritize meaningful tests over high coverage numbers.
+- Use Conventional Commits for commit messages (feat:, fix:, docs:, chore:).
+- Make small, incremental commits for easier review and debugging.
+
+## Additional Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [Portfolio overview](https://portfolio-mateusribeirocampos.vercel.app/en)
