@@ -35,3 +35,6 @@ yarn-error.log*
 next-env.d.ts
 
 .cursorules
+CLAUDE.local.md 
+PROJECT_CONTEXT.md
+PLANO_MELHORIAS_ESTAGIO.md
