@@ -27,14 +27,13 @@ export function Navigation() {
   const langMobileDropdownRef = useRef<HTMLDivElement | null>(null);
 
   const currentLocale = i18n.language || 'en';
-  const pathPrefix = currentLocale === 'pt-BR' ? '/pt-BR' : '';
 
   const navItems = [
-    { href: pathPrefix === '' ? '/' : '/pt-BR', label: t("navigation.home") },
-    { href: `${pathPrefix}/projects`, label: t("navigation.projects") },
-    { href: `${pathPrefix}/about`, label: t("navigation.about") },
-    { href: `${pathPrefix}/blog`, label: t("navigation.blog") },
-    { href: `${pathPrefix}/contact`, label: t("navigation.contact") },
+    { href: '/', label: t("navigation.home") },
+    { href: '/projects', label: t("navigation.projects") },
+    { href: '/about', label: t("navigation.about") },
+    { href: '/blog', label: t("navigation.blog") },
+    { href: '/contact', label: t("navigation.contact") },
   ];
 
   // Handle clicks outside dropdown
@@ -61,33 +60,28 @@ export function Navigation() {
     };
   }, []);
 
-  // Handle language change via URL navigation
+  // Handle language change via cookie (no URL change needed)
   const handleLanguageChange = (locale: string, isMobile: boolean) => {
     if (isMobile) {
       setIsMobileLangDropdownOpen(false);
     } else {
       setIsDesktopLangDropdownOpen(false);
     }
-    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
 
-    // Get the current path without the current locale prefix
-    let currentPath = pathname;
-    if (currentLocale === 'pt-BR' && pathname.startsWith('/pt-BR')) {
-      currentPath = pathname.replace('/pt-BR', '');
-    }
+    // Set the cookie to persist the language selection
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; samesite=lax`;
 
-    // Redirect to new locale
-    if (locale === 'en') {
-      router.push(currentPath === '' || currentPath === '/' ? '/' : currentPath);
-    } else {
-      router.push(currentPath === '' || currentPath === '/' ? '/pt-BR' : `/pt-BR${currentPath}`);
-    }
+    // Change the language immediately in i18next
+    i18n.changeLanguage(locale);
+
+    // Refresh the page to apply the new locale
+    window.location.reload();
   };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href={pathPrefix === '' ? '/' : '/pt-BR'} className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
+        <Link href="/" className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
           <DecoderGlyphLetter glyphs={glyphsM} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsR} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsC} className="decoder-m-glyph" />
