@@ -1,4 +1,4 @@
-import { BlogContent } from './components/BlogContent';
+import { BlogContent } from '../../blog/components/BlogContent';
 
 export const metadata = {
   title: 'Blog | Mateus R Campos',

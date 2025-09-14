@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Leaf, Smartphone } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { DecoderText } from '../../components/decoderText/decoderText';
+import { DecoderText } from '@/components/decoderText/decoderText';
 import { useInView } from 'react-intersection-observer';
 
 export default function Home() {

@@ -1,4 +1,4 @@
-import { ProjectsContent } from './components/ProjectsContent';
+import { ProjectsContent } from '../../projects/components/ProjectsContent';
 
 export const metadata = {
   title: 'Projects | Mateus R Campos',

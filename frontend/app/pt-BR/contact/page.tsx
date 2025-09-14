@@ -1,4 +1,4 @@
-import { ContactContent } from './components/ContactContent';
+import { ContactContent } from '../../contact/components/ContactContent';
 
 export const metadata = {
   title: 'Contato | Mateus R Campos',
