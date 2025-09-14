@@ -5,10 +5,10 @@ export default async function LangLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
-  // Unwrap params properly
-  const lang = params.lang;
+  // Await params in Next.js 15
+  const { lang } = await params;
 
   return (
     <LayoutClient lang={lang}>
