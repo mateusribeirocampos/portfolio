@@ -1,14 +1,11 @@
-const { i18n } = require('./next-i18next.config.js');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false, // Habilita ESLint durante builds para garantir qualidade do código
   },
-  images: { 
+  images: {
     unoptimized: true // Mantém imagens não otimizadas para compatibilidade com Vercel
   },
-  i18n,
   
   // Headers de segurança para proteger contra ataques comuns
   async headers() {
