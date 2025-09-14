@@ -1,4 +1,4 @@
-import { LayoutClient } from '@/components/layout-client';
+import { Providers } from '@/providers';
 
 export default function PortugueseLayout({
   children,
@@ -6,8 +6,8 @@ export default function PortugueseLayout({
   children: React.ReactNode;
 }) {
   return (
-    <LayoutClient lang="pt-BR">
+    <Providers lang="pt-BR">
       {children}
-    </LayoutClient>
+    </Providers>
   );
 }
