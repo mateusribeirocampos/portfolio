@@ -52,7 +52,6 @@
     "country-flag-icons": "^1.5.18",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
-    "eslint": "8.49.0",
     "framer-motion": "^12.9.4",
     "i18next-resources-to-backend": "^1.2.1",
     "input-otp": "^1.2.4",
@@ -83,8 +82,12 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@next/bundle-analyzer": "^15.2.2",
     "@types/three": "^0.175.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.35.0",
     "eslint-config-next": "^15.2.2"
   }
 }
