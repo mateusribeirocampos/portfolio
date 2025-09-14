@@ -52,7 +52,6 @@
     "country-flag-icons": "^1.5.18",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
-    "eslint": "8.49.0",
     "framer-motion": "^12.9.4",
     "i18next-resources-to-backend": "^1.2.1",
     "input-otp": "^1.2.4",
@@ -85,6 +84,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^15.2.2",
     "@types/three": "^0.175.0",
+    "eslint": "^8.57.0",
     "eslint-config-next": "^15.2.2"
   }
 }
