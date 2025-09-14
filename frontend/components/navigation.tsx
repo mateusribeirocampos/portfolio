@@ -27,13 +27,14 @@ export function Navigation() {
   const langMobileDropdownRef = useRef<HTMLDivElement | null>(null);
 
   const currentLocale = i18n.language || 'en';
+  const pathPrefix = currentLocale === 'pt-BR' ? '/pt-BR' : '';
 
   const navItems = [
-    { href: `/${currentLocale}`, label: t("navigation.home") },
-    { href: `/${currentLocale}/projects`, label: t("navigation.projects") },
-    { href: `/${currentLocale}/about`, label: t("navigation.about") },
-    { href: `/${currentLocale}/blog`, label: t("navigation.blog") },
-    { href: `/${currentLocale}/contact`, label: t("navigation.contact") },
+    { href: `${pathPrefix}/`, label: t("navigation.home") },
+    { href: `${pathPrefix}/projects`, label: t("navigation.projects") },
+    { href: `${pathPrefix}/about`, label: t("navigation.about") },
+    { href: `${pathPrefix}/blog`, label: t("navigation.blog") },
+    { href: `${pathPrefix}/contact`, label: t("navigation.contact") },
   ];
 
   // Handle clicks outside dropdown
@@ -68,16 +69,25 @@ export function Navigation() {
       setIsDesktopLangDropdownOpen(false);
     }
     document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
-    
-    // Get the current path without the locale
-    const currentPath = pathname.replace(`/${currentLocale}`, '');
-    router.push(`/${locale}${currentPath}`);
+
+    // Get the current path without the current locale prefix
+    let currentPath = pathname;
+    if (currentLocale === 'pt-BR' && pathname.startsWith('/pt-BR')) {
+      currentPath = pathname.replace('/pt-BR', '');
+    }
+
+    // Redirect to new locale
+    if (locale === 'en') {
+      router.push(currentPath === '' ? '/' : currentPath);
+    } else {
+      router.push(`/pt-BR${currentPath === '/' ? '' : currentPath}`);
+    }
   };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href={`/${currentLocale}`} className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
+        <Link href={pathPrefix === '' ? '/' : pathPrefix} className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
           <DecoderGlyphLetter glyphs={glyphsM} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsR} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsC} className="decoder-m-glyph" />
