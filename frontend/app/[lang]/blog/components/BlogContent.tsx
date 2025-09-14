@@ -1,12 +1,12 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/frontend/components/ui/card';
-import { Button } from '@/frontend/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
-import { blogPosts } from '@/frontend/data/blog';
+import { blogPosts } from '@/data/blog';
 
 export function BlogContent() {
   const { t } = useTranslation("blog");

@@ -1,12 +1,12 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/frontend/components/ui/card';
-import { Button } from '@/frontend/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
-import { projects } from '@/frontend/data/projects';
+import { projects } from '@/data/projects';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 

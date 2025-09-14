@@ -4,13 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, Sun, Moon } from "lucide-react";
-import { Button } from "@/frontend/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import { cn } from "@/frontend/lib/utils";
+import { cn } from "@/lib/utils";
 import { BiWorld } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
-import { DecoderGlyphLetter } from "@/frontend/components/decoderLetter/DecoderGlyphLetter";
-import { glyphsM, glyphsR, glyphsC } from "@/frontend/components/decoderLetter/glyphs";
+import { DecoderGlyphLetter } from "@/components/decoderLetter/DecoderGlyphLetter";
+import { glyphsM, glyphsR, glyphsC } from "@/components/decoderLetter/glyphs";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
 'use client';
 
-import { Navigation } from '@/frontend/components/navigation';
-import { Footer } from '@/frontend/components/footer';
+import { Navigation } from '@/components/navigation';
+import { Footer } from '@/components/footer';
 import { Providers } from '@/providers';
 import MatrixRain from './matrixRain';
 

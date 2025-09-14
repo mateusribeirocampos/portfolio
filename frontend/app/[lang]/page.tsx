@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { Button } from "@/frontend/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Leaf, Smartphone } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { DecoderText } from '../../components/decoderText/decoderText';

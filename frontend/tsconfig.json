@@ -31,12 +31,11 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "frontend/.next/types/**/*.ts",
+    ".next/types/**/*.ts",
     "next-env.d.ts",
-    "next-i18next.config.js",
-    ".next/types/**/*.ts"
+    "next-i18next.config.js"
   ],
   "exclude": [
-    "frontend/node_modules"
+    "node_modules"
   ]
 }

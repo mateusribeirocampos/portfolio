@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from '@/frontend/components/ui/button';
-import { Input } from '@/frontend/components/ui/input';
-import { Textarea } from '@/frontend/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { useTranslation } from 'react-i18next';
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 import Link from 'next/link';
