@@ -1,4 +1,4 @@
-import { AboutContent } from './components/AboutContent';
+import { AboutContent } from '../../about/components/AboutContent';
 
 export const metadata = {
   title: "About | Mateus R Campos",

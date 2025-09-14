@@ -30,7 +30,7 @@ export function Navigation() {
   const pathPrefix = currentLocale === 'pt-BR' ? '/pt-BR' : '';
 
   const navItems = [
-    { href: `${pathPrefix}/`, label: t("navigation.home") },
+    { href: pathPrefix === '' ? '/' : '/pt-BR', label: t("navigation.home") },
     { href: `${pathPrefix}/projects`, label: t("navigation.projects") },
     { href: `${pathPrefix}/about`, label: t("navigation.about") },
     { href: `${pathPrefix}/blog`, label: t("navigation.blog") },
@@ -78,16 +78,16 @@ export function Navigation() {
 
     // Redirect to new locale
     if (locale === 'en') {
-      router.push(currentPath === '' ? '/' : currentPath);
+      router.push(currentPath === '' || currentPath === '/' ? '/' : currentPath);
     } else {
-      router.push(`/pt-BR${currentPath === '/' ? '' : currentPath}`);
+      router.push(currentPath === '' || currentPath === '/' ? '/pt-BR' : `/pt-BR${currentPath}`);
     }
   };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href={pathPrefix === '' ? '/' : pathPrefix} className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
+        <Link href={pathPrefix === '' ? '/' : '/pt-BR'} className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
           <DecoderGlyphLetter glyphs={glyphsM} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsR} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsC} className="decoder-m-glyph" />
