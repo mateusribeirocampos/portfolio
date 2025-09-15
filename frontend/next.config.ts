@@ -48,7 +48,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", // Estilos permitidos (inclui Google Fonts)
               "font-src 'self' https://fonts.gstatic.com", // Fontes permitidas (Google Fonts)
               "img-src 'self' data: https:", // Imagens de qualquer HTTPS e data URIs
-              "connect-src 'self' https://vercel-insights.com", // Conexões para analytics
+              "connect-src 'self' https://vercel-insights.com http://localhost:3001", // Conexões para analytics e backend local
               "frame-ancestors 'none'", // Previne embedding em iframes
               "object-src 'none'", // Bloqueia objetos perigosos
               "base-uri 'self'", // Restringe URLs base
