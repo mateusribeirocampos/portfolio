@@ -16,6 +16,17 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Admin routes protection
+  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
+    // Check for admin token in cookies (this is basic protection)
+    // In production, you might want to validate the JWT token here
+    const adminToken = request.cookies.get('admin_token');
+
+    if (!adminToken) {
+      return NextResponse.redirect(new URL('/admin/login', request.url));
+    }
+  }
+
   // Get locale from cookie first, then from URL
   let locale = request.cookies.get('NEXT_LOCALE')?.value || defaultLocale;
 
@@ -24,8 +35,7 @@ export function middleware(request: NextRequest) {
     locale = 'pt-BR';
     // Remove /pt-BR prefix and redirect to clean URL
     const newPath = pathname.replace('/pt-BR', '') || '/';
-    const url = request.nextUrl.clone();
-    url.pathname = newPath;
+    const url = new URL(newPath, request.url);
 
     // Set locale cookie and redirect
     const response = NextResponse.redirect(url);
