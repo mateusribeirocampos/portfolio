@@ -126,6 +126,57 @@ portfolio/
 └── docs/                     # Project documentation
 ```
 
+## 🗄️ Database Schema
+
+The portfolio uses a PostgreSQL database with the following structure:
+
+```mermaid
+erDiagram
+    CONTACTS {
+        text id PK "Primary Key (CUID)"
+        varchar(100) name "Contact name"
+        varchar(255) email "Contact email"
+        text message "Contact message"
+        timestamp createdAt "Created timestamp"
+        inet ipAddress "Client IP address"
+        varchar(500) userAgent "User agent string"
+        varchar(20) status "Message status (default: unread)"
+    }
+
+    RESUME_DOWNLOADS {
+        text id PK "Primary Key (CUID)"
+        inet ipAddress "Client IP address"
+        varchar(500) userAgent "User agent string"
+        varchar(5) language "Download language (default: en)"
+        timestamp createdAt "Download timestamp"
+    }
+
+    PAGE_VIEWS {
+        text id PK "Primary Key (CUID)"
+        varchar(255) page "Page path"
+        inet ipAddress "Client IP address"
+        varchar(500) referrer "Referrer URL"
+        varchar(500) userAgent "User agent string"
+        timestamp createdAt "View timestamp"
+    }
+
+    ADMIN_USERS {
+        text id PK "Primary Key (CUID)"
+        varchar(255) email UK "Admin email (unique)"
+        varchar(255) password "Hashed password"
+        varchar(20) role "User role (default: admin)"
+        timestamp createdAt "Account created"
+        timestamp lastLogin "Last login timestamp"
+    }
+```
+
+### Database Indexes
+
+- **contacts**: `createdAt_idx`, `status_idx`
+- **resume_downloads**: `createdAt_idx`
+- **page_views**: `page_createdAt_idx`, `createdAt_idx`
+- **admin_users**: `email_key` (unique)
+
 ## 🚀 Getting Started
 
 ### Prerequisites
