@@ -13,6 +13,7 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { ResumeModule } from './modules/resume/resume.module';
 import { HealthModule } from './modules/health/health.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { HealthModule } from './modules/health/health.module';
     ContactModule,
     ResumeModule,
     HealthModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
