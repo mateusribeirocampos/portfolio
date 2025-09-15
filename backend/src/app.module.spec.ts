@@ -48,16 +48,19 @@ describe('AppModule', () => {
       const configService = module.get<ConfigService>(ConfigService);
 
       // Test that ConfigService can get a value (env vars come as strings)
-      const port = configService.get('PORT', '3000');
+      const port = configService.get<string>('PORT', '3000');
       expect(typeof port).toBe('string');
-      expect(parseInt(port)).toBeGreaterThan(0);
+      expect(parseInt(String(port), 10)).toBeGreaterThan(0);
     });
 
     it('should provide default values when env var is not set', () => {
       const configService = module.get<ConfigService>(ConfigService);
 
       // Test with a non-existent env var
-      const nonExistentVar = configService.get<string>('NON_EXISTENT_VAR', 'default-value');
+      const nonExistentVar = configService.get<string>(
+        'NON_EXISTENT_VAR',
+        'default-value',
+      );
       expect(nonExistentVar).toBe('default-value');
     });
   });

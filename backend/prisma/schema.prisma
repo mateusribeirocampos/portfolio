@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(100)
+  email     String   @db.VarChar(255)
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+  ipAddress String?  @db.Inet
+  userAgent String?  @db.VarChar(500)
+  status    String   @default("unread") @db.VarChar(20)
+
+  @@index([createdAt])
+  @@index([status])
+  @@map("contacts")
+}
+
+model ResumeDownload {
+  id        String   @id @default(cuid())
+  ipAddress String   @db.Inet
+  userAgent String?  @db.VarChar(500)
+  language  String   @default("en") @db.VarChar(5)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("resume_downloads")
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  page      String   @db.VarChar(255)
+  ipAddress String   @db.Inet
+  referrer  String?  @db.VarChar(500)
+  userAgent String?  @db.VarChar(500)
+  createdAt DateTime @default(now())
+
+  @@index([page, createdAt])
+  @@index([createdAt])
+  @@map("page_views")
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  role      String   @default("admin") @db.VarChar(20)
+  createdAt DateTime @default(now())
+  lastLogin DateTime?
+
+  @@map("admin_users")
+}
