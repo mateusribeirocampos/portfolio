@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import request from 'supertest';
+import type { Application } from 'express';
 import { AppModule } from './../src/app.module';
 
 describe('Main Bootstrap Configuration (e2e)', () => {
@@ -39,18 +40,18 @@ describe('Main Bootstrap Configuration (e2e)', () => {
 
     it('should read PORT configuration correctly', () => {
       const configService = app.get<ConfigService>(ConfigService);
-      const port = configService.get('PORT', '3000');
+      const port = configService.get<string>('PORT', '3000');
 
       expect(typeof port).toBe('string');
-      expect(parseInt(port)).toBeGreaterThan(0);
-      expect(parseInt(port)).toBeLessThanOrEqual(65535); // Valid port range
+      expect(parseInt(String(port), 10)).toBeGreaterThan(0);
+      expect(parseInt(String(port), 10)).toBeLessThanOrEqual(65535); // Valid port range
     });
 
     it('should use default port when PORT env var is not set', () => {
       const configService = app.get<ConfigService>(ConfigService);
 
       // Simulate getting port with default value
-      const port = configService.get('NONEXISTENT_PORT', '3000');
+      const port = configService.get<string>('NONEXISTENT_PORT', '3000');
       expect(port).toBe('3000');
     });
   });
@@ -60,7 +61,7 @@ describe('Main Bootstrap Configuration (e2e)', () => {
       const configService = app.get<ConfigService>(ConfigService);
 
       // Test that we can get the PORT value (should be 3000 from .env)
-      const port = configService.get('PORT');
+      const port = configService.get<string>('PORT');
       expect(port).toBeDefined();
     });
 
@@ -68,18 +69,18 @@ describe('Main Bootstrap Configuration (e2e)', () => {
       const configService = app.get<ConfigService>(ConfigService);
 
       // Test getting a non-existent variable
-      const missingVar = configService.get('MISSING_VAR');
+      const missingVar = configService.get<string>('MISSING_VAR');
       expect(missingVar).toBeUndefined();
 
       // Test with default value
-      const withDefault = configService.get('MISSING_VAR', 'default');
+      const withDefault = configService.get<string>('MISSING_VAR', 'default');
       expect(withDefault).toBe('default');
     });
   });
 
   describe('Server Configuration (e2e)', () => {
     it('should respond to HTTP requests on configured port', () => {
-      return request(app.getHttpServer())
+      return request(app.getHttpServer() as Application)
         .get('/')
         .expect(200)
         .expect('Hello World!');
@@ -87,11 +88,11 @@ describe('Main Bootstrap Configuration (e2e)', () => {
 
     it('should use ConfigService for server configuration', () => {
       const configService = app.get<ConfigService>(ConfigService);
-      const port = configService.get('PORT', '3000');
+      const port = configService.get<string>('PORT', '3000');
 
       // Verify the port is properly configured
       expect(port).toBeDefined();
-      expect(parseInt(port)).toBeGreaterThan(0);
+      expect(parseInt(String(port), 10)).toBeGreaterThan(0);
     });
   });
 });

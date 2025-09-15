@@ -1,4 +1,10 @@
-import { Injectable, CanActivate, ExecutionContext, HttpException, HttpStatus } from '@nestjs/common';
+import {
+  Injectable,
+  CanActivate,
+  ExecutionContext,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import type { Request } from 'express';
 
 @Injectable()
@@ -7,7 +13,20 @@ export class RateLimitGuard implements CanActivate {
 
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest<Request>();
-    const ip = request.ip || (request as any).connection?.remoteAddress || 'unknown';
+
+    let ip = 'unknown';
+    if (request.ip) {
+      ip = request.ip;
+    } else if (request.socket?.remoteAddress) {
+      ip = request.socket.remoteAddress;
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+      const fallbackIp = (request as any).connection?.remoteAddress;
+      if (typeof fallbackIp === 'string') {
+        ip = fallbackIp;
+      }
+    }
+
     const now = Date.now();
     const windowMs = 60 * 1000; // 1 minuto
     const maxRequests = 10;

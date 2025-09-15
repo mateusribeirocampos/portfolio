@@ -15,8 +15,9 @@ async function bootstrap() {
   app.use(compression());
 
   // CORS
+  const corsOrigins = configService.get<string>('CORS_ORIGINS');
   app.enableCors({
-    origin: configService.get('CORS_ORIGINS')?.split(',') || ['http://localhost:3000'],
+    origin: corsOrigins?.split(',') || ['http://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -34,9 +35,10 @@ async function bootstrap() {
   // Global exception filter
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  const port = configService.get('PORT') || 3001;
+  const port = configService.get<number>('PORT') || 3001;
   await app.listen(port);
 
   console.log(`🚀 Backend running on: http://localhost:${port}`);
 }
-bootstrap();
+
+void bootstrap();

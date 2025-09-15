@@ -18,9 +18,10 @@ export class ResumeService {
     });
 
     // Determinar arquivo baseado no idioma
-    const fileName = language === 'pt-BR'
-      ? 'curriculo-mateus-ribeiro-campos.pdf'
-      : 'resume-mateus-ribeiro-campos.pdf';
+    const fileName =
+      language === 'pt-BR'
+        ? 'curriculo-mateus-ribeiro-campos.pdf'
+        : 'resume-mateus-ribeiro-campos.pdf';
 
     const filePath = path.join(process.cwd(), 'assets', 'resumes', fileName);
 

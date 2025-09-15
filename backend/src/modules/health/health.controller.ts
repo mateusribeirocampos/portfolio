@@ -17,10 +17,14 @@ export class HealthController {
         uptime: process.uptime(),
         environment: process.env.NODE_ENV,
       };
-    } catch (error) {
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.message : 'Erro desconhecido';
+      console.error(errorMessage);
       return {
         status: 'error',
-        error: error.message,
+        timestamp: new Date().toISOString(),
+        error: errorMessage,
       };
     }
   }

@@ -22,7 +22,9 @@ export class ContactService {
     });
 
     if (recentContacts >= 5) {
-      throw new BadRequestException('Muitos contatos enviados. Tente novamente em 1 hora.');
+      throw new BadRequestException(
+        'Muitos contatos enviados. Tente novamente em 1 hora.',
+      );
     }
 
     // Salvar no banco
