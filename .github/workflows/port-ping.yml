@@ -1,0 +1,43 @@
+name: Portfolio Supabase Keep-Alive
+
+on:
+  schedule:
+    - cron: '30 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping-portfolio:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ping Supabase REST API
+        run: |
+          echo "🎨 Portfolio Supabase Ping - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          
+          response=$(curl -s -w "\n%{http_code}" \
+                -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_PORTFOLIO }}" \
+                -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_PORTFOLIO }}" \
+                "https://jcbrxrncgyexcgenzlfi.supabase.co/rest/v1/")
+          
+          http_code=$(echo "$response" | tail -n1)
+          
+          if [[ "$http_code" =~ ^2[0-9][0-9]$ ]]; then
+            echo "✅ Portfolio Supabase está ativo!"
+          else
+            echo "⚠️ Status: $http_code"
+          fi
+
+      - name: Ping PostgreSQL Database
+        run: |
+          echo "🗄️ Testando conexão PostgreSQL..."
+          
+          sudo apt-get update && sudo apt-get install -y postgresql-client
+          
+          PGPASSWORD="${{ secrets.SUPABASE_DB_PASSWORD }}" psql \
+            -h aws-1-us-east-2.pooler.supabase.com \
+            -p 6543 \
+            -U postgres.jcbrxrncgyexcgenzlfi \
+            -d postgres \
+            -c "SELECT 1 as ping, NOW() as timestamp;" \
+            && echo "✅ PostgreSQL conectado!" \
+            || echo "⚠️ Falha no PostgreSQL"
