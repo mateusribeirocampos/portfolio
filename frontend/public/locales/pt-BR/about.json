@@ -3,32 +3,32 @@
     "title": "Sobre Mim",
     "journey": {
       "title": "Minha Jornada",
-      "description": "Sou estudante de Ciência da Computação com sólida formação em Agronomia e Entomologia, com foco em ecotoxicologia e controle biológico. Estou em transição para a área de TI, com ênfase em análise de dados e desenvolvimento de software. Meu trabalho integra a pesquisa científica à tecnologia, utilizando linguagens como C, C++, Java, Python e Kotlin, além de frameworks como React, React Native e Node.js. Procuro oportunidades de estágio que me permitam aplicar essas habilidades, tanto no Brasil quanto no exterior"
+      "description": "Desenvolvedor Java especializado em Spring Boot 3.5 e arquitetura de APIs RESTful. Mais de 2.000 horas de desenvolvimento com projetos em produção utilizando Java 21, PostgreSQL e práticas enterprise. Cursando Ciência da Computação com foco em engenharia de software, estruturas de dados e desenvolvimento full-stack. Background único em pesquisa científica internacional que traz rigor analítico e metodologia sistemática para resolução de problemas complexos."
     },
     "education": {
       "title": "Formação",
       "computerScience": {
         "title": "Ciência da Computação",
-        "description": "Atualmente cursando Ciência da Computação"
+        "description": "Cursando - Previsão de conclusão: 2026"
       },
       "agronomy": {
-        "title": "Bacharel em Agronomia",
-        "description": "Especializado em manejo de pragas e desenvolvimento de produtos agrícolas"
+        "title": "Pesquisa Científica",
+        "description": "PhD com experiência internacional em análise de dados e modelagem estatística"
       }
     },
     "skills": {
       "title": "Habilidades Técnicas",
       "frontend": {
-        "title": "Frontend",
-        "description": "React, Next.js, TypeScript, React Native"
+        "title": "Full-Stack",
+        "description": "React, TypeScript, Node.js, React Native, Tailwind CSS"
       },
       "backend": {
-        "title": "Backend",
-        "description": "Node.js, Express, SQLite, Python, C, C++, Java, Kotlin"
+        "title": "Backend Java",
+        "description": "Java 21, Spring Boot 3.5, Spring Data JPA, Spring Security, Hibernate, Maven"
       },
       "tools": {
-        "title": "Ferramentas",
-        "description": "Git, Docker, AWS"
+        "title": "Banco de Dados & DevOps",
+        "description": "PostgreSQL, MySQL, REST APIs, JWT, Docker, Git, Maven"
       }
     },
     "downloadResume": "Baixar Currículo"

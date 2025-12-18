@@ -3,32 +3,32 @@
     "title": "About Me",
     "journey": {
       "title": "My Journey",
-      "description": "I am a Computer Science student with a solid background in Agronomy and Entomology, focusing on ecotoxicology and biological control. I am transitioning into IT with an emphasis on data analysis and software development. My work bridges scientific research with technology, using languages like C, C++, Java, Python, and Kotlin, and frameworks such as React, React Native, and Node.js. I seek internship opportunities where I can apply these skills in both local and international settings."
+      "description": "Java Developer specialized in Spring Boot 3.5 and RESTful API architecture. 2,000+ development hours with production projects using Java 21, PostgreSQL, and enterprise practices. Pursuing Computer Science degree with focus on software engineering, data structures, and full-stack development. Unique background in international scientific research that brings analytical rigor and systematic methodology to complex problem-solving."
     },
     "education": {
       "title": "Education",
       "computerScience": {
         "title": "Computer Science",
-        "description": "Currently pursuing studies in Computer Science"
+        "description": "In Progress - Expected completion: 2026"
       },
       "agronomy": {
-        "title": "B.S. in Agronomy",
-        "description": "Specialized in pest management and development of agricultural products"
+        "title": "Scientific Research",
+        "description": "PhD with international experience in data analysis and statistical modeling"
       }
     },
     "skills": {
       "title": "Technical Skills",
       "frontend": {
-        "title": "Frontend",
-        "description": "React, Next.js, TypeScript, React Native"
+        "title": "Full-Stack",
+        "description": "React, TypeScript, Node.js, React Native, Tailwind CSS"
       },
       "backend": {
-        "title": "Backend",
-        "description": "Node.js, Express, SQLite, Python, C, C++, Java, Kotlin"
+        "title": "Backend Java",
+        "description": "Java 21, Spring Boot 3.5, Spring Data JPA, Spring Security, Hibernate, Maven"
       },
       "tools": {
-        "title": "Tools",
-        "description": "Git, Docker, AWS"
+        "title": "Databases & DevOps",
+        "description": "PostgreSQL, MySQL, REST APIs, JWT, Docker, Git, Maven"
       }
     },
     "downloadResume": "Download Resume"
