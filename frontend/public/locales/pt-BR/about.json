@@ -3,13 +3,13 @@
     "title": "Sobre Mim",
     "journey": {
       "title": "Minha Jornada",
-      "description": "Desenvolvedor Java especializado em Spring Boot 3.5 e arquitetura de APIs RESTful. Mais de 2.000 horas de desenvolvimento com projetos em produção utilizando Java 21, PostgreSQL e práticas enterprise. Cursando Ciência da Computação com foco em engenharia de software, estruturas de dados e desenvolvimento full-stack. Background único em pesquisa científica internacional que traz rigor analítico e metodologia sistemática para resolução de problemas complexos."
+      "description": "Desenvolvedor Java especializado em Spring Boot 3.5 e arquitetura de APIs RESTful, com mais de 2.000 horas de experiência em desenvolvimento de projetos em produção utilizando Java 21, PostgreSQL e práticas enterprise. Bacharel em Ciência da Computação, com sólida formação em engenharia de software, estruturas de dados e desenvolvimento full-stack. Possui background em pesquisa científica internacional, trazendo rigor analítico, metodologia sistemática e forte capacidade de resolução de problemas complexos."
     },
     "education": {
       "title": "Formação",
       "computerScience": {
         "title": "Ciência da Computação",
-        "description": "Cursando - Previsão de conclusão: 2026"
+        "description": "Graduação concluida em jan/2026"
       },
       "agronomy": {
         "title": "Pesquisa Científica",

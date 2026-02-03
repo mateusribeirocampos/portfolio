@@ -3,13 +3,13 @@
     "title": "About Me",
     "journey": {
       "title": "My Journey",
-      "description": "Java Developer specialized in Spring Boot 3.5 and RESTful API architecture. 2,000+ development hours with production projects using Java 21, PostgreSQL, and enterprise practices. Pursuing Computer Science degree with focus on software engineering, data structures, and full-stack development. Unique background in international scientific research that brings analytical rigor and systematic methodology to complex problem-solving."
+      "description": "Java Developer specialized in Spring Boot 3.5 and RESTful API architecture, with over 2,000 hours of hands-on experience delivering production-grade projects using Java 21, PostgreSQL, and enterprise best practices. Bachelor’s degree in Computer Science, with a strong foundation in software engineering, data structures, and full-stack development. Brings a unique background in international scientific research, applying analytical rigor and systematic methodology to solve complex problems."
     },
     "education": {
       "title": "Education",
       "computerScience": {
         "title": "Computer Science",
-        "description": "In Progress - Expected completion: 2026"
+        "description": "Graduated in Jan/2026"
       },
       "agronomy": {
         "title": "Scientific Research",
