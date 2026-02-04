@@ -1,16 +1,16 @@
 {
   "home": {
     "title": "Hi, I'm Mateus R Campos",
-    "pTitle": "Computer Science Student | Full Stack | Data Science | Developer | Agronomist",
+    "pTitle": "Java Developer | Backend Specialist | Spring Boot | REST APIs",
     "contact_button": "Get in Touch",
     "projects_button": "View Projects",
     "subtitle": "Skills & Expertise",
-    "pSubtitle": "I am a Computer Science student with a robust background in Agronomy and Entomology—specializing in ecotoxicology and biological control. I am uniquely positioned to merge scientific insight with modern technology. Transitioning into IT with focuses on data analysis and full stack software development while continually expanding my skills in React, React Native, and backend technologies.",
-    "TitleCard1": "Full Stack Development",
-    "pCard1": "Modern Web Applications with React, Next.js, & Node.js",
-    "TitleCard2": "Mobile development",
-    "pCard2": "Cross-Platform Apps with React Native",
-    "TitleCard3": "Agronomy Background",
-    "pCard3": "Leveraging agronomy and entomology expertise to drive data-driven, innovative tech solutions."
+    "pSubtitle": "Java Developer focused on backend development with Spring Boot 3.5 and RESTful API architecture. Bachelor's in Computer Science combined with a background in international scientific research, bringing an analytical and methodical approach to software engineering.",
+    "TitleCard1": "Backend Java",
+    "pCard1": "Spring Boot 3.5, Spring Security, JPA, Hibernate, REST APIs",
+    "TitleCard2": "Full Stack",
+    "pCard2": "React, TypeScript, Node.js, Next.js, Tailwind CSS",
+    "TitleCard3": "Scientific Research",
+    "pCard3": "PhD in Entomology with statistical analysis, biological modeling, and scientific methodology applied to development."
   }
 }

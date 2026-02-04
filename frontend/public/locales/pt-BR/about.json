@@ -3,7 +3,12 @@
     "title": "Sobre Mim",
     "journey": {
       "title": "Minha Jornada",
-      "description": "Desenvolvedor Java com foco em desenvolvimento backend, especializado em Spring Boot 3.5 e arquitetura de APIs RESTful. Possui mais de 2.000 horas de experiência prática no desenvolvimento de projetos orientados a produção, utilizando Java 21, PostgreSQL e práticas de desenvolvimento enterprise. /n/nBacharel em Ciência da Computação, com formação acadêmica e prática em engenharia de software, estruturas de dados e fundamentos de desenvolvimento full-stack, com ênfase em backend. Atua com atenção a boas práticas como organização de código, separação de responsabilidades, versionamento, testes e segurança de APIs. /n/nTraz um background em pesquisa científica internacional, o que contribui para uma abordagem analítica, metodológica e sistemática na resolução de problemas. Essa experiência influencia diretamente sua forma de projetar soluções de software: entendimento claro do problema, hipóteses bem definidas, implementação consistente e validação contínua. /n/nAtualmente, mantém projetos próprios focados em APIs REST, autenticação, modelagem de dados, integração entre sistemas e boas práticas de arquitetura, utilizando o portfólio como espaço de consolidação técnica e aprendizado contínuo."
+      "description": [
+        "Desenvolvedor Java com foco em desenvolvimento backend, especializado em Spring Boot 3.5 e arquitetura de APIs RESTful. Possui mais de 2.000 horas de experiência prática no desenvolvimento de projetos orientados a produção, utilizando Java 21, PostgreSQL e práticas de desenvolvimento enterprise.",
+        "Bacharel em Ciência da Computação, com formação acadêmica e prática em engenharia de software, estruturas de dados e fundamentos de desenvolvimento full-stack, com ênfase em backend. Atua com atenção a boas práticas como organização de código, separação de responsabilidades, versionamento, testes e segurança de APIs.",
+        "Traz um background em pesquisa científica internacional, o que contribui para uma abordagem analítica, metodológica e sistemática na resolução de problemas. Essa experiência influencia diretamente sua forma de projetar soluções de software: entendimento claro do problema, hipóteses bem definidas, implementação consistente e validação contínua.",
+        "Atualmente, mantém projetos próprios focados em APIs REST, autenticação, modelagem de dados, integração entre sistemas e boas práticas de arquitetura, utilizando o portfólio como espaço de consolidação técnica e aprendizado contínuo."
+      ]
     },
     "education": {
       "title": "Formação",

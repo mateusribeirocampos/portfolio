@@ -85,7 +85,7 @@ export function Navigation() {
           <DecoderGlyphLetter glyphs={glyphsM} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsR} className="decoder-m-glyph" />
           <DecoderGlyphLetter glyphs={glyphsC} className="decoder-m-glyph" />
-          | Full Stack
+          | Backend Developer
         </Link>
 
         {/* Desktop Navigation */}
