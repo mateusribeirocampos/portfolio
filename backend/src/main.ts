@@ -10,6 +10,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
+  // Trust proxy (Render/Heroku/etc run behind a load balancer)
+  // Allows req.ip to return the real client IP from X-Forwarded-For
+  app.getHttpAdapter().getInstance().set('trust proxy', 1);
+
   // Security
   app.use(helmet());
   app.use(compression());

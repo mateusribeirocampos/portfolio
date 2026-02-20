@@ -2,8 +2,18 @@ import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import type { Request } from 'express';
 
 export const GetIp = createParamDecorator(
-  (_data: unknown, ctx: ExecutionContext): string => {
+  (_data: unknown, ctx: ExecutionContext): string | null => {
     const request = ctx.switchToHttp().getRequest<Request>();
+
+    // X-Forwarded-For is set by proxies (Render, Vercel, Cloudflare, etc.)
+    // trust proxy must be enabled in main.ts for req.ip to use this header
+    const forwarded = request.headers['x-forwarded-for'];
+    if (forwarded) {
+      const firstIp = Array.isArray(forwarded)
+        ? forwarded[0]
+        : forwarded.split(',')[0];
+      return firstIp.trim();
+    }
 
     if (request.ip) {
       return request.ip;
@@ -13,20 +23,7 @@ export const GetIp = createParamDecorator(
       return request.socket.remoteAddress;
     }
 
-    // Fallback for older Node.js versions or specific proxy configurations
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const requestWithConnection = request as any;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if (requestWithConnection.connection?.remoteAddress) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        return String(requestWithConnection.connection.remoteAddress);
-      }
-    } catch {
-      // Ignore errors accessing connection property
-    }
-
-    return 'unknown';
+    return null;
   },
 );
 
