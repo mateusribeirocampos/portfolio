@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FileText } from "lucide-react";
+import { FileText, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface CertificationItem {
@@ -13,7 +14,28 @@ interface CertificationItem {
 
 export function AboutContent() {
   const { t, i18n } = useTranslation("about");
-  const resumeUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/resume/download/${i18n.language}`;
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownload = async () => {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/resume/download/${i18n.language}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Download failed');
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = `resume-${i18n.language}.pdf`;
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    } catch {
+      // fallback silencioso — sem loop, sem navegação
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   const certifications = t("about.certifications.items", { returnObjects: true }) as CertificationItem[];
 
@@ -139,11 +161,12 @@ export function AboutContent() {
 
           {/* Download Resume Button */}
           <div className="flex justify-center mt-8">
-            <Button asChild>
-              <a href={resumeUrl}>
-                <FileText className="mr-2 h-4 w-4" />
-                {t("about.downloadResume")}
-              </a>
+            <Button onClick={handleDownload} disabled={downloading}>
+              {downloading
+                ? <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                : <FileText className="mr-2 h-4 w-4" />
+              }
+              {t("about.downloadResume")}
             </Button>
           </div>
         </div>
