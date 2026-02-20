@@ -1,41 +1,102 @@
 {
   "about": {
     "title": "About Me",
+    "subtitle": "Backend Developer (Java/Spring Boot, Node.js) | BSc Computer Science | Former Research Scientist (PhD)",
     "journey": {
-      "title": "My Journey",
+      "title": "Who I Am",
       "description": [
-        "Java Developer focused on backend development, specialized in Spring Boot 3.5 and RESTful API architecture. Has over 2,000 hours of hands-on experience building production-oriented projects using Java 21, PostgreSQL, and enterprise development practices.",
-        "Holds a Bachelor's degree in Computer Science, with academic and practical training in software engineering, data structures, and full-stack fundamentals, with a strong emphasis on backend development. Works with a consistent focus on best practices such as clean code organization, separation of concerns, version control, testing, and API security.",
-        "Brings a background in international scientific research, which shapes an analytical, methodical, and systematic approach to problem-solving. This experience directly influences how software solutions are designed: clear problem definition, well-structured implementation, and continuous validation.",
-        "Currently develops and maintains personal projects focused on REST APIs, authentication, data modeling, system integration, and architectural best practices, using the portfolio as a space for technical consolidation and continuous learning."
+        "Backend Developer with a BSc in Computer Science (2026) and international research experience with a PhD in Entomology (INRAE, France). I have accumulated over 2,200 hours of hands-on software development practice, focused on Java/Spring Boot and REST APIs.",
+        "Certified Java Spring Expert (200h) and Java Spring Professional (120h) by DevSuperior, with validated skills in TDD, unit and integration testing, Spring Security, and OAuth2/JWT."
       ]
+    },
+    "whatSetsMeApart": {
+      "title": "What Sets Me Apart",
+      "description": "My background in scientific research (INRAE, France) gave me mastery of data analysis, systematic thinking, and experience in complex projects with international teams. I apply that rigor to software development: clean code, clear documentation, and a focus on quality."
     },
     "education": {
       "title": "Education",
       "computerScience": {
-        "title": "Computer Science",
-        "description": "Graduated in Jan/2026"
+        "title": "Computer Science (completed)",
+        "description": "Universidade Anhembi Morumbi (2022-2026)"
+      },
+      "doctorate": {
+        "title": "Doctor of Science in Entomology",
+        "description": "UFRPE (2009-2013) | Visiting Scholar: University of Nebraska-Lincoln (USA)"
+      },
+      "masters": {
+        "title": "Master of Science in Entomology",
+        "description": "UFV (2007-2009)"
       },
       "agronomy": {
-        "title": "Scientific Research",
-        "description": "PhD with international experience in data analysis and statistical modeling"
+        "title": "Bachelor's in Agronomy",
+        "description": "UFV (2002-2007)"
       }
     },
     "skills": {
-      "title": "Technical Skills",
-      "frontend": {
-        "title": "Full-Stack",
-        "description": "React, TypeScript, Node.js, React Native, Tailwind CSS"
-      },
+      "title": "Tech Stack",
       "backend": {
-        "title": "Backend Java",
-        "description": "Java 21, Spring Boot 3.5, Spring Data JPA, Spring Security, Hibernate, Maven"
+        "title": "Backend",
+        "description": "Java 21, Spring Boot 3.5, Spring Security (OAuth2, JWT), JPA/Hibernate, Node.js, Express.js"
+      },
+      "testing": {
+        "title": "Testing",
+        "description": "JUnit 5, Mockito, TDD, Jacoco, MockMvc, RestAssured"
+      },
+      "frontend": {
+        "title": "Frontend",
+        "description": "React, TypeScript, JavaScript (ES6+), React Native"
+      },
+      "databases": {
+        "title": "Databases",
+        "description": "PostgreSQL, MySQL, SQLite"
+      },
+      "devops": {
+        "title": "DevOps",
+        "description": "Docker, GitHub Actions, Git"
       },
       "tools": {
-        "title": "Databases & DevOps",
-        "description": "PostgreSQL, MySQL, REST APIs, JWT, Docker, Git, Maven"
+        "title": "Deploy",
+        "description": "Render, Vercel, Supabase"
       }
     },
+    "certifications": {
+      "title": "Certifications",
+      "items": [
+        {
+          "name": "Java Spring Expert",
+          "institution": "DevSuperior",
+          "hours": "200h",
+          "year": "2026"
+        },
+        {
+          "name": "Java Spring Professional",
+          "institution": "DevSuperior",
+          "hours": "120h",
+          "year": "2025"
+        },
+        {
+          "name": "Frontend Web Development (HTML, CSS, JS)",
+          "institution": "Udemy",
+          "year": "2025"
+        },
+        {
+          "name": "Mobile App Development (React Native)",
+          "institution": "DevPoint",
+          "year": "2024"
+        },
+        {
+          "name": "Object-Oriented Programming in Java",
+          "institution": "Udemy",
+          "year": "2024"
+        },
+        {
+          "name": "Git - From Basic to Advanced",
+          "institution": "Udemy",
+          "year": "2024"
+        }
+      ]
+    },
+    "resumeFile": "/resume-en.pdf",
     "downloadResume": "Download Resume"
   }
 }

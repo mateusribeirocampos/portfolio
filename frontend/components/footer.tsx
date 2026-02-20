@@ -15,7 +15,7 @@ export function Footer() {
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
             <h3 className="text-lg font-semibold">Portfolio</h3>
-            <p className="text-sm text-foreground/60">© 2025 Mateus R Campos | {t("footer.rights")}</p>
+            <p className="text-sm text-foreground/60">© 2026 Mateus R Campos | {t("footer.rights")}</p>
           </div>
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
