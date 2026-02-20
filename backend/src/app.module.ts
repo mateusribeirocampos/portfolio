@@ -14,6 +14,7 @@ import { ContactModule } from './modules/contact/contact.module';
 import { ResumeModule } from './modules/resume/resume.module';
 import { HealthModule } from './modules/health/health.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AdminModule } from './modules/admin/admin.module';
     ResumeModule,
     HealthModule,
     AdminModule,
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

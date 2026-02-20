@@ -4,6 +4,7 @@ import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { Providers } from '@/providers';
 import MatrixRain from './matrixRain';
+import { PageTracker } from './page-tracker';
 
 export function LayoutClient({
   children,
@@ -14,6 +15,7 @@ export function LayoutClient({
 }) {
   return (
     <Providers lang={lang}>
+      <PageTracker />
       <MatrixRain />
       <div className="flex-1 flex flex-col">
         <Navigation />

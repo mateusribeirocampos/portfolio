@@ -19,9 +19,7 @@ export class ResumeService {
 
     // Determinar arquivo baseado no idioma
     const fileName =
-      language === 'pt-BR'
-        ? 'curriculo-mateus-ribeiro-campos.pdf'
-        : 'resume-mateus-ribeiro-campos.pdf';
+      language === 'pt-BR' ? 'resume-pt-br-port.pdf' : 'resume-en-port.pdf';
 
     const filePath = path.join(process.cwd(), 'assets', 'resumes', fileName);
 
