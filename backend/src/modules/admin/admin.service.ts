@@ -33,7 +33,7 @@ export class AdminService {
       this.prisma.resumeDownload.count(),
       this.prisma.pageView.groupBy({
         by: ['page'],
-        _count: true,
+        _count: { page: true },
         where: { createdAt: { gte: thirtyDaysAgo } },
         orderBy: { _count: { page: 'desc' } },
         take: 5,
@@ -55,7 +55,7 @@ export class AdminService {
       },
       topPages: topPages.map((page) => ({
         page: page.page,
-        views: page._count,
+        views: page._count.page,
       })),
     };
   }
