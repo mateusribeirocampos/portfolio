@@ -34,7 +34,10 @@ export class AdminService {
       this.prisma.pageView.groupBy({
         by: ['page'],
         _count: { page: true },
-        where: { createdAt: { gte: thirtyDaysAgo } },
+        where: {
+          createdAt: { gte: thirtyDaysAgo },
+          NOT: { page: { startsWith: '/admin' } },
+        },
         orderBy: { _count: { page: 'desc' } },
         take: 5,
       }),

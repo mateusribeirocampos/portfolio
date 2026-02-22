@@ -3,11 +3,11 @@ import { AnalyticsService } from './analytics.service';
 import { CreatePageViewDto } from './dto/create-pageview.dto';
 import { GetIp, GetUserAgent } from '../../common/decorators/get-ip.decorator';
 
-@Controller('api/analytics')
+@Controller('api/ev')
 export class AnalyticsController {
   constructor(private readonly analyticsService: AnalyticsService) {}
 
-  @Post('pageview')
+  @Post('pv')
   @HttpCode(HttpStatus.NO_CONTENT)
   async recordPageView(
     @Body() dto: CreatePageViewDto,

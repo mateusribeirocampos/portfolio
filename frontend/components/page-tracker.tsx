@@ -11,10 +11,12 @@ export function PageTracker() {
     if (pathname === prevPathname.current) return;
     prevPathname.current = pathname;
 
+    if (pathname.startsWith('/admin')) return;
+
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     if (!apiUrl) return;
 
-    fetch(`${apiUrl}/api/analytics/pageview`, {
+    fetch(`${apiUrl}/api/ev/pv`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
