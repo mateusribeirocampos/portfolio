@@ -9,7 +9,11 @@
     "message": "Message",
     "messagePlaceholder": "Enter your message",
     "send": "Send message",
+    "sending": "Sending...",
     "success": "Message sent successfully!",
+    "successTitle": "Message sent!",
+    "successMessage": "Thank you for reaching out. I'll get back to you soon.",
+    "sendAnother": "Send another message",
     "error": "Error sending message. Please try again."
   },
   "social": {

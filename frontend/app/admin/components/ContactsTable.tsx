@@ -24,6 +24,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 import { MoreHorizontal, Mail, MessageSquare, Eye, Check, X } from 'lucide-react';
 import { format } from 'date-fns';
 
@@ -56,6 +62,7 @@ export function ContactsTable() {
   });
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [loading, setLoading] = useState(true);
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
   useEffect(() => {
     loadContacts();
@@ -197,7 +204,11 @@ export function ContactsTable() {
               <TableRow key={contact.id}>
                 <TableCell className="font-medium">{contact.name}</TableCell>
                 <TableCell>{contact.email}</TableCell>
-                <TableCell className="max-w-xs truncate">
+                <TableCell
+                  className="max-w-xs truncate cursor-pointer hover:text-primary"
+                  title="Click to read full message"
+                  onClick={() => setSelectedContact(contact)}
+                >
                   {contact.message}
                 </TableCell>
                 <TableCell>
@@ -266,6 +277,24 @@ export function ContactsTable() {
           Next
         </Button>
       </div>
+
+      {/* Message detail dialog */}
+      <Dialog open={!!selectedContact} onOpenChange={() => setSelectedContact(null)}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>
+              Message from {selectedContact?.name}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3 text-sm">
+            <p className="text-muted-foreground">{selectedContact?.email}</p>
+            <p className="whitespace-pre-wrap leading-relaxed">{selectedContact?.message}</p>
+            <p className="text-xs text-muted-foreground">
+              {selectedContact && format(new Date(selectedContact.createdAt), 'MMM dd, yyyy')}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

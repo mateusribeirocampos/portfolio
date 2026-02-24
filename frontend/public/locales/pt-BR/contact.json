@@ -9,7 +9,11 @@
     "message": "Mensagem",
     "messagePlaceholder": "Digite sua mensagem",
     "send": "Enviar mensagem",
+    "sending": "Enviando...",
     "success": "Mensagem enviada com sucesso!",
+    "successTitle": "Mensagem enviada!",
+    "successMessage": "Obrigado pelo contato. Responderei em breve.",
+    "sendAnother": "Enviar outra mensagem",
     "error": "Erro ao enviar mensagem. Tente novamente."
   },
   "social": {
