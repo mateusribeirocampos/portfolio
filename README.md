@@ -10,6 +10,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql)](https://supabase.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-6.16-2D3748?style=for-the-badge&logo=prisma)](https://prisma.io/)
+[![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk)](https://www.java.com/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3-6DB33F?style=for-the-badge&logo=springboot)](https://spring.io/projects/spring-boot)
 
 *A production-ready full-stack portfolio with admin dashboard, real-time analytics, and bilingual i18n support.*
 
@@ -87,6 +89,7 @@ My scientific background strengthened my analytical thinking and problem-solving
 | Backend Hosting | Render |
 | Database | Supabase (PostgreSQL) |
 | CI / Keep-Alive | GitHub Actions |
+| Email | Resend (transactional email notifications) |
 | SEO | next-sitemap (auto sitemap + robots.txt) |
 | Package Manager | npm |
 
@@ -154,6 +157,7 @@ portfolio/
 - JWT authentication with bcryptjs password hashing
 - Protected `/admin` routes (frontend middleware + backend guards)
 - Contact submissions management (status updates, pagination, filtering)
+- Email notifications on new contact via Resend
 - Real-time analytics: page views, resume downloads, top pages
 - Time-series charts (daily aggregation via Recharts)
 
@@ -286,6 +290,11 @@ cd backend && npm run build && npm run start:prod
 ---
 
 ## Featured Projects
+
+### [DSCommerce](https://project-spring-boot-dscommerce.onrender.com) — Spring Boot E-commerce REST API
+
+Production-grade e-commerce REST API with OAuth2 + JWT authentication, role-based authorization (ADMIN/CLIENT), 20+ endpoints, and 8 JPA entities. Deployed on Render with PostgreSQL.
+`Java 21` `Spring Boot 3` `Spring Security` `OAuth2` `JWT` `PostgreSQL` `Spring Data JPA` `Maven` `Docker`
 
 ### [Dragenda](https://dragenda.vercel.app) — Digital Healthcare Platform
 
