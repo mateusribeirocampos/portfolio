@@ -1,329 +1,341 @@
-# Mateus R Campos - Portfolio
+<div align="center">
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-brightgreen)](https://portfolio-jhgo4132v-mateusribeirocampos-projects.vercel.app/)
-[![Next.js](https://img.shields.io/badge/Next.js-15.2.2-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.3.3-38bdf8)](https://tailwindcss.com/)
+# Mateus Ribeiro de Campos — Portfolio
 
-A modern, internationalized personal portfolio showcasing full-stack development skills, projects, and technical expertise. Built with Next.js, TypeScript, and Tailwind CSS with professional-grade architecture, responsive design, and full backend integration.
+**Backend Developer | Computer Science | Brazil**
 
-## 🚀 Live Demo
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-brightgreen?style=for-the-badge&logo=vercel)](https://portfolio-mateusribeirocampos.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.2.2-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
+[![NestJS](https://img.shields.io/badge/NestJS-11.0-E0234E?style=for-the-badge&logo=nestjs)](https://nestjs.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql)](https://supabase.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-6.16-2D3748?style=for-the-badge&logo=prisma)](https://prisma.io/)
 
-**Portfolio Website**: [https://portfolio-mateusribeirocampos-projects.vercel.app/](https://portfolio-mateusribeirocampos.vercel.app/)
+*A production-ready full-stack portfolio with admin dashboard, real-time analytics, and bilingual i18n support.*
 
-## 👨‍💻 About Me
+</div>
 
-Computer Science student with robust background in Agronomy and Entomology, specializing in ecotoxicology and biological control. Transitioning into IT with focus on full-stack development and data analysis. Uniquely positioned to bridge scientific research with modern technology solutions.
+---
 
-**Current Focus**: Seeking internship opportunities in software development and data analysis (local and international)
+## Overview
 
-## 🛠️ Technical Stack
+This is not just a static portfolio — it's a **full-stack web application** demonstrating professional engineering practices end-to-end: from a performant Next.js frontend with internationalization to a secure NestJS REST API, a normalized PostgreSQL database, JWT-based admin authentication, and a real-time analytics dashboard.
 
-### Frontend (This Project)
+**Live URL**: [portfolio-mateusribeirocampos.vercel.app](https://portfolio-mateusribeirocampos.vercel.app/)
+**Backend API**: [portfolio-backend-ns0j.onrender.com](https://portfolio-backend-ns0j.onrender.com)
+**GitHub**: [github.com/mateusribeirocampos](https://github.com/mateusribeirocampos)
+**LinkedIn**: [linkedin.com/in/mateus-ribeiro-de-campos-6a135331](https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/)
 
-- **Framework**: Next.js 15.2.2 with App Router
-- **Languages**: TypeScript, JavaScript
-- **Styling**: Tailwind CSS, shadcn/ui components
-- **Data**: Integrated backend API with database
-- **Architecture**: Full-stack application with SSR/SSG
+---
 
-### Backend (This Project)
+## About Me
 
-- **Framework**: NestJS with TypeScript
-- **Database**: PostgreSQL with Prisma ORM
-- **Authentication**: JWT-based auth system
-- **APIs**: REST endpoints for contact forms and data management
-- **Security**: Rate limiting, CORS, helmet, bcryptjs encryption
+BSc in Computer Science with a PhD background in Entomology, currently focused on backend software engineering. I build applications using Java, Spring Boot, REST APIs, and SQL databases, with attention to clean architecture, testing, and maintainable code.
 
-### Programming Skills (Other Projects)
+My research experience developed strong analytical thinking and problem-solving skills, which I now apply to designing reliable backend systems.
 
-- **Web Backend**: Node.js, Express.js (used in Dragenda project)
-- **Mobile**: React Native (used in Dragenda project)
-- **Languages**: Python, C, C++, Java, Kotlin
-- **Data Science**: Machine Learning, Deep Learning (Jupyter)
+**Currently seeking Junior Backend Developer opportunities (remote or international).**
 
-### Tools & Deployment
+---
 
-- **Version Control**: Git
-- **Deployment**: Vercel (Static Hosting)
-- **Package Manager**: npm
-- **Development**: ESLint, Prettier
+## Technical Stack
 
-## ✨ Key Features
+### Engineering Highlights
 
-### 🌍 Internationalization (i18n)
+• JWT authentication and protected admin routes  
+• Production security headers (CSP, HSTS, XSS protection)  
+• Real-time analytics dashboard  
+• Internationalization with middleware routing  
+• PostgreSQL schema with indexed queries
 
-- **English** (Default): Clean URLs without prefix (`/` instead of `/en`)
-- **Portuguese (pt-BR)**: Localized content with `/pt-BR` prefix
-- Dynamic language switching with middleware-based routing
-- Comprehensive translation coverage across all pages
-- Optimized routing without redundant language prefixes
+### Frontend
 
-### 📱 Responsive Design
+| Category | Technology |
+|---|---|
+| Framework | Next.js 15.2 (App Router, SSR/SSG) |
+| Language | TypeScript 5.8 |
+| Styling | Tailwind CSS 3.3, shadcn/ui, Radix UI |
+| Animations | Framer Motion, custom matrix rain, decoder text |
+| Forms | React Hook Form + Zod validation |
+| i18n | next-i18next, react-i18next (EN / PT-BR) |
+| Theme | next-themes (dark/light mode) |
+| Charts | Recharts |
+| Tracking | Custom page-view analytics client |
 
-- Modern, mobile-first approach
-- Dark/Light theme support
-- Accessibility-focused components
-- Professional UI with shadcn/ui library
+### Backend
 
-### 🎨 Interactive Elements
+| Category | Technology |
+|---|---|
+| Framework | NestJS 11 (modular architecture) |
+| Language | TypeScript 5.7 |
+| ORM | Prisma 6.16 |
+| Database | PostgreSQL (Supabase) |
+| Auth | JWT + Passport + bcryptjs |
+| Security | Helmet, CORS, throttling, rate limiting |
+| Validation | class-validator, class-transformer |
+| Testing | Jest 30 + Supertest |
 
-- Custom decoder text animations
-- Matrix rain background effects
-- Smooth transitions and hover states
-- Professional card-based layouts
+### Infrastructure
 
-### 📊 Content Management
+| Category | Technology |
+|---|---|
+| Frontend Hosting | Vercel |
+| Backend Hosting | Render |
+| Database | Supabase (PostgreSQL) |
+| CI / Keep-Alive | GitHub Actions |
+| SEO | next-sitemap (auto sitemap + robots.txt) |
+| Package Manager | npm |
 
-- **Projects**: 3 featured projects with live demos and GitHub links
-- **Blog**: Prepared infrastructure for technical blog posts
-- **About**: Professional background and technical skills
-- **Contact**: Fully functional contact form with backend integration
-- **Database**: PostgreSQL database for storing contact submissions and analytics
+---
 
-## 🏗️ Architecture
+## Architecture
 
-```bash
+```
 portfolio/
-├── frontend/                   # Next.js Frontend Application
+├── frontend/                    # Next.js 15 Application
 │   ├── app/
-│   │   ├── [lang]/            # Dynamic language routing (en, pt-BR)
-│   │   │   ├── about/         # Professional background
-│   │   │   ├── blog/          # Technical blog (expandable)
-│   │   │   ├── contact/       # Contact information
-│   │   │   ├── projects/      # Portfolio projects
-│   │   │   └── layout.tsx     # Localized layouts
-│   │   ├── api/               # API routes for backend integration
-│   │   └── globals.css        # Global styles
+│   │   ├── page.tsx             # Home (with matrix rain, decoder animations)
+│   │   ├── about/               # Professional background & skills
+│   │   ├── blog/                # Technical blog (MDX-ready)
+│   │   ├── contact/             # Contact form with backend integration
+│   │   ├── projects/            # Featured project showcase
+│   │   └── admin/               # Protected admin area
+│   │       ├── login/           # JWT login page
+│   │       └── dashboard/       # Analytics + contacts management
 │   ├── components/
-│   │   ├── ui/                # shadcn/ui component library
-│   │   ├── decoderLetter/     # Custom animations
-│   │   ├── decoderText/       # Text effects
-│   │   └── [other-components] # Navigation, footer, etc.
-│   ├── data/
-│   │   ├── projects.ts        # Project portfolio data
-│   │   └── blog.ts            # Blog posts metadata
-│   ├── public/
-│   │   ├── locales/           # i18n translation files
-│   │   │   ├── en/           # English translations
-│   │   │   └── pt-BR/        # Portuguese translations
-│   │   └── images/           # Project screenshots and assets
-│   ├── middleware.ts          # Language routing logic
-│   ├── i18n.ts               # i18next configuration
-│   └── next.config.ts        # Next.js configuration + CSP headers
-├── backend/                   # NestJS Backend API
+│   │   ├── ui/                  # 40+ shadcn/ui components
+│   │   ├── decoderText/         # Custom text animation
+│   │   ├── matrixRain.tsx       # Canvas matrix background
+│   │   └── page-tracker.tsx     # Client-side page view tracking
+│   ├── public/locales/
+│   │   ├── en/                  # English translation files
+│   │   └── pt-BR/               # Brazilian Portuguese translation files
+│   ├── middleware.ts            # Language routing + admin auth guard
+│   └── next.config.ts          # CSP headers, image config, security
+│
+├── backend/                     # NestJS REST API
 │   ├── src/
 │   │   ├── modules/
-│   │   │   ├── contact/      # Contact form handling
-│   │   │   ├── resume/       # Resume download analytics
-│   │   │   └── health/       # Health check endpoints
-│   │   ├── prisma/           # Database schema and migrations
-│   │   └── main.ts           # NestJS application entry point
-│   ├── prisma/
-│   │   ├── schema.prisma     # Database schema
-│   │   └── migrations/       # Database migrations
-│   └── .env                  # Environment variables
-└── docs/                     # Project documentation
+│   │   │   ├── admin/           # Dashboard, contacts, auth, JWT
+│   │   │   ├── analytics/       # Page view tracking endpoint
+│   │   │   ├── contact/         # Contact form + rate limiting
+│   │   │   ├── resume/          # Download tracking + stats
+│   │   │   └── health/          # Health check
+│   │   ├── common/
+│   │   │   ├── decorators/      # IP + User-Agent extraction
+│   │   │   ├── filters/         # Global HTTP exception filter
+│   │   │   └── guards/          # Rate limiting guard
+│   │   └── main.ts              # Bootstrap: helmet, CORS, compression, pipes
+│   └── prisma/
+│       ├── schema.prisma        # DB schema with indexes
+│       └── migrations/          # Versioned migration history
+│
+└── .github/workflows/
+    └── port-ping.yml            # Scheduled keep-alive for Supabase free tier
 ```
 
-## 🗄️ Database Schema
+---
 
-The portfolio uses a PostgreSQL database with the following structure:
+## Key Features
+
+### Internationalization (i18n)
+
+- English (default) with clean URLs — no `/en` prefix
+- Brazilian Portuguese with `/pt-BR` prefix
+- Cookie-based locale persistence (1-year expiry)
+- Middleware-driven language routing
+
+### Admin Dashboard
+
+- JWT authentication with bcryptjs password hashing
+- Protected `/admin` routes (frontend middleware + backend guards)
+- Contact submissions management (status updates, pagination, filtering)
+- Real-time analytics: page views, resume downloads, top pages
+- Time-series charts (daily aggregation via Recharts)
+
+### Analytics & Tracking
+
+- Lightweight client-side page-view tracking (`POST /api/ev/pv`)
+- Admin routes excluded from tracking
+- Fire-and-forget pattern for zero performance impact
+- Dashboard stats: total views, last 30/7 days, top 5 pages
+
+### Security
+
+- Strict Content Security Policy (CSP) headers
+- `X-Frame-Options: DENY` — clickjacking prevention
+- `X-Content-Type-Options: nosniff`
+- `Strict-Transport-Security` (1 year, includeSubDomains)
+- XSS-safe DOM manipulation (no `innerHTML` or `dangerouslySetInnerHTML`)
+- Input validation at all API boundaries (class-validator + Zod)
+- Per-IP rate limiting on contact submissions (5/hour)
+- Zero npm audit vulnerabilities
+
+---
+
+## Database Schema
 
 ```mermaid
 erDiagram
-    CONTACTS {
-        text id PK "Primary Key (CUID)"
-        varchar(100) name "Contact name"
-        varchar(255) email "Contact email"
-        text message "Contact message"
-        timestamp createdAt "Created timestamp"
-        inet ipAddress "Client IP address"
-        varchar(500) userAgent "User agent string"
-        varchar(20) status "Message status (default: unread)"
+    contacts {
+        string id PK "CUID"
+        string name
+        string email
+        text message
+        string status "unread | read"
+        inet ipAddress
+        string userAgent
+        timestamp createdAt
     }
 
-    RESUME_DOWNLOADS {
-        text id PK "Primary Key (CUID)"
-        inet ipAddress "Client IP address"
-        varchar(500) userAgent "User agent string"
-        varchar(5) language "Download language (default: en)"
-        timestamp createdAt "Download timestamp"
+    page_views {
+        string id PK "CUID"
+        string page
+        inet ipAddress
+        string referrer
+        string userAgent
+        timestamp createdAt
     }
 
-    PAGE_VIEWS {
-        text id PK "Primary Key (CUID)"
-        varchar(255) page "Page path"
-        inet ipAddress "Client IP address"
-        varchar(500) referrer "Referrer URL"
-        varchar(500) userAgent "User agent string"
-        timestamp createdAt "View timestamp"
+    resume_downloads {
+        string id PK "CUID"
+        string language "en | pt-BR"
+        inet ipAddress
+        string userAgent
+        timestamp createdAt
     }
 
-    ADMIN_USERS {
-        text id PK "Primary Key (CUID)"
-        varchar(255) email UK "Admin email (unique)"
-        varchar(255) password "Hashed password"
-        varchar(20) role "User role (default: admin)"
-        timestamp createdAt "Account created"
-        timestamp lastLogin "Last login timestamp"
+    admin_users {
+        string id PK "CUID"
+        string email UK
+        string password "bcrypt hashed"
+        string role
+        timestamp createdAt
+        timestamp lastLogin
     }
 ```
 
-### Database Indexes
+**Indexes**: `createdAt` on all tables, composite `[page, createdAt]` on page_views, `status` on contacts.
 
-- **contacts**: `createdAt_idx`, `status_idx`
-- **resume_downloads**: `createdAt_idx`
-- **page_views**: `page_createdAt_idx`, `createdAt_idx`
-- **admin_users**: `email_key` (unique)
+---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- npm or yarn
-- PostgreSQL database
+- PostgreSQL database (or Supabase account)
 
-### Installation & Development
+### Frontend
 
 ```bash
-# Clone the repository
-git clone https://github.com/mateusribeirocampos/portfolio.git
-cd portfolio
-
-# Frontend setup
 cd frontend
 npm install
-npm run dev  # Runs on http://localhost:3000
+npm run dev        # http://localhost:3000
+```
 
-# Backend setup (new terminal)
-cd ../backend
+### Backend
+
+```bash
+cd backend
 npm install
-cp .env.example .env  # Configure your database and environment variables
-npx prisma migrate dev  # Setup database
-npm run start:dev  # Runs on http://localhost:3001
+cp .env.example .env      # Add DATABASE_URL, JWT_SECRET, CORS_ORIGINS
+npx prisma migrate dev    # Apply migrations
+npm run start:dev         # http://localhost:3001
+```
+
+### Admin Setup
+
+```bash
+cd backend
+npm run create-admin      # Interactive script to create first admin user
 ```
 
 ### Production Build
 
 ```bash
 # Frontend
-cd frontend
-npm run build
-npm start
+cd frontend && npm run build && npm start
 
 # Backend
-cd ../backend
-npm run build
-npm run start:prod
+cd backend && npm run build && npm run start:prod
 ```
-
-## 📋 Available Scripts
-
-### Frontend Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start frontend development server |
-| `npm run build` | Build frontend for production |
-| `npm start` | Start frontend production server |
-| `npm run lint` | Run ESLint |
-| `npm run postbuild` | Generate sitemap |
-
-### Backend Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run start:dev` | Start backend development server |
-| `npm run build` | Build backend for production |
-| `npm run start:prod` | Start backend production server |
-| `npm run create-admin` | Create admin user for management |
-
-## 🎯 Featured Projects
-
-### 1. **Dragenda** - Digital Healthcare Platform
-
-- **Tech**: React Native, React.js, Bootstrap, Node.js, Express, SQLite
-- **Description**: Revolutionary healthcare delivery platform
-- **Links**: [GitHub](https://github.com/mateusribeirocampos/dragenda) | [Live Demo](https://dragenda.vercel.app)
-
-### 2. **Santa Rita Church Website**
-
-- **Tech**: React.js, TypeScript, Tailwind CSS, Vite
-- **Description**: Modern church website with responsive design
-- **Links**: [GitHub](https://github.com/mateusribeirocampos/santarita) | [Live Demo](https://igrejasantaritaourofino.vercel.app/)
-
-### 3. **DIO - Machine Learning Project**
-
-- **Tech**: Python, Jupyter Notebook, Machine Learning, Deep Learning
-- **Description**: Image recommendation system using ML
-- **Links**: [GitHub](https://github.com/mateusribeirocampos/diollm) | [Colab Demo](https://colab.research.google.com/github/mateusribeirocampos/diollm/blob/main/Notebooks/Project_Draft/Sistema_de_recomendação_por_imagens_.ipynb)
-
-## 🔧 Technical Highlights
-
-### Performance & SEO
-
-- **Lighthouse Score**: 90+ across all metrics
-- **Next.js optimizations**: Image optimization, lazy loading
-- **SEO-friendly**: Dynamic meta tags, sitemap generation
-- **Accessibility**: WCAG 2.1 AA compliant
-
-### Development Best Practices
-
-- **Type Safety**: Full TypeScript implementation
-- **Code Quality**: ESLint, Prettier configuration
-- **Git Workflow**: Conventional commits
-- **Responsive Design**: Mobile-first approach
-
-### 🔒 Security Implementation
-
-- **XSS Protection**: Eliminated innerHTML and dangerouslySetInnerHTML vulnerabilities
-  - `decoderText.tsx`: Replaced innerHTML with safe DOM manipulation using `createElement()` and `textContent`
-  - `chart.tsx`: Added CSS injection validation with color format checking and input sanitization
-- **Security Headers**: Comprehensive HTTP security headers implemented in `next.config.ts`
-  - Content Security Policy (CSP) with strict resource loading rules
-  - X-Frame-Options to prevent clickjacking attacks
-  - X-Content-Type-Options to prevent MIME-type sniffing
-  - Strict-Transport-Security for HTTPS enforcement
-  - Permissions Policy to control browser APIs access
-- **Code Quality**: ESLint enabled during builds to catch security issues early
-- **Dependency Security**: All vulnerable packages removed (npm-check elimination)
-- **Zero Vulnerabilities**: `npm audit` shows 0 security issues
-- **Secure Practices**: Input validation, output encoding, and safe API usage throughout codebase
-
-## 📞 Contact & Professional Links
-
-- **Portfolio**: [Live Demo](https://portfolio-jhgo4132v-mateusribeirocampos-projects.vercel.app/)
-- **GitHub**: [mateusribeirocampos](https://github.com/mateusribeirocampos)
-- **LinkedIn**: [Mateus Ribeiro de Campos](https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/)
-- **Email**: Available through portfolio contact form
-
-## 🚀 Recent Updates & Enhancements
-
-### ✅ Completed Features
-
-- **Full Backend Integration**: NestJS backend with PostgreSQL database
-- **Contact Form**: Fully functional with email notifications and database storage
-- **Clean URL Structure**: Optimized internationalization without redundant `/en` prefix
-- **API Integration**: Seamless frontend-backend communication
-- **Content Security Policy**: Enhanced security headers and CSP configuration
-- **Database Management**: Contact submissions and analytics tracking
-
-### 🔮 Future Enhancements
-
-- **Resume Download**: PDF generation with multilingual support
-- **Blog System**: MDX-powered technical blog with backend integration
-- **Advanced Analytics**: Enhanced dashboard with detailed visitor insights
-- **Email Marketing**: Newsletter subscription and automated campaigns
-- **Dynamic Content**: Headless CMS integration for projects/blog
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**🎯 Seeking Opportunities**: Open to internship positions in software development and data analysis. Interested in bridging technology with scientific research and agricultural innovation.
+## API Reference
 
-### Last updated: July 2025
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| `POST` | `/contact` | Submit contact form | Public |
+| `GET` | `/contact` | List contacts (paginated) | Admin |
+| `PATCH` | `/contact/:id/status` | Update contact status | Admin |
+| `POST` | `/api/ev/pv` | Record page view | Public |
+| `GET` | `/admin/dashboard` | Dashboard statistics | Admin |
+| `GET` | `/admin/analytics` | Time-series analytics | Admin |
+| `GET` | `/admin/profile` | Authenticated user info | Admin |
+| `POST` | `/admin/login` | JWT login | Public |
+| `GET` | `/resume/download/:lang` | Download resume (tracked) | Public |
+| `GET` | `/resume/stats` | Download statistics | Admin |
+| `GET` | `/health` | API health check | Public |
+
+---
+
+## Featured Projects
+
+### [Dragenda](https://dragenda.vercel.app) — Digital Healthcare Platform
+
+React Native mobile app + React.js web dashboard for healthcare delivery.
+`React Native` `React.js` `Node.js` `Express` `SQLite` `Bootstrap`
+
+### [Santa Rita Church Website](https://igrejasantaritaourofino.vercel.app/)
+
+Production church website with responsive design and modern UI.
+`React.js` `TypeScript` `Tailwind CSS` `Vite`
+
+### [DIO — Image Recommendation System](https://github.com/mateusribeirocampos/diollm)
+
+ML-based image similarity and recommendation system.
+`Python` `Jupyter Notebook` `Machine Learning` `Deep Learning`
+
+---
+
+## Available Scripts
+
+### Frontend
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build + sitemap |
+| `npm start` | Start production server |
+| `npm run lint` | Run ESLint |
+
+### Backend
+
+| Command | Description |
+|---|---|
+| `npm run start:dev` | Development server (watch mode) |
+| `npm run build` | Compile TypeScript |
+| `npm run start:prod` | Start compiled production server |
+| `npm test` | Run Jest unit tests |
+| `npm run create-admin` | Create admin user |
+
+---
+
+## License
+
+[MIT](LICENSE) — Open source, freely usable.
+
+---
+
+<div align="center">
+
+**Open to junior positions in software development.**
+*Bridging analytical science with modern software engineering.*
+
+[portfolio-mateusribeirocampos.vercel.app](https://portfolio-mateusribeirocampos.vercel.app/) · [GitHub](https://github.com/mateusribeirocampos) · [LinkedIn](https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/)
+
+*Last updated: February 2026*
+
+</div>
