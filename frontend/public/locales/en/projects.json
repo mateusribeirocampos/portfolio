@@ -1,7 +1,7 @@
 {
   "projects": {
     "title": "Projects",
-    "pTitle": "A collection of my technical projects, showcasing my skills and experience.",
+    "pTitle": "A collection of my technical projects, with a focus on Java Spring Boot backend development, REST APIs, and full-stack applications.",
     "liveDemo": "Live Demo"
   }
 }

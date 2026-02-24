@@ -10,6 +10,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'DSCommerce',
+    description: 'Production-grade Spring Boot REST API for e-commerce with OAuth2 + JWT authentication, role-based authorization (ADMIN/CLIENT), 20+ endpoints, and 8 JPA entities. Deployed on Render with PostgreSQL.',
+    image: '/images/projects/dscommerce.png',
+    tags: ['Java 21', 'Spring Boot 3', 'Spring Security', 'OAuth2', 'JWT', 'PostgreSQL', 'Spring Data JPA', 'Maven', 'Docker'],
+    github: 'https://github.com/mateusribeirocampos/project-spring-boot-dscommerce',
+    demo: 'https://project-spring-boot-dscommerce.onrender.com',
+  },
+  {
     title: 'Dragenda',
     description: 'Digital healthcare revolutionizes the way we deliver and experience healthcare with a paradigm shift to more accessible, personalized and efficient approaches for all. Frontend hosted on Vercel and backend hosted on Render.',
     image: '/images/projects/dragenda.png',
