@@ -30,9 +30,13 @@ This is not just a static portfolio — it's a **full-stack web application** de
 
 ## About Me
 
-BSc in Computer Science with a PhD background in Entomology, currently focused on backend software engineering. I build applications using Java, Spring Boot, REST APIs, and SQL databases, with attention to clean architecture, testing, and maintainable code.
+Computer Science student with a research background in entomology, currently focused on backend software engineering.
 
-My research experience developed strong analytical thinking and problem-solving skills, which I now apply to designing reliable backend systems.
+I build backend systems primarily with Java and Spring Boot, designing REST APIs, authentication flows, and database-driven applications.
+
+In parallel, I develop full-stack projects using Next.js and NestJS, deploying production applications on cloud platforms such as Vercel, Render, and Supabase.
+
+My scientific background strengthened my analytical thinking and problem-solving approach, which I apply to writing maintainable, well-tested software.
 
 **Currently seeking Junior Backend Developer opportunities (remote or international).**
 
