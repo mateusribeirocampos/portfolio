@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 
 import { blogPosts } from '@/data/blog';
-import { loadBlogPostsForLocale } from '@/lib/blog-source';
+import { loadBlogFeedState } from '@/lib/blog-source';
 import { BlogContent } from './components/BlogContent';
 
 export const metadata = {
@@ -12,7 +12,13 @@ export const metadata = {
 export default async function Blog() {
   const cookieStore = await cookies();
   const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en';
-  const posts = await loadBlogPostsForLocale({ locale, fallbackPosts: blogPosts });
+  const blogFeed = await loadBlogFeedState({ locale, fallbackPosts: blogPosts });
 
-  return <BlogContent posts={posts} />;
+  return (
+    <BlogContent
+      posts={blogFeed.posts}
+      isFallback={blogFeed.isFallback}
+      fallbackReason={blogFeed.fallbackReason}
+    />
+  );
 }

@@ -10,13 +10,15 @@ import { getBlogCardMediaState } from '@/lib/blog-card-media';
 
 interface BlogContentProps {
   posts: BlogPost[];
+  isFallback?: boolean;
+  fallbackReason?: 'remote_request_failed' | 'no_matching_remote_posts' | null;
 }
 
 function isExternalUrl(url: string) {
   return /^https?:\/\//.test(url);
 }
 
-export function BlogContent({ posts }: BlogContentProps) {
+export function BlogContent({ posts, isFallback = false, fallbackReason = null }: BlogContentProps) {
   const { t } = useTranslation('blog');
 
   return (
@@ -27,6 +29,13 @@ export function BlogContent({ posts }: BlogContentProps) {
           <p className="text-muted-foreground">
             {t("blog.description")}
           </p>
+          {isFallback ? (
+            <div className="rounded-lg border border-amber-300/60 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+              {fallbackReason === 'remote_request_failed'
+                ? t('blog.fallbackRemoteFailed')
+                : t('blog.fallbackNoLocalizedRemotePosts')}
+            </div>
+          ) : null}
         </div>
 
         <div className="grid gap-6">

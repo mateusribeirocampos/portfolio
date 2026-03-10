@@ -7,7 +7,7 @@ import {
   resolveBlogPostsForLocale,
 } from '../lib/blog-contract.js';
 import { getBlogCardMediaState } from '../lib/blog-card-media.js';
-import { loadBlogPostsForLocale } from '../lib/blog-source.js';
+import { loadBlogFeedState, loadBlogPostsForLocale } from '../lib/blog-source.js';
 
 test('normalizeBlogContractLanguage maps pt-BR to pt and keeps en as default', () => {
   assert.equal(normalizeBlogContractLanguage('pt-BR'), 'pt');
@@ -319,6 +319,135 @@ test('loadBlogPostsForLocale falls back to local posts when the response is not 
   });
 
   assert.deepEqual(posts, fallbackPosts);
+});
+
+test('loadBlogFeedState reports fallback when the remote request fails', async () => {
+  const fallbackPosts = [
+    {
+      id: 'fallback-pt',
+      title: 'Fallback PT',
+      description: 'Descricao local',
+      date: '2024-03-16',
+      readTime: '5 min read',
+      url: '/blog/campos-para-funcoes',
+      image: '/images/blog/fields-to-functions.jpg',
+      lang: 'pt',
+      canonicalSlug: 'campos-para-funcoes',
+    },
+  ];
+
+  const state = await loadBlogFeedState({
+    locale: 'pt-BR',
+    fallbackPosts,
+    fetchImpl: async () => {
+      throw new Error('network error');
+    },
+  });
+
+  assert.deepEqual(state, {
+    posts: fallbackPosts,
+    isFallback: true,
+    fallbackReason: 'remote_request_failed',
+  });
+});
+
+test('loadBlogFeedState reports fallback when there are no matching remote posts for the selected locale', async () => {
+  const fallbackPosts = [
+    {
+      id: 'fallback-pt',
+      title: 'Fallback PT',
+      description: 'Descricao local',
+      date: '2024-03-16',
+      readTime: '5 min read',
+      url: '/blog/campos-para-funcoes',
+      image: '/images/blog/fields-to-functions.jpg',
+      lang: 'pt',
+      canonicalSlug: 'campos-para-funcoes',
+    },
+  ];
+
+  const state = await loadBlogFeedState({
+    locale: 'pt-BR',
+    fallbackPosts,
+    fetchImpl: async () => ({
+      ok: true,
+      async json() {
+        return [
+          {
+            lang: 'en',
+            title: 'Featured EN',
+            description: 'English description',
+            pubDate: '2026-03-03T00:00:00.000Z',
+            canonicalSlug: 'featured-en',
+            url: 'https://mateusribeirocampos.github.io/agro2code-blog/blog/featured-en/',
+            portfolioFeatured: true,
+          },
+        ];
+      },
+    }),
+  });
+
+  assert.deepEqual(state, {
+    posts: fallbackPosts,
+    isFallback: true,
+    fallbackReason: 'no_matching_remote_posts',
+  });
+});
+
+test('loadBlogFeedState reports remote mode when matching featured references exist', async () => {
+  const fallbackPosts = [
+    {
+      id: 'fallback-en',
+      title: 'Fallback EN',
+      description: 'Fallback description',
+      date: '2024-03-15',
+      readTime: '5 min read',
+      url: '/blog/fields-to-functions',
+      image: '/images/blog/fields-to-functions.jpg',
+      lang: 'en',
+      canonicalSlug: 'fields-to-functions',
+    },
+  ];
+
+  const state = await loadBlogFeedState({
+    locale: 'en',
+    fallbackPosts,
+    fetchImpl: async () => ({
+      ok: true,
+      async json() {
+        return [
+          {
+            lang: 'en',
+            title: 'Featured EN',
+            description: 'English description',
+            pubDate: '2026-03-03T00:00:00.000Z',
+            canonicalSlug: 'featured-en',
+            url: 'https://mateusribeirocampos.github.io/agro2code-blog/blog/featured-en/',
+            portfolioFeatured: true,
+          },
+        ];
+      },
+    }),
+  });
+
+  assert.deepEqual(state, {
+    posts: [
+      {
+        id: 'en:featured-en',
+        title: 'Featured EN',
+        description: 'English description',
+        date: '2026-03-03',
+        readTime: '',
+        url: 'https://mateusribeirocampos.github.io/agro2code-blog/blog/featured-en/',
+        image: '',
+        lang: 'en',
+        canonicalSlug: 'featured-en',
+        external: true,
+      },
+    ],
+    isFallback: false,
+    fallbackReason: null,
+  });
 });
 
 test('getBlogCardMediaState returns none when the card has no image', () => {

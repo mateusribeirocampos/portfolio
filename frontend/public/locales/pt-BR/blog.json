@@ -3,6 +3,8 @@
     "title": "Blog",
     "description": "Artigos e tutoriais sobre desenvolvimento de software, tecnologia e mais.",
     "readMore": "Ler mais",
+    "fallbackRemoteFailed": "Exibindo artigos locais de fallback porque o feed remoto do blog esta temporariamente indisponivel.",
+    "fallbackNoLocalizedRemotePosts": "Exibindo artigos locais de fallback porque ainda nao existem posts remotos destacados para o idioma atual.",
     "comingSoon": "Em breve",
     "comingSoonDescription": "Novos artigos serão publicados em breve. Fique atento!"
   }
