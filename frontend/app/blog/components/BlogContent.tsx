@@ -1,15 +1,23 @@
 'use client';
 
+import type { BlogPost } from '@/data/blog';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
-import { blogPosts } from '@/data/blog';
+import { getBlogCardMediaState } from '@/lib/blog-card-media';
 
-export function BlogContent() {
-  const { t } = useTranslation("blog");
+interface BlogContentProps {
+  posts: BlogPost[];
+}
+
+function isExternalUrl(url: string) {
+  return /^https?:\/\//.test(url);
+}
+
+export function BlogContent({ posts }: BlogContentProps) {
+  const { t } = useTranslation('blog');
 
   return (
     <div className="container py-12">
@@ -22,44 +30,69 @@ export function BlogContent() {
         </div>
 
         <div className="grid gap-6">
-          {blogPosts.map((post) => (
-            <Card key={post.slug} className="overflow-hidden">
-              <div className="grid md:grid-cols-[2fr_3fr]">
-                <div className="aspect-video md:aspect-auto relative">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
+          {posts.map((post) => {
+            const mediaState = getBlogCardMediaState(post.image);
+
+            return (
+              <Card key={post.id} className="overflow-hidden">
+                <div className="grid md:grid-cols-[2fr_3fr]">
+                  <div className="aspect-video md:aspect-auto relative">
+                    {mediaState === 'local' ? (
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : null}
+                    {mediaState === 'remote' ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : null}
+                    {mediaState === 'none' ? (
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.06),rgba(15,23,42,0.14))]"
+                      />
+                    ) : null}
+                  </div>
+                  <div className="flex flex-col">
+                    <CardHeader>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          {post.date}
+                        </span>
+                        {post.readTime ? (
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-4 w-4" />
+                            {post.readTime}
+                          </span>
+                        ) : null}
+                      </div>
+                      <CardTitle>{post.title}</CardTitle>
+                      <CardDescription>{post.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-grow" />
+                    <CardFooter>
+                      <Button variant="outline" asChild>
+                        <a
+                          href={post.url}
+                          target={isExternalUrl(post.url) ? '_blank' : undefined}
+                          rel={isExternalUrl(post.url) ? 'noreferrer' : undefined}
+                        >
+                          {t("blog.readMore")} <ArrowRight className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </CardFooter>
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <CardHeader>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        {post.date}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        {post.readTime}
-                      </span>
-                    </div>
-                    <CardTitle>{post.title}</CardTitle>
-                    <CardDescription>{post.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow" />
-                  <CardFooter>
-                    <Button variant="outline" asChild>
-                      <Link href={`/blog/${post.slug}`}>
-                        {t("blog.readMore")} <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardFooter>
-                </div>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
       </div>
     </div>

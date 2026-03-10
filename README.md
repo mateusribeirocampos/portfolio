@@ -152,6 +152,22 @@ portfolio/
 - Cookie-based locale persistence (1-year expiry)
 - Middleware-driven language routing
 
+### Blog Integration Contract
+
+- The `/blog` page consumes featured article references exported by `agro2code-blog`.
+- The public contract stays URL-based and must preserve `lang`, `title`, `description`, `pubDate`, `canonicalSlug`, `url`, and `portfolioFeatured`.
+- The portfolio keeps a local fallback dataset and must continue rendering `/blog` if the remote fetch fails or returns unusable data.
+- Locale selection remains resolved inside the portfolio, using the remote payload first and localized fallback data second.
+- The integration must not rewrite `canonicalSlug`, the `/agro2code-blog` base path, or the public article URLs exported by the blog.
+
+### Blog Card Media Decision
+
+- Blog cards may receive `heroImage`, but the contract allows references without image.
+- Local images continue using `next/image`.
+- Remote blog images continue using plain `<img>` for now, keeping the current compatibility model and avoiding a broader image-pipeline change in production.
+- When a blog card has no image, the UI renders a neutral placeholder block instead of emitting an empty `src`.
+- Any future move away from this strategy should be done behind tests and without changing the article-reference contract.
+
 ### Admin Dashboard
 
 - JWT authentication with bcryptjs password hashing

@@ -1,5 +1,8 @@
+import path from 'node:path';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  outputFileTracingRoot: path.resolve(__dirname),
   eslint: {
     ignoreDuringBuilds: false, // Habilita ESLint durante builds para garantir qualidade do código
   },
