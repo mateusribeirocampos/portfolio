@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HttpException, HttpStatus } from '@nestjs/common';
+import { Response } from 'express';
 import { ResumeController } from './resume.controller';
 import { ResumeService } from './resume.service';
 
@@ -9,7 +10,7 @@ const resumeServiceMock = {
 };
 
 // Mock da Response do Express
-const createMockResponse = () => ({
+const createMockResponse = (): Partial<Response> => ({
   setHeader: jest.fn(),
   sendFile: jest.fn(),
 });
@@ -20,9 +21,7 @@ describe('ResumeController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ResumeController],
-      providers: [
-        { provide: ResumeService, useValue: resumeServiceMock },
-      ],
+      providers: [{ provide: ResumeService, useValue: resumeServiceMock }],
     }).compile();
 
     controller = module.get<ResumeController>(ResumeController);
@@ -39,14 +38,22 @@ describe('ResumeController', () => {
       resumeServiceMock.downloadResume.mockResolvedValue(mockFileData);
       const res = createMockResponse();
 
-      await controller.downloadResume('en', res as any, '127.0.0.1', 'Mozilla/5.0');
+      await controller.downloadResume(
+        'en',
+        res as unknown as Response,
+        '127.0.0.1',
+        'Mozilla/5.0',
+      );
 
       expect(resumeServiceMock.downloadResume).toHaveBeenCalledWith(
         'en',
         '127.0.0.1',
         'Mozilla/5.0',
       );
-      expect(res.setHeader).toHaveBeenCalledWith('Content-Type', 'application/pdf');
+      expect(res.setHeader).toHaveBeenCalledWith(
+        'Content-Type',
+        'application/pdf',
+      );
       expect(res.setHeader).toHaveBeenCalledWith(
         'Content-Disposition',
         'attachment; filename="resume-en-port.pdf"',
@@ -63,7 +70,12 @@ describe('ResumeController', () => {
       resumeServiceMock.downloadResume.mockResolvedValue(mockFileData);
       const res = createMockResponse();
 
-      await controller.downloadResume('pt-BR', res as any, '10.0.0.1', 'Chrome');
+      await controller.downloadResume(
+        'pt-BR',
+        res as unknown as Response,
+        '10.0.0.1',
+        'Chrome',
+      );
 
       expect(res.setHeader).toHaveBeenCalledWith(
         'Content-Disposition',
@@ -72,15 +84,27 @@ describe('ResumeController', () => {
     });
 
     it('deve lançar HttpException 500 quando o service falhar', async () => {
-      resumeServiceMock.downloadResume.mockRejectedValue(new Error('Arquivo não encontrado'));
+      resumeServiceMock.downloadResume.mockRejectedValue(
+        new Error('Arquivo não encontrado'),
+      );
       const res = createMockResponse();
 
       await expect(
-        controller.downloadResume('en', res as any, '1.1.1.1', 'agent'),
+        controller.downloadResume(
+          'en',
+          res as unknown as Response,
+          '1.1.1.1',
+          'agent',
+        ),
       ).rejects.toThrow(HttpException);
 
       await expect(
-        controller.downloadResume('en', res as any, '1.1.1.1', 'agent'),
+        controller.downloadResume(
+          'en',
+          res as unknown as Response,
+          '1.1.1.1',
+          'agent',
+        ),
       ).rejects.toMatchObject({ status: HttpStatus.INTERNAL_SERVER_ERROR });
     });
   });
