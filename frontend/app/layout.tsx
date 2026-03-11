@@ -10,14 +10,16 @@ import { cookies } from 'next/headers';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mateus R Campos - Full Stack Developer",
+  title: "Mateus R Campos - Backend Developer",
   description:
-    "Portfolio of Mateus R Campos - From Agronomy to Full Stack Development",
+    "Portfolio of Mateus R Campos - Backend Developer (Java, Spring Boot, Node.js) | BSc in Computer Science",
   keywords: [
-    "Full Stack Developer",
+    "Backend Developer",
+    "Java",
+    "Spring Boot",
+    "Node.js",
     "React",
     "Next.js",
-    "Agronomy",
     "Web Development",
   ],
   verification: {

@@ -37,10 +37,10 @@ export const projects: Project[] = [
   },
   {
     title: 'DIO - Machine Learning',
-    description: 'A modern portfolio website showcasing my technical projects and development work, built with Next.js and Tailwind CSS for a beautiful and responsive experience.',
+    description: 'Practical implementations and study materials from the DIO Machine Learning Practitioner Bootcamp. Covers ML fundamentals to advanced techniques, with hands-on projects including facial recognition, image recommendation systems, and virtual assistants.',
     image: '/images/projects/diollm.gif',
     secondImage: '/images/projects/diollm1.png',
-    tags: ['Jupyter Notebook', 'Python', 'Machine Learning', 'Deep learning'],
+    tags: ['Jupyter Notebook', 'Python', 'Keras', 'R', 'Machine Learning', 'Deep Learning'],
     github: 'https://github.com/mateusribeirocampos/diollm',
     demo: 'https://colab.research.google.com/github/mateusribeirocampos/diollm/blob/main/Notebooks/Project_Draft/Sistema_de_recomenda%C3%A7%C3%A3o_por_imagens_.ipynb',
   },

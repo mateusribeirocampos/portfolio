@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useTranslation } from 'react-i18next';
-import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaXTwitter, FaLinkedin } from "react-icons/fa6";
 import Link from 'next/link';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -137,9 +137,9 @@ export function ContactContent() {
                     <FaLinkedin className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <Link href="https://x.com/MateusR1Campos" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="icon">
-                    <FaTwitter className="h-4 w-4" />
+                    <FaXTwitter className="h-4 w-4" />
                   </Button>
                 </Link>
               </div>

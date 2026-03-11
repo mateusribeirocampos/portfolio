@@ -18,8 +18,8 @@
 
 @layer base {
   :root {
-    --transparent-matrix: rgba(255, 255, 255, 0.101);
-    --fillstyle: rgb(210, 210, 210);
+    --transparent-matrix: rgba(255, 255, 255, 0.25);
+    --fillstyle: rgba(180, 180, 180, 0.35);
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -47,8 +47,8 @@
     --radius: 0.5rem;
   }
   .dark {
-    --transparent-matrix: rgba(0, 0, 0, 0.05);
-    --fillstyle: hsla(120, 86%, 22%, 0.8);
+    --transparent-matrix: rgba(0, 0, 0, 0.15);
+    --fillstyle: hsla(120, 60%, 18%, 0.45);
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;

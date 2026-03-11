@@ -37,7 +37,8 @@ export function AboutContent() {
     }
   };
 
-  const certifications = t("about.certifications.items", { returnObjects: true }) as CertificationItem[];
+  const certificationsRaw = t("about.certifications.items", { returnObjects: true });
+  const certifications = Array.isArray(certificationsRaw) ? certificationsRaw as CertificationItem[] : [];
 
   return (
     <div className="container py-12">
@@ -50,7 +51,10 @@ export function AboutContent() {
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t("about.journey.title")}</h2>
             <div className="bg-card text-justify p-4 space-y-4">
-              {(t("about.journey.description", { returnObjects: true }) as string[]).map((paragraph, index) => (
+              {(Array.isArray(t("about.journey.description", { returnObjects: true }))
+                ? t("about.journey.description", { returnObjects: true }) as string[]
+                : []
+              ).map((paragraph, index) => (
                 <p key={index} className="text-muted-foreground">
                   {paragraph}
                 </p>

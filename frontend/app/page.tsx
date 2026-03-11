@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Leaf, Smartphone } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -18,7 +19,19 @@ export default function Home() {
     <>
       <div className="flex-1">
         <section className="container flex flex-col items-center justify-center gap-4 py-24 md:py-72">
-          <div className="flex flex-col items-center gap-4 text-center">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 text-center md:text-left">
+            <div className="flex-shrink-0">
+              <div className="relative w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-primary ring-4 ring-primary/20 shadow-xl">
+                <Image
+                  src="/images/home/profilelinkedin.jpeg"
+                  alt="Mateus R Campos"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-center md:items-start gap-4">
             <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl">
               <DecoderText text={title} delay={600} />
             </h1>
@@ -33,6 +46,7 @@ export default function Home() {
                 <Link href="/projects">{t('home.projects_button')}<ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
+            </div>
             </div>
           </div>
           {/*<div className="w-full max-w-3xl mt-8">

@@ -47,7 +47,7 @@ export function Footer() {
                 <FaLinkedin className="h-5 w-5" />
               </Link>
               <Link
-                href="mailto:mateus@example.com"
+                href="mailto:matcamp1981@gmail.com"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <Mail className="h-5 w-5" />
