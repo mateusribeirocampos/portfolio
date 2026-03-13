@@ -1,9 +1,18 @@
+import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
+
+import { buildPageMetadata } from '@/lib/seo';
 import { ContactContent } from './components/ContactContent';
 
-export const metadata = {
-  title: 'Contato | Mateus R Campos',
-  description: 'Entre em contato comigo para oportunidades de colaboração ou apenas para conversar',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cookieStore = await cookies();
+
+  return buildPageMetadata({
+    locale: cookieStore.get('NEXT_LOCALE')?.value,
+    page: 'contact',
+    pathname: '/contact',
+  });
+}
 
 export default function Contact() {
   return <ContactContent />;

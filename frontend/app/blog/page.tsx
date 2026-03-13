@@ -1,13 +1,20 @@
+import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 import { blogPosts } from '@/data/blog';
+import { buildPageMetadata } from '@/lib/seo';
 import { loadBlogFeedState } from '@/lib/blog-source';
 import { BlogContent } from './components/BlogContent';
 
-export const metadata = {
-  title: 'Blog | Mateus R Campos',
-  description: 'Insights and experiences from my journey in tech and agriculture',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cookieStore = await cookies();
+
+  return buildPageMetadata({
+    locale: cookieStore.get('NEXT_LOCALE')?.value,
+    page: 'blog',
+    pathname: '/blog',
+  });
+}
 
 export default async function Blog() {
   const cookieStore = await cookies();

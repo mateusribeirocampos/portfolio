@@ -6,26 +6,35 @@ import { Toaster } from "@/components/ui/toaster";
 import Script from 'next/script';
 import { LayoutClient } from '@/components/layout-client';
 import { cookies } from 'next/headers';
+import { buildPageMetadata, getSiteUrl, resolveLocale } from '@/lib/seo';
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Mateus R Campos - Backend Developer",
-  description:
-    "Portfolio of Mateus R Campos - Backend Developer (Java, Spring Boot, Node.js) | BSc in Computer Science",
-  keywords: [
-    "Backend Developer",
-    "Java",
-    "Spring Boot",
-    "Node.js",
-    "React",
-    "Next.js",
-    "Web Development",
-  ],
-  verification: {
-    google: "Wf-4O8RsQVfHJBbJF_d1-g5oypYCRD3T__7DkQ20I1c",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cookieStore = await cookies();
+  const locale = resolveLocale(cookieStore.get('NEXT_LOCALE')?.value);
+
+  return {
+    metadataBase: new URL(getSiteUrl()),
+    keywords: [
+      "Backend Developer",
+      "Java",
+      "Spring Boot",
+      "Node.js",
+      "React",
+      "Next.js",
+      "Web Development",
+    ],
+    verification: {
+      google: "Wf-4O8RsQVfHJBbJF_d1-g5oypYCRD3T__7DkQ20I1c",
+    },
+    ...buildPageMetadata({
+      locale,
+      page: 'home',
+      pathname: '/',
+    }),
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -35,6 +44,7 @@ export default async function RootLayout({
   // Get locale from cookie (set by middleware)
   const cookieStore = await cookies();
   const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+  const skipLinkLabel = locale === 'pt-BR' ? 'Pular para o conteúdo principal' : 'Skip to main content';
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -49,6 +59,9 @@ export default async function RootLayout({
         ></meta>
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
+        <a href="#main-content" className="skip-link">
+          {skipLinkLabel}
+        </a>
         <ThemeProvider defaultTheme="system" enableSystem>
           <Script
             id="adsense-script"

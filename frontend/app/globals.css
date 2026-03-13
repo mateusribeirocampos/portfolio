@@ -94,4 +94,23 @@
     flex-direction: column;
     min-height: 100vh;
   }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    transform: translateY(-200%);
+    border-radius: 0.5rem;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    box-shadow: 0 0 0 2px hsl(var(--ring));
+    transition: transform 0.2s ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
 }

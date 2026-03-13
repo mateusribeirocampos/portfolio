@@ -1,7 +1,7 @@
 'use client';
 
 import type { BlogPost } from '@/data/blog';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -18,8 +18,16 @@ function isExternalUrl(url: string) {
   return /^https?:\/\//.test(url);
 }
 
+function formatPostDate(date: string, locale: string) {
+  return new Intl.DateTimeFormat(locale === 'pt-BR' ? 'pt-BR' : 'en-US', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(`${date}T00:00:00`));
+}
+
 export function BlogContent({ posts, isFallback = false, fallbackReason = null }: BlogContentProps) {
-  const { t } = useTranslation('blog');
+  const { t, i18n } = useTranslation('blog');
 
   return (
     <div className="container py-12">
@@ -38,12 +46,12 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
           ) : null}
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid auto-rows-fr gap-6">
           {posts.map((post) => {
             const mediaState = getBlogCardMediaState(post.image);
 
             return (
-              <Card key={post.id} className="overflow-hidden md:min-h-[280px]">
+              <Card key={post.id} className="h-full overflow-hidden md:min-h-[300px]">
                 <div className="grid md:grid-cols-[2fr_3fr] md:h-full">
                   <div className="relative aspect-video md:aspect-auto md:h-full overflow-hidden">
                     {mediaState === 'local' ? (
@@ -74,10 +82,10 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
                   <div className="flex flex-col">
                     <CardHeader>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
-                        <span className="flex items-center gap-1">
+                        <time className="flex items-center gap-1" dateTime={post.date}>
                           <Calendar className="h-4 w-4" />
-                          {post.date}
-                        </span>
+                          {formatPostDate(post.date, i18n.language)}
+                        </time>
                         {post.readTime ? (
                           <span className="flex items-center gap-1">
                             <Clock className="h-4 w-4" />
@@ -85,7 +93,7 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
                           </span>
                         ) : null}
                       </div>
-                      <CardTitle>{post.title}</CardTitle>
+                      <h2 className="text-2xl font-semibold leading-none tracking-tight">{post.title}</h2>
                       <CardDescription>{post.description}</CardDescription>
                     </CardHeader>
                     <CardContent className="flex-grow" />

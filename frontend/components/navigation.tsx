@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
@@ -15,7 +15,6 @@ import { glyphsM, glyphsR, glyphsC } from "@/components/decoderLetter/glyphs";
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { t, i18n } = useTranslation('common');
 
@@ -27,6 +26,21 @@ export function Navigation() {
   const langMobileDropdownRef = useRef<HTMLDivElement | null>(null);
 
   const currentLocale = i18n.language || 'en';
+  const uiLabels = currentLocale === 'pt-BR'
+    ? {
+        nav: 'Navegação principal',
+        language: 'Alterar idioma',
+        theme: theme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro',
+        openMenu: 'Abrir menu de navegação',
+        closeMenu: 'Fechar menu de navegação',
+      }
+    : {
+        nav: 'Primary navigation',
+        language: 'Change language',
+        theme: theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme',
+        openMenu: 'Open navigation menu',
+        closeMenu: 'Close navigation menu',
+      };
 
   const navItems = [
     { href: '/', label: t("navigation.home") },
@@ -79,7 +93,10 @@ export function Navigation() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav
+      aria-label={uiLabels.nav}
+      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+    >
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="font-bold text-xl ml-4 md:ml-6 lg:ml-8">
           <DecoderGlyphLetter glyphs={glyphsM} className="decoder-m-glyph" />
@@ -113,7 +130,8 @@ export function Navigation() {
               onClick={() => {
                 setIsDesktopLangDropdownOpen(!isDesktopLangDropdownOpen);
               }}
-              title="Change Language"
+              title={uiLabels.language}
+              aria-label={uiLabels.language}
               className="flex items-center justify-center"
             >
               <BiWorld className="h-5 w-5" />
@@ -153,6 +171,8 @@ export function Navigation() {
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label={uiLabels.theme}
+            title={uiLabels.theme}
           >
             <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -169,7 +189,8 @@ export function Navigation() {
               onClick={() => {
                 setIsMobileLangDropdownOpen(!isMobileLangDropdownOpen);
               }}
-              title="Change Language"
+              title={uiLabels.language}
+              aria-label={uiLabels.language}
             >
               <BiWorld className="h-5 w-5" />
               <span className="ml-1 text-xs">
@@ -209,6 +230,10 @@ export function Navigation() {
             size="icon"
             onClick={() => setIsOpen(!isOpen)}
             className="mr-2"
+            aria-controls="mobile-navigation-menu"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? uiLabels.closeMenu : uiLabels.openMenu}
+            title={isOpen ? uiLabels.closeMenu : uiLabels.openMenu}
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -216,6 +241,8 @@ export function Navigation() {
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label={uiLabels.theme}
+            title={uiLabels.theme}
           >
             <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -225,7 +252,7 @@ export function Navigation() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden">
+        <div id="mobile-navigation-menu" className="md:hidden">
           <div className="space-y-1 px-4 pb-3 pt-2">
             {navItems.map((item) => (
               <Link

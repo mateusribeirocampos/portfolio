@@ -29,6 +29,8 @@ export default function Home() {
                   sizes="(max-width: 768px) 160px, 208px"
                   className="object-cover"
                   priority
+                  fetchPriority="high"
+                  loading="eager"
                 />
               </div>
             </div>

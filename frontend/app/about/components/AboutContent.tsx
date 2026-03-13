@@ -71,7 +71,7 @@ export function AboutContent() {
           {/* Who I Am Section */}
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t("about.journey.title")}</h2>
-            <div className="bg-card text-justify p-4 space-y-4">
+            <div className="bg-card p-4 space-y-4">
               {(Array.isArray(t("about.journey.description", { returnObjects: true }))
                 ? t("about.journey.description", { returnObjects: true }) as string[]
                 : []
@@ -129,7 +129,7 @@ export function AboutContent() {
           {/* What Sets Me Apart Section */}
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t("about.whatSetsMeApart.title")}</h2>
-            <div className="bg-card text-justify p-4">
+            <div className="bg-card p-4">
               <p className="text-muted-foreground">{t("about.whatSetsMeApart.description")}</p>
             </div>
           </div>

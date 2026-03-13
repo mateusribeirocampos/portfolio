@@ -1,7 +1,7 @@
 'use client'
 
-import { useReducedMotion, useSpring } from 'framer-motion';
-import { memo, useEffect, useRef } from 'react';
+import { memo, useLayoutEffect, useRef } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import './decoderText.css';
 
 // Mapeamento entre o tipo do caractere e a classe CSS correspondente
@@ -40,6 +40,8 @@ const glyphs: string[] = [
   '∈', '∉', '∋', '∌', '∧', '∨',
 ];
 
+const GLYPH_REFRESH_DELAY_MS = 48;
+
 const CharType = {
   Glyph: 'glyph',
   Value: 'value',
@@ -53,18 +55,6 @@ interface OutputItem {
   value: string;
 }
 
-function shuffle(content: string[], output: OutputItem[], pos: number): OutputItem[] {
-  return content.map((char, i) => {
-    if (i < pos) {
-      return { type: CharType.Glyph, value: char };
-    }
-    if (pos % 1 < 0.5) {
-      return { type: CharType.Value, value: glyphs[Math.floor(Math.random() * glyphs.length)] };
-    }
-    return { type: CharType.Glyph, value: output[i].value };
-  });
-}
-
 interface Props {
   text: string;
   start?: boolean;
@@ -75,45 +65,81 @@ export const DecoderText = memo(({ text, start = true, delay: startDelay = 0 }: 
   const output = useRef<OutputItem[]>([]);
   const containerRef = useRef<HTMLSpanElement>(null);
   const reduceMotion = useReducedMotion();
-  const spring = useSpring(0, { stiffness: 10, damping: 5 });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const content = text.split('');
-    output.current = content.map(_ => ({ type: CharType.Glyph, value: '' }));
+    let cancelled = false;
+
     // Função responsável por renderizar o texto animado
     // Cada caractere é envolvido por um <span> com a classe CSS apropriada
     const render = () => {
       if (!containerRef.current) return; // Verifica se o container existe
       const spans = output.current.map((item, index) => {
         const span = document.createElement('span'); // Cria elemento span seguro
-        span.className = styles[item.type as 'glyph' | 'value']; // Aplica classe CSS
+        span.className = styles[item.type as keyof typeof styles]; // Aplica classe CSS
         span.textContent = item.value; // Usa textContent (seguro contra XSS)
+        span.dataset.index = String(index);
         return span; // Retorna o elemento criado
       });
       containerRef.current.replaceChildren(...spans); // Substitui todos os filhos
     };
 
-    const unsub = spring.on('change', v => {
-      output.current = shuffle(content, output.current, v);
-      render();
-    });
+    const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
     if (start && !reduceMotion) {
       (async () => {
         if (startDelay > 0) {
-          await new Promise(resolve => setTimeout(resolve, startDelay));
+          await wait(startDelay);
         }
-        spring.set(content.length);
+
+        if (cancelled) {
+          return;
+        }
+
+        output.current = content.map(char => ({
+          type: CharType.Glyph,
+          value: char === ' ' ? ' ' : glyphs[Math.floor(Math.random() * glyphs.length)],
+        }));
+        render();
+
+        for (let i = 0; i < content.length; i += 1) {
+          if (cancelled) {
+            return;
+          }
+
+          output.current = content.map((char, index) => {
+            if (char === ' ') {
+              return { type: CharType.Value, value: ' ' };
+            }
+
+            if (index <= i) {
+              return { type: CharType.Value, value: char };
+            }
+
+            return {
+              type: CharType.Glyph,
+              value: glyphs[Math.floor(Math.random() * glyphs.length)],
+            };
+          });
+          render();
+          await wait(GLYPH_REFRESH_DELAY_MS);
+        }
       })();
     } else {
       output.current = content.map(c => ({ type: CharType.Value, value: c }));
       render();
     }
 
-    return () => unsub();
-  }, [text, start, startDelay, spring, reduceMotion]);
+    return () => {
+      cancelled = true;
+    };
+  }, [text, start, startDelay, reduceMotion]);
 
-  return <span aria-hidden ref={containerRef} />;
+  return (
+    <span aria-label={text}>
+      <span aria-hidden ref={containerRef} />
+    </span>
+  );
 });
 
 DecoderText.displayName = 'DecoderText';

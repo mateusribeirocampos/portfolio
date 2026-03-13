@@ -1,9 +1,18 @@
+import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
+
+import { buildPageMetadata } from '@/lib/seo';
 import { ProjectsContent } from './components/ProjectsContent';
 
-export const metadata = {
-  title: 'Projects | Mateus R Campos',
-  description: 'Showcase of my technical projects and development work',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cookieStore = await cookies();
+
+  return buildPageMetadata({
+    locale: cookieStore.get('NEXT_LOCALE')?.value,
+    page: 'projects',
+    pathname: '/projects',
+  });
+}
 
 export default function Projects() {
   return <ProjectsContent />;

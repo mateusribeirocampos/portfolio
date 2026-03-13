@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Table,
   TableBody,
@@ -64,11 +64,7 @@ export function ContactsTable() {
   const [loading, setLoading] = useState(true);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
-  useEffect(() => {
-    loadContacts();
-  }, [pagination.page, statusFilter]);
-
-  const loadContacts = async () => {
+  const loadContacts = useCallback(async () => {
     try {
       const token = localStorage.getItem('admin_token');
       if (!token) return;
@@ -101,7 +97,11 @@ export function ContactsTable() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [pagination.limit, pagination.page, statusFilter]);
+
+  useEffect(() => {
+    loadContacts();
+  }, [loadContacts]);
 
   const updateContactStatus = async (contactId: string, newStatus: string) => {
     try {

@@ -30,7 +30,7 @@ export function LayoutClient({
       <MatrixRain />
       <div className="flex-1 flex flex-col">
         <Navigation />
-        <main className="flex-1 flex flex-col">
+        <main id="main-content" className="flex-1 flex flex-col" tabIndex={-1}>
           <div className="container flex-1 mx-auto px-4 sm:px-6 lg:px-8">
             {children}
           </div>
