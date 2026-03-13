@@ -1,14 +1,21 @@
-'use client';
-
 import type { BlogPost } from '@/data/blog';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
 import { getBlogCardMediaState } from '@/lib/blog-card-media';
 
+interface BlogCopy {
+  title: string;
+  description: string;
+  readMore: string;
+  fallbackRemoteFailed: string;
+  fallbackNoLocalizedRemotePosts: string;
+}
+
 interface BlogContentProps {
+  copy: BlogCopy;
+  locale: 'en' | 'pt-BR';
   posts: BlogPost[];
   isFallback?: boolean;
   fallbackReason?: 'remote_request_failed' | 'no_matching_remote_posts' | null;
@@ -26,22 +33,26 @@ function formatPostDate(date: string, locale: string) {
   }).format(new Date(`${date}T00:00:00`));
 }
 
-export function BlogContent({ posts, isFallback = false, fallbackReason = null }: BlogContentProps) {
-  const { t, i18n } = useTranslation('blog');
-
+export function BlogContent({
+  copy,
+  locale,
+  posts,
+  isFallback = false,
+  fallbackReason = null,
+}: BlogContentProps) {
   return (
     <div className="container py-12">
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col gap-4 mb-12">
-          <h1 className="text-3xl font-bold">{t("blog.title")}</h1>
+          <h1 className="text-3xl font-bold">{copy.title}</h1>
           <p className="text-muted-foreground">
-            {t("blog.description")}
+            {copy.description}
           </p>
           {isFallback ? (
             <div className="rounded-lg border border-amber-300/60 bg-amber-50 px-4 py-3 text-sm text-amber-900">
               {fallbackReason === 'remote_request_failed'
-                ? t('blog.fallbackRemoteFailed')
-                : t('blog.fallbackNoLocalizedRemotePosts')}
+                ? copy.fallbackRemoteFailed
+                : copy.fallbackNoLocalizedRemotePosts}
             </div>
           ) : null}
         </div>
@@ -84,7 +95,7 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                         <time className="flex items-center gap-1" dateTime={post.date}>
                           <Calendar className="h-4 w-4" />
-                          {formatPostDate(post.date, i18n.language)}
+                          {formatPostDate(post.date, locale)}
                         </time>
                         {post.readTime ? (
                           <span className="flex items-center gap-1">
@@ -104,7 +115,7 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
                           target={isExternalUrl(post.url) ? '_blank' : undefined}
                           rel={isExternalUrl(post.url) ? 'noreferrer' : undefined}
                         >
-                          {t("blog.readMore")} <ArrowRight className="ml-2 h-4 w-4" />
+                          {copy.readMore} <ArrowRight className="ml-2 h-4 w-4" />
                         </a>
                       </Button>
                     </CardFooter>
@@ -117,4 +128,4 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
       </div>
     </div>
   );
-} 
+}

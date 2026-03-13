@@ -7,11 +7,15 @@ import { FaGithub } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '@/data/projects';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
-export function ProjectsContent() {
-  const { t } = useTranslation("projects");
+interface ProjectsCopy {
+  title: string;
+  pTitle: string;
+  liveDemo: string;
+}
+
+export function ProjectsContent({ copy }: { copy: ProjectsCopy }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
@@ -22,10 +26,8 @@ export function ProjectsContent() {
   return (
     <div className="container py-12">
       <div className="flex flex-col gap-4 mb-12">
-        <h1 className="text-3xl font-bold">{t("projects.title")}</h1>
-        <p className="text-muted-foreground">
-          {t("projects.pTitle")}
-        </p>
+        <h1 className="text-3xl font-bold">{copy.title}</h1>
+        <p className="text-muted-foreground">{copy.pTitle}</p>
       </div>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -89,7 +91,7 @@ export function ProjectsContent() {
               <Button size="sm" asChild>
                 <Link href={project.demo} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
-                  {t("projects.liveDemo")}
+                  {copy.liveDemo}
                 </Link>
               </Button>
             </CardFooter>

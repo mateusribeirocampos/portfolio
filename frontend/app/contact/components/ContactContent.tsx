@@ -4,14 +4,33 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useTranslation } from 'react-i18next';
 import { FaGithub, FaXTwitter, FaLinkedin } from "react-icons/fa6";
 import Link from 'next/link';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export function ContactContent() {
-  const { t } = useTranslation('contact');
+interface ContactCopy {
+  title: string;
+  description: string;
+  form: {
+    name: string;
+    namePlaceholder: string;
+    email: string;
+    emailPlaceholder: string;
+    message: string;
+    messagePlaceholder: string;
+    send: string;
+    sending?: string;
+    successTitle?: string;
+    successMessage?: string;
+    sendAnother?: string;
+  };
+  social: {
+    title: string;
+  };
+}
+
+export function ContactContent({ copy }: { copy: ContactCopy }) {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -50,8 +69,8 @@ export function ContactContent() {
     <div className="container py-12">
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col gap-4 mb-12">
-          <h1 className="text-3xl font-bold">{t('title')}</h1>
-          <p className="text-muted-foreground">{t('description')}</p>
+          <h1 className="text-3xl font-bold">{copy.title}</h1>
+          <p className="text-muted-foreground">{copy.description}</p>
         </div>
 
         <div className="grid md:grid-cols-[1fr_1fr] gap-12">
@@ -59,25 +78,25 @@ export function ContactContent() {
             {status === 'success' ? (
               <div className="rounded-lg border border-green-500 bg-green-50 dark:bg-green-950 p-6 text-center space-y-2">
                 <p className="text-green-700 dark:text-green-300 font-semibold text-lg">
-                  {t('form.successTitle') || 'Mensagem enviada!'}
+                  {copy.form.successTitle || 'Mensagem enviada!'}
                 </p>
                 <p className="text-green-600 dark:text-green-400 text-sm">
-                  {t('form.successMessage') || 'Obrigado pelo contato. Responderei em breve.'}
+                  {copy.form.successMessage || 'Obrigado pelo contato. Responderei em breve.'}
                 </p>
                 <Button variant="outline" className="mt-4" onClick={() => setStatus('idle')}>
-                  {t('form.sendAnother') || 'Enviar outra mensagem'}
+                  {copy.form.sendAnother || 'Enviar outra mensagem'}
                 </Button>
               </div>
             ) : (
               <form className="space-y-4" onSubmit={handleSubmit} method="post">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
-                    {t('form.name')}
+                    {copy.form.name}
                   </label>
                   <Input
                     id="name"
                     name="name"
-                    placeholder={t('form.namePlaceholder')}
+                    placeholder={copy.form.namePlaceholder}
                     value={form.name}
                     onChange={handleChange}
                     required
@@ -87,13 +106,13 @@ export function ContactContent() {
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium">
-                    {t('form.email')}
+                    {copy.form.email}
                   </label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
-                    placeholder={t('form.emailPlaceholder')}
+                    placeholder={copy.form.emailPlaceholder}
                     value={form.email}
                     onChange={handleChange}
                     required
@@ -101,12 +120,12 @@ export function ContactContent() {
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium">
-                    {t('form.message')}
+                    {copy.form.message}
                   </label>
                   <Textarea
                     id="message"
                     name="message"
-                    placeholder={t('form.messagePlaceholder')}
+                    placeholder={copy.form.messagePlaceholder}
                     value={form.message}
                     onChange={handleChange}
                     required
@@ -120,7 +139,7 @@ export function ContactContent() {
                 )}
 
                 <Button className="w-full" type="submit" disabled={status === 'loading'}>
-                  {status === 'loading' ? (t('form.sending') || 'Enviando...') : t('form.send')}
+                  {status === 'loading' ? (copy.form.sending || 'Enviando...') : copy.form.send}
                 </Button>
               </form>
             )}
@@ -128,7 +147,7 @@ export function ContactContent() {
 
           <div className="space-y-8">
             <div>
-              <h2 className="text-xl font-semibold mb-4">{t('social.title')}</h2>
+              <h2 className="text-xl font-semibold mb-4">{copy.social.title}</h2>
               <div className="flex gap-4">
                 <Link href="https://github.com/mateusribeirocampos" target="_blank" rel="noopener noreferrer" aria-label="Perfil no GitHub">
                   <Button variant="outline" size="icon" aria-label="Perfil no GitHub">
