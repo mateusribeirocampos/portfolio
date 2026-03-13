@@ -8,12 +8,21 @@ interface DecoderGlyphLetterProps {
   className?: string;
 }
 
-export function DecoderGlyphLetter({ glyphs, interval = 400, className = "" }: DecoderGlyphLetterProps) {
+export function DecoderGlyphLetter({ glyphs, interval = 120, className = "" }: DecoderGlyphLetterProps) {
+  // index 0 is always the real letter (e.g. 'M', 'R', 'C')
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    let count = 0;
     const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % glyphs.length);
+      count++;
+      if (count >= glyphs.length) {
+        // Settled — stay on the real letter (index 0)
+        setIndex(0);
+        clearInterval(id);
+        return;
+      }
+      setIndex(count);
     }, interval);
     return () => clearInterval(id);
   }, [glyphs, interval]);

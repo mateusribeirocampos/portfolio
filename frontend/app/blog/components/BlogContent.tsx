@@ -43,15 +43,17 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
             const mediaState = getBlogCardMediaState(post.image);
 
             return (
-              <Card key={post.id} className="overflow-hidden">
-                <div className="grid md:grid-cols-[2fr_3fr]">
-                  <div className="aspect-video md:aspect-auto relative">
+              <Card key={post.id} className="overflow-hidden md:min-h-[280px]">
+                <div className="grid md:grid-cols-[2fr_3fr] md:h-full">
+                  <div className="relative aspect-video md:aspect-auto md:h-full overflow-hidden">
                     {mediaState === 'local' ? (
                       <Image
                         src={post.image}
                         alt={post.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, 40vw"
                         className="object-cover"
+                        loading="lazy"
                       />
                     ) : null}
                     {mediaState === 'remote' ? (
@@ -59,6 +61,7 @@ export function BlogContent({ posts, isFallback = false, fallbackReason = null }
                         src={post.image}
                         alt={post.title}
                         className="absolute inset-0 h-full w-full object-cover"
+                        loading="lazy"
                       />
                     ) : null}
                     {mediaState === 'none' ? (

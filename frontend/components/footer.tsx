@@ -15,7 +15,7 @@ export function Footer() {
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
             <h3 className="text-lg font-semibold">Portfolio</h3>
-            <p className="text-sm text-foreground/60">© 2026 Mateus R Campos | {t("footer.rights")}</p>
+            <p className="text-xs text-foreground/60">© 2026 Mateus R Campos | {t("footer.rights")}</p>
           </div>
 
           <div className="space-y-4 space-x-2 text-center md:text-left">
@@ -49,6 +49,7 @@ export function Footer() {
               <Link
                 href="mailto:matcamp1981@gmail.com"
                 className="text-muted-foreground hover:text-foreground"
+                aria-label="Enviar e-mail para matcamp1981@gmail.com"
               >
                 <Mail className="h-5 w-5" />
               </Link>

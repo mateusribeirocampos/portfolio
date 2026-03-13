@@ -1,10 +1,20 @@
 'use client';
 
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { Providers } from '@/providers';
 import MatrixRain from './matrixRain';
 import { PageTracker } from './page-tracker';
+
+function ScrollToTop() {
+  const pathname = usePathname();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+  return null;
+}
 
 export function LayoutClient({
   children,
@@ -15,6 +25,7 @@ export function LayoutClient({
 }) {
   return (
     <Providers lang={lang}>
+      <ScrollToTop />
       <PageTracker />
       <MatrixRain />
       <div className="flex-1 flex flex-col">

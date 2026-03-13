@@ -19,19 +19,40 @@ export function AboutContent() {
   const handleDownload = async () => {
     if (downloading) return;
     setDownloading(true);
+
+    const staticFile = i18n.language === 'pt-BR'
+      ? '/resume-pt-br-port.pdf'
+      : '/resume-en-port.pdf';
+
+    const triggerDownload = (href: string, filename: string) => {
+      const a = document.createElement('a');
+      a.href = href;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
     try {
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/resume/download/${i18n.language}`;
-      const response = await fetch(url);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      if (!apiUrl) throw new Error('No API URL configured');
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+      const url = `${apiUrl}/api/resume/download/${i18n.language}`;
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+
       if (!response.ok) throw new Error('Download failed');
+
       const blob = await response.blob();
       const objectUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = objectUrl;
-      a.download = `resume-${i18n.language}.pdf`;
-      a.click();
+      triggerDownload(objectUrl, `resume-${i18n.language}.pdf`);
       URL.revokeObjectURL(objectUrl);
     } catch {
-      // fallback silencioso — sem loop, sem navegação
+      // Fallback: serve static PDF directly from /public
+      triggerDownload(staticFile, `resume-${i18n.language}.pdf`);
     } finally {
       setDownloading(false);
     }

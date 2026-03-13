@@ -111,7 +111,6 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => {
-                console.log("Desktop language dropdown toggle clicked"); 
                 setIsDesktopLangDropdownOpen(!isDesktopLangDropdownOpen);
               }}
               title="Change Language"
@@ -168,7 +167,6 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => {
-                console.log("Mobile language dropdown toggle clicked");
                 setIsMobileLangDropdownOpen(!isMobileLangDropdownOpen);
               }}
               title="Change Language"

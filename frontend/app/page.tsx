@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Leaf, Smartphone } from "lucide-react";
+import { ArrowRight, Code, Leaf, Monitor } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { DecoderText } from '@/components/decoderText/decoderText';
 import { useInView } from 'react-intersection-observer';
@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <div className="flex-1">
-        <section className="container flex flex-col items-center justify-center gap-4 py-24 md:py-72">
+        <section className="container flex flex-col items-center justify-center gap-4 py-20 md:py-32">
           <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 text-center md:text-left">
             <div className="flex-shrink-0">
               <div className="relative w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-primary ring-4 ring-primary/20 shadow-xl">
@@ -26,6 +26,7 @@ export default function Home() {
                   src="/images/home/profilelinkedin.jpeg"
                   alt="Mateus R Campos"
                   fill
+                  sizes="(max-width: 768px) 160px, 208px"
                   className="object-cover"
                   priority
                 />
@@ -75,25 +76,25 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             <div className="flex flex-col items-center text-center p-6 bg-card rounded-lg border border-primary">
               <Code className="h-12 w-12 mb-4 text-primary" />
-              <h2 className="text-xl font-semibold mb-2">
+              <h3 className="text-xl font-semibold mb-2">
                 {t("home.TitleCard1")}
-              </h2>
+              </h3>
               <p className="text-muted-foreground">
                 {t("home.pCard1")}
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-6 bg-card rounded-lg border border-primary">
-              <Smartphone className="h-12 w-12 mb-4 text-primary" />
-              <h2 className="text-xl font-semibold mb-2">{t("home.TitleCard2")}</h2>
+              <Monitor className="h-12 w-12 mb-4 text-primary" />
+              <h3 className="text-xl font-semibold mb-2">{t("home.TitleCard2")}</h3>
               <p className="text-muted-foreground">
                 {t("home.pCard2")}
               </p>
             </div>
             <div className="flex flex-col items-center text-center p-6 bg-card rounded-lg border border-primary">
               <Leaf className="h-12 w-12 mb-4 text-primary" />
-              <h2 className="text-xl font-semibold mb-2">
+              <h3 className="text-xl font-semibold mb-2">
                 {t("home.TitleCard3")}
-              </h2>
+              </h3>
               <p className="text-muted-foreground">
                 {t("home.pCard3")}
               </p>

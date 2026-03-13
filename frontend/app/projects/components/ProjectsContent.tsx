@@ -47,6 +47,7 @@ export function ProjectsContent() {
                     alt={project.title}
                     width={500}
                     height={300}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     onError={() => handleImageError(project.image)}
                     className={`w-full h-full object-cover rounded-md transition-opacity duration-300 ${
                       hoveredIndex === index && project.secondImage ? 'opacity-0' : 'opacity-100'
@@ -59,6 +60,7 @@ export function ProjectsContent() {
                     alt={`${project.title} - Second view`}
                     width={500}
                     height={300}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     onError={() => project.secondImage && handleImageError(project.secondImage)}
                     className={`absolute top-0 left-0 w-full h-full object-cover rounded-md transition-opacity duration-300 ${
                       hoveredIndex === index ? 'opacity-100' : 'opacity-0'

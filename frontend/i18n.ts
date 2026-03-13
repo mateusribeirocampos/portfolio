@@ -16,6 +16,9 @@ export function createSyncI18nInstance(lang: string) {
   return instance;
 }
 
+// All namespaces used across the app — preloaded to avoid flash of raw translation keys
+const ALL_NAMESPACES = ['common', 'home', 'footer', 'about', 'blog', 'contact', 'projects'];
+
 export async function createI18nInstance(lang: string) {
   const instance = createInstance()
     .use(initReactI18next)
@@ -26,6 +29,7 @@ export async function createI18nInstance(lang: string) {
   await instance.init({
     lng: lang,
     fallbackLng: 'en',
+    ns: ALL_NAMESPACES,
     defaultNS: 'common',
     debug: process.env.NODE_ENV === 'development',
     interpolation: {

@@ -8,8 +8,8 @@
     "pSubtitle": "Java Developer focused on backend development with Spring Boot 3.5 and RESTful API architecture. Bachelor's in Computer Science combined with a background in international scientific research, bringing an analytical and methodical approach to software engineering.",
     "TitleCard1": "Backend Java",
     "pCard1": "Spring Boot 3.5, Spring Security, JPA, Hibernate, REST APIs",
-    "TitleCard2": "App Mobile",
-    "pCard2": "React, TypeScript, Node.js, Next.js, Tailwind CSS",
+    "TitleCard2": "Frontend Web",
+    "pCard2": "React, TypeScript, Next.js, Tailwind CSS, Vite",
     "TitleCard3": "Scientific Research",
     "pCard3": "PhD in Entomology with statistical analysis, biological modeling, and scientific methodology applied to development."
   }

@@ -7,7 +7,10 @@ const nextConfig = {
     ignoreDuringBuilds: false, // Habilita ESLint durante builds para garantir qualidade do código
   },
   images: {
-    unoptimized: true // Mantém imagens não otimizadas para compatibilidade com Vercel
+    // Optimization enabled — Vercel has native Next.js Image Optimization support.
+    // With unoptimized:true, Next.js skips srcset generation and fetchpriority/loading
+    // attributes on <Image> components, defeating the purpose of the priority and sizes props.
+    formats: ['image/avif', 'image/webp'],
   },
   
   // Headers de segurança para proteger contra ataques comuns

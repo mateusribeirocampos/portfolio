@@ -69,13 +69,14 @@ export function ContactContent() {
                 </Button>
               </div>
             ) : (
-              <form className="space-y-4" onSubmit={handleSubmit}>
+              <form className="space-y-4" onSubmit={handleSubmit} method="post">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
                     {t('form.name')}
                   </label>
                   <Input
                     id="name"
+                    name="name"
                     placeholder={t('form.namePlaceholder')}
                     value={form.name}
                     onChange={handleChange}
@@ -90,6 +91,7 @@ export function ContactContent() {
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder={t('form.emailPlaceholder')}
                     value={form.email}
@@ -103,6 +105,7 @@ export function ContactContent() {
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
                     placeholder={t('form.messagePlaceholder')}
                     value={form.message}
                     onChange={handleChange}
@@ -127,18 +130,18 @@ export function ContactContent() {
             <div>
               <h2 className="text-xl font-semibold mb-4">{t('social.title')}</h2>
               <div className="flex gap-4">
-                <Link href="https://github.com/mateusribeirocampos" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="icon">
+                <Link href="https://github.com/mateusribeirocampos" target="_blank" rel="noopener noreferrer" aria-label="Perfil no GitHub">
+                  <Button variant="outline" size="icon" aria-label="Perfil no GitHub">
                     <FaGithub className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="icon">
+                <Link href="https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/" target="_blank" rel="noopener noreferrer" aria-label="Perfil no LinkedIn">
+                  <Button variant="outline" size="icon" aria-label="Perfil no LinkedIn">
                     <FaLinkedin className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="https://x.com/MateusR1Campos" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="icon">
+                <Link href="https://x.com/MateusR1Campos" target="_blank" rel="noopener noreferrer" aria-label="Perfil no X (Twitter)">
+                  <Button variant="outline" size="icon" aria-label="Perfil no X (Twitter)">
                     <FaXTwitter className="h-4 w-4" />
                   </Button>
                 </Link>

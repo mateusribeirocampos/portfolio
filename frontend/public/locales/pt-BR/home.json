@@ -1,15 +1,15 @@
 {
   "home": {
     "title": "Olá, eu sou Mateus R Campos",
-    "pTitle": "Backend Developer (Java, Spring Boot) | BSc in Computer Science | Node.js",
+    "pTitle": "Desenvolvedor Backend (Java, Spring Boot) | Bacharel em Ciência da Computação | Node.js",
     "contact_button": "Entrar em Contato",
     "projects_button": "Ver Projetos",
     "subtitle": "Habilidades e Especialidades",
     "pSubtitle": "Desenvolvedor Java com foco em backend, especializado em Spring Boot 3.5 e arquitetura de APIs RESTful. Bacharel em Ciência da Computação com background em pesquisa científica internacional, trazendo uma abordagem analítica e metodológica para engenharia de software.",
     "TitleCard1": "Backend Java",
     "pCard1": "Spring Boot 3.5, Spring Security, JPA, Hibernate, REST APIs",
-    "TitleCard2": "App Móvel",
-    "pCard2": "React, TypeScript, Node.js, Next.js, Tailwind CSS",
+    "TitleCard2": "Frontend Web",
+    "pCard2": "React, TypeScript, Next.js, Tailwind CSS, Vite",
     "TitleCard3": "Pesquisa Científica",
     "pCard3": "PhD em Entomologia com análise estatística, modelagem biológica e metodologia científica aplicada ao desenvolvimento."
   }
