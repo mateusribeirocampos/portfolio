@@ -13,18 +13,19 @@ jobs:
       - name: Ping Supabase REST API
         run: |
           echo "🎨 Portfolio Supabase Ping - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-          
-          response=$(curl -s -w "\n%{http_code}" \
+
+          # GET /auth/v1/health — endpoint de health check do GoTrue, aceita anon key
+          response=$(curl -s -w "%{http_code}" \
                 -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_PORTFOLIO }}" \
-                -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_PORTFOLIO }}" \
-                "https://jcbrxrncgyexcgenzlfi.supabase.co/rest/v1/")
-          
-          http_code=$(echo "$response" | tail -n1)
-          
-          if [[ "$http_code" =~ ^2[0-9][0-9]$ ]]; then
+                "https://jcbrxrncgyexcgenzlfi.supabase.co/auth/v1/health" \
+                -o /tmp/response.json)
+
+          if [[ "$response" =~ ^2[0-9][0-9]$ ]]; then
             echo "✅ Portfolio Supabase está ativo!"
+            cat /tmp/response.json
           else
-            echo "⚠️ Status: $http_code"
+            echo "⚠️ Status: $response"
+            cat /tmp/response.json
           fi
 
       - name: Ping PostgreSQL Database
