@@ -67,7 +67,6 @@ export function createSyncI18nInstance(lang: string) {
 
   instance.init({
     ...getBaseConfig(lang),
-    initImmediate: false,
   });
 
   return instance;
