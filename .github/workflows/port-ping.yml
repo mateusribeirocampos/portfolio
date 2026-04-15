@@ -8,37 +8,41 @@ on:
 jobs:
   ping-portfolio:
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Ping Supabase REST API
-        run: |
-          echo "🎨 Portfolio Supabase Ping - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
 
+    steps:
+      - name: Supabase Health Check
+        run: |
           # GET /auth/v1/health — endpoint de health check do GoTrue, aceita anon key
           response=$(curl -s -w "%{http_code}" \
                 -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_PORTFOLIO }}" \
                 "https://jcbrxrncgyexcgenzlfi.supabase.co/auth/v1/health" \
                 -o /tmp/response.json)
 
+          echo "Health check response: $response"
+
           if [[ "$response" =~ ^2[0-9][0-9]$ ]]; then
-            echo "✅ Portfolio Supabase está ativo!"
+            echo "Supabase is healthy"
             cat /tmp/response.json
           else
-            echo "⚠️ Status: $response"
+            echo "Supabase health check failed with status code $response"
             cat /tmp/response.json
+            exit 1
           fi
 
-      - name: Ping PostgreSQL Database
+      - name: Test contacts table access
         run: |
-          echo "🗄️ Testando conexão PostgreSQL..."
-          
-          sudo apt-get update && sudo apt-get install -y postgresql-client
-          
-          PGPASSWORD="${{ secrets.SUPABASE_DB_PASSWORD }}" psql \
-            -h aws-1-us-east-2.pooler.supabase.com \
-            -p 6543 \
-            -U postgres.jcbrxrncgyexcgenzlfi \
-            -d postgres \
-            -c "SELECT 1 as ping, NOW() as timestamp;" \
-            && echo "✅ PostgreSQL conectado!" \
-            || echo "⚠️ Falha no PostgreSQL"
+          # Acessa a tabela contacts via PostgREST — gera atividade real no banco
+          response=$(curl -s -w "%{http_code}" \
+                  -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_PORTFOLIO }}" \
+                  -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_PORTFOLIO }}" \
+                  "https://jcbrxrncgyexcgenzlfi.supabase.co/rest/v1/contacts?select=count" \
+                  -o /tmp/contacts_response.json)
+
+          echo "Contacts table response: $response"
+          cat /tmp/contacts_response.json
+
+          if [[ "$response" == "200" ]]; then
+            echo "Contacts table is accessible"
+          else
+            echo "Contacts table access returned status $response"
+          fi
