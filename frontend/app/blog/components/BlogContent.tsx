@@ -76,6 +76,7 @@ export function BlogContent({
                       />
                     ) : null}
                     {mediaState === 'remote' ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={post.image}
                         alt={post.title}
