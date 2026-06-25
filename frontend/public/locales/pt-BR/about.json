@@ -1,22 +1,118 @@
 {
   "about": {
     "title": "Sobre Mim",
-    "subtitle": "Backend Developer (Java/Spring Boot, Node.js) | Bacharel em Ciência da Computação | Ex-Pesquisador (PhD)",
+    "subtitle": "Backend Developer focado em Java/Spring Boot, Node.js e APIs REST, com base sólida em pesquisa, dados e documentação técnica.",
+    "hero": {
+      "eyebrow": "Backend Developer | Java | Spring Boot | Node.js",
+      "headline": "Desenvolvedor backend focado em Java e Spring Boot, construindo APIs seguras, integrações eficientes e sistemas preparados para crescer.",
+      "description": "Sou Mateus R. Campos, graduado em Ciência da Computação e desenvolvedor backend. Minha trajetória também inclui pesquisa científica internacional, análise de dados e resolução estruturada de problemas. Aplico essa experiência no desenvolvimento de APIs REST, autenticação e autorização, integração de serviços, testes automatizados e construção de aplicações confiáveis e fáceis de manter.",
+      "badges": [
+        "Java 21 + Spring Boot",
+        "Node.js + Express",
+        "PostgreSQL + Docker",
+        "Inglês B2"
+      ]
+    },
+    "profileSignals": [
+      {
+        "label": "Experiência recente",
+        "value": "Backend Intern em 2025"
+      },
+      {
+        "label": "Foco técnico",
+        "value": "APIs REST, testes e segurança"
+      },
+      {
+        "label": "Produto próprio",
+        "value": "CVnoAlvo em produção"
+      },
+      {
+        "label": "Base anterior",
+        "value": "Pesquisa internacional"
+      }
+    ],
+    "focus": {
+      "title": "Como atuo",
+      "items": [
+        {
+          "title": "Backend orientado a integração",
+          "description": "Projeto APIs REST, autenticação, autorização e integrações entre serviços com atenção a contratos, dados e continuidade operacional."
+        },
+        {
+          "title": "Qualidade verificável",
+          "description": "Uso testes automatizados, TDD quando faz sentido, documentação e versionamento para reduzir regressões e facilitar manutenção."
+        },
+        {
+          "title": "Pensamento analítico",
+          "description": "Trago da pesquisa científica a capacidade de decompor problemas, validar hipóteses e comunicar decisões técnicas com clareza."
+        }
+      ]
+    },
     "journey": {
-      "title": "Quem sou",
+      "title": "Trajetória",
       "description": [
-        "Backend Developer com Bacharelado em Ciência da Computação (2026) e experiência de pesquisa internacional com PhD em Entomologia (INRAE, França). Acumulo mais de 2.200 horas de prática em desenvolvimento de software, com foco em Java/Spring Boot e APIs REST.",
-        "Certificado Java Spring Expert (200h) e Java Spring Professional (120h) pela DevSuperior, com competências validadas em TDD, testes unitários e de integração, Spring Security e OAuth2/JWT."
+        "Sou desenvolvedor backend com Bacharelado em Ciência da Computação (2026), experiência prática em Java, Spring Boot, Node.js e APIs REST, e atuação recente em desenvolvimento backend com Node.js.",
+        "Antes da tecnologia, trabalhei como pesquisador no INRAE, na França, liderando projetos multidisciplinares, análises estatísticas e modelos preditivos com R e Python. Essa base me ajuda a escrever software com método, documentação e atenção a evidências."
+      ]
+    },
+    "experience": {
+      "title": "Experiência",
+      "items": [
+        {
+          "role": "Estagiário de Desenvolvimento Backend",
+          "organization": "Isaac Kennedy Desenvolvimento de Software LTDA",
+          "period": "08/2025 - 11/2025",
+          "summary": "Atuação em desenvolvimento e manutenção de aplicações backend, com foco em APIs, dados, estabilidade e colaboração em ambiente ágil.",
+          "bullets": [
+            "Desenvolvimento e manutenção de aplicações backend usando Node.js.",
+            "Implementação de APIs RESTful e integração com bancos SQL e NoSQL.",
+            "Correção de bugs, testes automatizados, versionamento com Git e acompanhamento com Scrum/Kanban."
+          ]
+        },
+        {
+          "role": "Pesquisador I",
+          "organization": "Institut Sophia Agrobiotech, INRAE - Equipe CEA",
+          "period": "01/2017 - 01/2019",
+          "summary": "Pesquisa aplicada em projetos complexos com equipes internacionais, análise de dados e comunicação científica em inglês.",
+          "bullets": [
+            "Liderança de projetos multidisciplinares com análise estatística avançada em R e Python.",
+            "Desenvolvimento de modelos preditivos para sistemas biológicos complexos.",
+            "Publicação de resultados científicos e documentação técnica para públicos internacionais."
+          ]
+        }
+      ]
+    },
+    "selectedProjects": {
+      "title": "Projetos selecionados",
+      "items": [
+        {
+          "title": "CVnoAlvo",
+          "description": "Plataforma web para adaptar currículos a vagas específicas, com análise de compatibilidade, geração de artefatos otimizados para ATS, backend em Java/Spring, segurança com JWT e integrações externas.",
+          "stack": "Java 21, Spring Boot, Spring Security, JWT, PostgreSQL, Docker",
+          "href": "https://www.cvnoalvo.com.br"
+        },
+        {
+          "title": "DSCommerce",
+          "description": "API REST de e-commerce com produtos, categorias, usuários, pedidos, autenticação OAuth2/JWT, autorização por perfis, modelagem JPA/Hibernate e documentação Swagger/OpenAPI.",
+          "stack": "Java 21, Spring Boot, Spring Security, OAuth2, PostgreSQL",
+          "href": "https://github.com/mateusribeirocampos/project-spring-boot-dscommerce"
+        },
+        {
+          "title": "SYSMP",
+          "description": "Sistema full-stack para gestão de prazos com autenticação JWT, painel administrativo, PostgreSQL e comunicação em tempo real.",
+          "stack": "Node.js, Express, React, TypeScript, WebSocket, PostgreSQL",
+          "href": "https://github.com/mateusribeirocampos"
+        }
       ]
     },
     "whatSetsMeApart": {
       "title": "Diferencial",
-      "description": "Minha trajetória na pesquisa científica (INRAE, França) me deu domínio de análise de dados, pensamento sistemático e experiência em projetos complexos com equipes internacionais. Aplico esse rigor ao desenvolvimento de software: código limpo, documentação clara e foco em qualidade."
+      "description": "Minha trajetória combina engenharia de software com rigor científico. Isso aparece na forma como documento decisões, testo fluxos críticos, analiso dados e mantenho o foco em soluções simples o suficiente para evoluir."
     },
     "education": {
       "title": "Formação",
       "computerScience": {
-        "title": "Ciência da Computação (concluído)",
+        "title": "Ciência da Computação",
         "description": "Universidade Anhembi Morumbi (2022-2026)"
       },
       "doctorate": {
@@ -36,7 +132,7 @@
       "title": "Stack Técnico",
       "backend": {
         "title": "Backend",
-        "description": "Java 21, Spring Boot 3.5, Spring Security (OAuth2, JWT), JPA/Hibernate, Node.js, Express.js"
+        "description": "Java 21, Spring Boot, Spring Security, JPA/Hibernate, Node.js, Express.js"
       },
       "testing": {
         "title": "Testes",
@@ -44,19 +140,19 @@
       },
       "frontend": {
         "title": "Frontend",
-        "description": "React, TypeScript, JavaScript (ES6+), React Native"
+        "description": "React, Next.js, TypeScript, JavaScript, React Native"
       },
       "databases": {
         "title": "Banco de Dados",
-        "description": "PostgreSQL, MySQL, SQLite"
+        "description": "PostgreSQL, MySQL, MongoDB, SQLite"
       },
       "devops": {
         "title": "DevOps",
-        "description": "Docker, GitHub Actions, Git"
+        "description": "Docker, GitHub Actions, Git, CI/CD"
       },
       "tools": {
         "title": "Deploy",
-        "description": "Render, Vercel, Supabase"
+        "description": "Vercel, Render, Supabase, Swagger/OpenAPI"
       }
     },
     "certifications": {
@@ -75,6 +171,12 @@
           "year": "2025"
         },
         {
+          "name": "Java COMPLETO - Programação Orientada a Objetos + Projetos",
+          "institution": "Udemy - Nélio Alves",
+          "hours": "54,5h",
+          "year": "2025"
+        },
+        {
           "name": "Desenvolvimento Web Frontend (HTML, CSS, JS)",
           "institution": "Udemy",
           "year": "2025"
@@ -82,11 +184,6 @@
         {
           "name": "Desenvolvimento de Aplicativo Móvel (React Native)",
           "institution": "DevPoint",
-          "year": "2024"
-        },
-        {
-          "name": "Programação Orientada a Objetos em Java",
-          "institution": "Udemy",
           "year": "2024"
         },
         {

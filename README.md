@@ -5,7 +5,7 @@
 **Backend Developer | Computer Science | Brazil**
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-brightgreen?style=for-the-badge&logo=vercel)](https://portfolio-mateusribeirocampos.vercel.app/)
-[![Next.js](https://img.shields.io/badge/Next.js-15.2.2-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-11.0-E0234E?style=for-the-badge&logo=nestjs)](https://nestjs.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql)](https://supabase.com/)
@@ -48,17 +48,17 @@ My scientific background strengthened my analytical thinking and problem-solving
 
 ### Engineering Highlights
 
-• JWT authentication and protected admin routes  
-• Production security headers (CSP, HSTS, XSS protection)  
-• Real-time analytics dashboard  
-• Internationalization with middleware routing  
+• JWT authentication and protected admin routes
+• Production security headers (CSP, HSTS, XSS protection)
+• Real-time analytics dashboard
+• Internationalization with proxy/cookie routing
 • PostgreSQL schema with indexed queries
 
 ### Frontend
 
 | Category | Technology |
 |---|---|
-| Framework | Next.js 15.2 (App Router, SSR/SSG) |
+| Framework | Next.js 16.2 (App Router, SSR/SSG) |
 | Language | TypeScript 5.8 |
 | Styling | Tailwind CSS 3.3, shadcn/ui, Radix UI |
 | Animations | Framer Motion, custom matrix rain, decoder text |
@@ -99,7 +99,7 @@ My scientific background strengthened my analytical thinking and problem-solving
 
 ```
 portfolio/
-├── frontend/                    # Next.js 15 Application
+├── frontend/                    # Next.js 16 Application
 │   ├── app/
 │   │   ├── page.tsx             # Home (with matrix rain, decoder animations)
 │   │   ├── about/               # Professional background & skills
@@ -117,7 +117,7 @@ portfolio/
 │   ├── public/locales/
 │   │   ├── en/                  # English translation files
 │   │   └── pt-BR/               # Brazilian Portuguese translation files
-│   ├── middleware.ts            # Language routing + admin auth guard
+│   ├── proxy.ts                 # Locale cookie routing + admin auth gate
 │   └── next.config.ts          # CSP headers, image config, security
 │
 ├── backend/                     # NestJS REST API
@@ -147,10 +147,10 @@ portfolio/
 
 ### Internationalization (i18n)
 
-- English (default) with clean URLs — no `/en` prefix
-- Brazilian Portuguese with `/pt-BR` prefix
+- English and Brazilian Portuguese use the same clean URLs
+- Legacy `/pt-BR` URLs redirect to the clean path and set the locale cookie
 - Cookie-based locale persistence (1-year expiry)
-- Middleware-driven language routing
+- Proxy-driven locale routing
 
 ### Blog Integration Contract
 
@@ -171,7 +171,7 @@ portfolio/
 ### Admin Dashboard
 
 - JWT authentication with bcryptjs password hashing
-- Protected `/admin` routes (frontend middleware + backend guards)
+- Protected `/admin` routes (frontend proxy gate + backend guards)
 - Contact submissions management (status updates, pagination, filtering)
 - Email notifications on new contact via Resend
 - Real-time analytics: page views, resume downloads, top pages
@@ -263,7 +263,7 @@ npm run dev        # http://localhost:3000
 ```bash
 cd backend
 npm install
-cp .env.example .env      # Add DATABASE_URL, JWT_SECRET, CORS_ORIGINS
+cp .env.example .env      # Add DATABASE_URL, JWT_SECRET, ALLOW_USER_ADMIN, CORS_ORIGINS
 npx prisma migrate dev    # Apply migrations
 npm run start:dev         # http://localhost:3001
 ```
@@ -272,7 +272,7 @@ npm run start:dev         # http://localhost:3001
 
 ```bash
 cd backend
-npm run create-admin      # Interactive script to create first admin user
+ADMIN_EMAIL=you@example.com ADMIN_PASSWORD='strong-password' npm run create-admin
 ```
 
 ### Production Build

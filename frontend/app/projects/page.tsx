@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
-import { getProjectsCopy } from '@/lib/page-copy';
+import { getProjectsCopy, resolvePageCopyLocale } from '@/lib/page-copy';
 import { buildPageMetadata } from '@/lib/seo';
 import { ProjectsContent } from './components/ProjectsContent';
 
@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Projects() {
   const cookieStore = await cookies();
+  const locale = resolvePageCopyLocale(cookieStore.get('NEXT_LOCALE')?.value);
 
-  return <ProjectsContent copy={getProjectsCopy(cookieStore.get('NEXT_LOCALE')?.value)} />;
+  return <ProjectsContent copy={getProjectsCopy(locale)} locale={locale} />;
 }

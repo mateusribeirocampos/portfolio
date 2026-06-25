@@ -4,6 +4,7 @@ import * as bcrypt from 'bcryptjs';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginDto } from './dto/login.dto';
 import { CreateAdminDto } from './dto/create-admin.dto';
+import { isAllowedAdminEmail, normalizeAdminEmail } from './admin-allow-list';
 
 @Injectable()
 export class AuthService {
@@ -13,11 +14,21 @@ export class AuthService {
   ) {}
 
   async login(loginDto: LoginDto) {
-    const { email, password } = loginDto;
+    const { password } = loginDto;
+    const email = normalizeAdminEmail(loginDto.email);
+
+    if (!isAllowedAdminEmail(email)) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
 
     // Find admin user
-    const admin = await this.prisma.adminUser.findUnique({
-      where: { email },
+    const admin = await this.prisma.adminUser.findFirst({
+      where: {
+        email: {
+          equals: email,
+          mode: 'insensitive',
+        },
+      },
     });
 
     if (!admin) {
@@ -56,7 +67,12 @@ export class AuthService {
   }
 
   async createAdmin(createAdminDto: CreateAdminDto) {
-    const { email, password, role = 'admin' } = createAdminDto;
+    const { password, role = 'admin' } = createAdminDto;
+    const email = normalizeAdminEmail(createAdminDto.email);
+
+    if (!isAllowedAdminEmail(email)) {
+      throw new UnauthorizedException('Admin email is not allowed');
+    }
 
     // Check if admin already exists
     const existingAdmin = await this.prisma.adminUser.findUnique({

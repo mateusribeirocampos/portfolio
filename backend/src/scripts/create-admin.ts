@@ -1,12 +1,26 @@
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
+import {
+  isAllowedAdminEmail,
+  normalizeAdminEmail,
+} from '../modules/admin/admin-allow-list';
 
 const prisma = new PrismaClient();
 
 async function createAdmin() {
   try {
-    const email = process.env.ADMIN_EMAIL || 'admin@mateusribeirocampos.dev';
-    const password = process.env.ADMIN_PASSWORD || 'AdminPortfolio123!';
+    const rawEmail = process.env.ADMIN_EMAIL;
+    const password = process.env.ADMIN_PASSWORD;
+
+    if (!rawEmail || !password) {
+      throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD must be configured');
+    }
+
+    const email = normalizeAdminEmail(rawEmail);
+
+    if (!isAllowedAdminEmail(email)) {
+      throw new Error('ADMIN_EMAIL must be listed in ALLOW_USER_ADMIN');
+    }
 
     // Check if admin already exists
     const existingAdmin = await prisma.adminUser.findUnique({
@@ -32,7 +46,6 @@ async function createAdmin() {
 
     console.log('Admin user created successfully!');
     console.log('Email:', email);
-    console.log('Password:', password);
     console.log('ID:', admin.id);
 
     process.exit(0);

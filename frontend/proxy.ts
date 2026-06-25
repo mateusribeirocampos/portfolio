@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 const defaultLocale = 'en';
 const locales = ['en', 'pt-BR'];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Skip middleware for static files, API routes, and Next.js internals
+  // Skip proxy for static files, API routes, and Next.js internals
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -63,7 +63,7 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
-// Specify which paths the middleware applies to
+// Specify which paths the proxy applies to
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico|images|.*\\.png$).*)'],
 };

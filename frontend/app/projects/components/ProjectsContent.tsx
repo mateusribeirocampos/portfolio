@@ -6,7 +6,7 @@ import { ExternalLink } from 'lucide-react';
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
-import { projects } from '@/data/projects';
+import { projects, type ProjectLocale } from '@/data/projects';
 import { useState } from 'react';
 
 interface ProjectsCopy {
@@ -15,7 +15,7 @@ interface ProjectsCopy {
   liveDemo: string;
 }
 
-export function ProjectsContent({ copy }: { copy: ProjectsCopy }) {
+export function ProjectsContent({ copy, locale }: { copy: ProjectsCopy; locale: ProjectLocale }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
@@ -39,7 +39,7 @@ export function ProjectsContent({ copy }: { copy: ProjectsCopy }) {
           >
             <CardHeader>
               <CardTitle>{project.title}</CardTitle>
-              <CardDescription>{project.description}</CardDescription>
+              <CardDescription>{project.description[locale] ?? project.description.en}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="relative w-full h-48 mb-4">
@@ -82,22 +82,26 @@ export function ProjectsContent({ copy }: { copy: ProjectsCopy }) {
               </div>
             </CardContent>
             <CardFooter className="flex gap-2">
-              <Button variant="outline" size="sm" asChild>
-                <Link href={project.github} target="_blank" rel="noopener noreferrer">
-                  <FaGithub className="mr-2 h-4 w-4" />
-                  GitHub
-                </Link>
-              </Button>
-              <Button size="sm" asChild>
-                <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  {copy.liveDemo}
-                </Link>
-              </Button>
+              {project.github && (
+                <Button variant="outline" size="sm" asChild>
+                  <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                    <FaGithub className="mr-2 h-4 w-4" />
+                    GitHub
+                  </Link>
+                </Button>
+              )}
+              {project.demo && (
+                <Button size="sm" asChild>
+                  <Link href={project.demo} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    {copy.liveDemo}
+                  </Link>
+                </Button>
+              )}
             </CardFooter>
           </Card>
         ))}
       </div>
     </div>
   );
-} 
+}

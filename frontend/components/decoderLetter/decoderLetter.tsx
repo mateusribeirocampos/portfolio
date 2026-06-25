@@ -1,9 +1,7 @@
-'use client'
+'use client';
 
-import React from 'react';
 import { useReducedMotion, useSpring } from 'framer-motion';
 import { memo, useEffect, useRef } from 'react';
-import './decoderLetter.css';
 
 // Mapeamento entre o tipo do caractere e a classe CSS correspondente
 const styles = {
@@ -77,12 +75,15 @@ export const DecoderLetter = memo(({ text, start = true, delay: startDelay = 0 }
     // Cada caractere é envolvido por um <span> com a classe CSS apropriada
     const render = () => {
       if (!containerRef.current) return;
-      containerRef.current.innerHTML = output.current
-        // Aqui, para cada caractere, criamos um <span>:
-        // - Se item.type === 'glyph', aplica a classe 'decoder-text-glyph'
-        // - Se item.type === 'value', aplica a classe 'decoder-text-value'
-        .map(item => `<span class="${styles[item.type as 'glyphM' | 'valueM']}">${item.value}</span>`)
-        .join('');
+      const spans = output.current.map((item, index) => {
+        const span = document.createElement('span');
+        span.className = styles[item.type as 'glyphM' | 'valueM'];
+        span.textContent = item.value;
+        span.dataset.index = String(index);
+        return span;
+      });
+
+      containerRef.current.replaceChildren(...spans);
     };
 
     const unsub = spring.on('change', v => {
@@ -108,7 +109,7 @@ export const DecoderLetter = memo(({ text, start = true, delay: startDelay = 0 }
   return <span aria-hidden ref={containerRef} />;
 });
 
-DecoderLetter.displayName = 'DecoderText';
+DecoderLetter.displayName = 'DecoderLetter';
 
 // Certifique-se de que seu CSS tenha as classes:
 // .decoder-text-glyph { ... }

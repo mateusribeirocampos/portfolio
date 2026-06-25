@@ -8,6 +8,8 @@ describe('AppModule', () => {
   let module: TestingModule;
 
   beforeEach(async () => {
+    process.env.JWT_SECRET ??= 'test-jwt-secret';
+
     module = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();

@@ -3,9 +3,6 @@ import path from 'node:path';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   outputFileTracingRoot: path.resolve(__dirname),
-  eslint: {
-    ignoreDuringBuilds: false, // Habilita ESLint durante builds para garantir qualidade do código
-  },
   images: {
     // Optimization enabled — Vercel has native Next.js Image Optimization support.
     // With unoptimized:true, Next.js skips srcset generation and fetchpriority/loading

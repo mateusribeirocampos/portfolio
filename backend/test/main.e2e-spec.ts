@@ -10,6 +10,8 @@ describe('Main Bootstrap Configuration (e2e)', () => {
   let module: TestingModule;
 
   beforeAll(async () => {
+    process.env.JWT_SECRET ??= 'test-jwt-secret';
+
     module = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();

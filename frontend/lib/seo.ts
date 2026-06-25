@@ -17,7 +17,7 @@ const copy: Record<AppLocale, Record<PageKey, { title: string; description: stri
     about: {
       title: 'About | Mateus R Campos',
       description:
-        'Learn about Mateus R Campos, his transition from agronomy to software development, and his backend engineering experience.',
+        'Learn about Mateus R Campos, a backend developer focused on Java, Spring Boot, Node.js, REST APIs, and research-driven software quality.',
     },
     projects: {
       title: 'Projects | Mateus R Campos',
@@ -44,7 +44,7 @@ const copy: Record<AppLocale, Record<PageKey, { title: string; description: stri
     about: {
       title: 'Sobre | Mateus R Campos',
       description:
-        'Conheça a trajetória de Mateus R Campos, a transição da agronomia para tecnologia e sua experiência com engenharia backend.',
+        'Conheça Mateus R Campos, desenvolvedor backend com foco em Java, Spring Boot, Node.js, APIs REST e qualidade de software orientada por pesquisa.',
     },
     projects: {
       title: 'Projetos | Mateus R Campos',

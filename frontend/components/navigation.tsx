@@ -7,6 +7,7 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { getThemeToggleState } from "@/lib/theme-toggle-label";
 import { BiWorld } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
 import { DecoderGlyphLetter } from "@/components/decoderLetter/DecoderGlyphLetter";
@@ -14,8 +15,9 @@ import { glyphsM, glyphsR, glyphsC } from "@/components/decoderLetter/glyphs";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
   const { t, i18n } = useTranslation('common');
 
   // Language dropdown states
@@ -26,18 +28,24 @@ export function Navigation() {
   const langMobileDropdownRef = useRef<HTMLDivElement | null>(null);
 
   const currentLocale = i18n.language || 'en';
+  const themeToggle = getThemeToggleState({
+    locale: currentLocale,
+    mounted: hasMounted,
+    resolvedTheme,
+    theme,
+  });
   const uiLabels = currentLocale === 'pt-BR'
     ? {
         nav: 'Navegação principal',
         language: 'Alterar idioma',
-        theme: theme === 'dark' ? 'Alternar para tema claro' : 'Alternar para tema escuro',
+        theme: themeToggle.label,
         openMenu: 'Abrir menu de navegação',
         closeMenu: 'Fechar menu de navegação',
       }
     : {
         nav: 'Primary navigation',
         language: 'Change language',
-        theme: theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme',
+        theme: themeToggle.label,
         openMenu: 'Open navigation menu',
         closeMenu: 'Close navigation menu',
       };
@@ -49,6 +57,10 @@ export function Navigation() {
     { href: '/blog', label: t("navigation.blog") },
     { href: '/contact', label: t("navigation.contact") },
   ];
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   // Handle clicks outside dropdown
   useEffect(() => {
@@ -170,7 +182,7 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(themeToggle.nextTheme)}
             aria-label={uiLabels.theme}
             title={uiLabels.theme}
           >
@@ -240,7 +252,7 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(themeToggle.nextTheme)}
             aria-label={uiLabels.theme}
             title={uiLabels.theme}
           >

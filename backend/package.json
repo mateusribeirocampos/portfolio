@@ -75,7 +75,8 @@
     "typescript-eslint": "^8.20.0"
   },
   "overrides": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "multer": "^2.2.0"
   },
   "jest": {
     "moduleFileExtensions": [

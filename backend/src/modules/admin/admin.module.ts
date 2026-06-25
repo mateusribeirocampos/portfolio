@@ -6,15 +6,18 @@ import { AdminService } from './admin.service';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { PrismaModule } from '../prisma/prisma.module';
+import { getJwtSecret } from '../../config/jwt-secret';
 
 @Module({
   imports: [
     PrismaModule,
     PassportModule,
-    JwtModule.register({
+    JwtModule.registerAsync({
       global: true,
-      secret: process.env.JWT_SECRET || 'development-secret',
-      signOptions: { expiresIn: '24h' },
+      useFactory: () => ({
+        secret: getJwtSecret(),
+        signOptions: { expiresIn: '24h' },
+      }),
     }),
   ],
   controllers: [AdminController],

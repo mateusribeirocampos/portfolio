@@ -1,22 +1,118 @@
 {
   "about": {
     "title": "About Me",
-    "subtitle": "Backend Developer (Java/Spring Boot, Node.js) | BSc Computer Science | Former Research Scientist (PhD)",
+    "subtitle": "Backend Developer focused on Java/Spring Boot, Node.js, and REST APIs, with a strong background in research, data, and technical documentation.",
+    "hero": {
+      "eyebrow": "Backend Developer | Java | Spring Boot | Node.js",
+      "headline": "Backend Developer focused on Java and Spring Boot, building secure APIs, efficient integrations, and scalable systems.",
+      "description": "I’m Mateus R. Campos, a Computer Science graduate and Backend Developer. My background also includes international scientific research, data analysis, and structured problem-solving. I apply this experience to developing REST APIs, authentication and authorization solutions, service integrations, automated tests, and reliable, maintainable applications.",
+      "badges": [
+        "Java 21 + Spring Boot",
+        "Node.js + Express",
+        "PostgreSQL + Docker",
+        "English B2"
+      ]
+    },
+    "profileSignals": [
+      {
+        "label": "Recent experience",
+        "value": "Backend Intern in 2025"
+      },
+      {
+        "label": "Technical focus",
+        "value": "REST APIs, testing, and security"
+      },
+      {
+        "label": "Own product",
+        "value": "CVnoAlvo in production"
+      },
+      {
+        "label": "Previous foundation",
+        "value": "International research"
+      }
+    ],
+    "focus": {
+      "title": "How I Work",
+      "items": [
+        {
+          "title": "Integration-oriented backend",
+          "description": "I design REST APIs, authentication, authorization, and service integrations with attention to contracts, data, and operational continuity."
+        },
+        {
+          "title": "Verifiable quality",
+          "description": "I use automated tests, TDD when it fits, documentation, and version control to reduce regressions and make maintenance easier."
+        },
+        {
+          "title": "Analytical thinking",
+          "description": "From scientific research, I bring the ability to break down problems, validate hypotheses, and communicate technical decisions clearly."
+        }
+      ]
+    },
     "journey": {
-      "title": "Who I Am",
+      "title": "Journey",
       "description": [
-        "Backend Developer with a BSc in Computer Science (2026) and international research experience with a PhD in Entomology (INRAE, France). I have accumulated over 2,200 hours of hands-on software development practice, focused on Java/Spring Boot and REST APIs.",
-        "Certified Java Spring Expert (200h) and Java Spring Professional (120h) by DevSuperior, with validated skills in TDD, unit and integration testing, Spring Security, and OAuth2/JWT."
+        "I am a backend developer with a BSc in Computer Science (2026), hands-on experience in Java, Spring Boot, Node.js, and REST APIs, and recent backend development work with Node.js.",
+        "Before technology, I worked as a researcher at INRAE in France, leading multidisciplinary projects, statistical analyses, and predictive models with R and Python. That foundation helps me write software with method, documentation, and attention to evidence."
+      ]
+    },
+    "experience": {
+      "title": "Experience",
+      "items": [
+        {
+          "role": "Backend Development Intern",
+          "organization": "Isaac Kennedy Desenvolvimento de Software LTDA",
+          "period": "08/2025 - 11/2025",
+          "summary": "Worked on backend application development and maintenance, focused on APIs, data, stability, and collaboration in an agile environment.",
+          "bullets": [
+            "Developed and maintained backend applications using Node.js.",
+            "Implemented RESTful APIs and integrated SQL and NoSQL databases.",
+            "Handled bug fixing, automated tests, Git version control, and Scrum/Kanban project tracking."
+          ]
+        },
+        {
+          "role": "Researcher I",
+          "organization": "Institut Sophia Agrobiotech, INRAE - CEA Team",
+          "period": "01/2017 - 01/2019",
+          "summary": "Applied research in complex projects with international teams, data analysis, and scientific communication in English.",
+          "bullets": [
+            "Led multidisciplinary projects with advanced statistical analysis in R and Python.",
+            "Developed predictive models for complex biological systems.",
+            "Published scientific results and produced technical documentation for international audiences."
+          ]
+        }
+      ]
+    },
+    "selectedProjects": {
+      "title": "Selected Projects",
+      "items": [
+        {
+          "title": "CVnoAlvo",
+          "description": "Web platform for adapting resumes to specific job openings, with compatibility analysis, ATS-optimized artifact generation, Java/Spring backend, JWT security, and external integrations.",
+          "stack": "Java 21, Spring Boot, Spring Security, JWT, PostgreSQL, Docker",
+          "href": "https://www.cvnoalvo.com.br"
+        },
+        {
+          "title": "DSCommerce",
+          "description": "E-commerce REST API with products, categories, users, orders, OAuth2/JWT authentication, role-based authorization, JPA/Hibernate data modeling, and Swagger/OpenAPI documentation.",
+          "stack": "Java 21, Spring Boot, Spring Security, OAuth2, PostgreSQL",
+          "href": "https://github.com/mateusribeirocampos/project-spring-boot-dscommerce"
+        },
+        {
+          "title": "SYSMP",
+          "description": "Full-stack deadline management system with JWT authentication, an admin dashboard, PostgreSQL, and real-time communication.",
+          "stack": "Node.js, Express, React, TypeScript, WebSocket, PostgreSQL",
+          "href": "https://github.com/mateusribeirocampos"
+        }
       ]
     },
     "whatSetsMeApart": {
       "title": "What Sets Me Apart",
-      "description": "My background in scientific research (INRAE, France) gave me mastery of data analysis, systematic thinking, and experience in complex projects with international teams. I apply that rigor to software development: clean code, clear documentation, and a focus on quality."
+      "description": "My path combines software engineering with scientific rigor. It shows in how I document decisions, test critical flows, analyze data, and keep solutions simple enough to evolve."
     },
     "education": {
       "title": "Education",
       "computerScience": {
-        "title": "Computer Science (completed)",
+        "title": "Computer Science",
         "description": "Universidade Anhembi Morumbi (2022-2026)"
       },
       "doctorate": {
@@ -36,7 +132,7 @@
       "title": "Tech Stack",
       "backend": {
         "title": "Backend",
-        "description": "Java 21, Spring Boot 3.5, Spring Security (OAuth2, JWT), JPA/Hibernate, Node.js, Express.js"
+        "description": "Java 21, Spring Boot, Spring Security, JPA/Hibernate, Node.js, Express.js"
       },
       "testing": {
         "title": "Testing",
@@ -44,19 +140,19 @@
       },
       "frontend": {
         "title": "Frontend",
-        "description": "React, TypeScript, JavaScript (ES6+), React Native"
+        "description": "React, Next.js, TypeScript, JavaScript, React Native"
       },
       "databases": {
         "title": "Databases",
-        "description": "PostgreSQL, MySQL, SQLite"
+        "description": "PostgreSQL, MySQL, MongoDB, SQLite"
       },
       "devops": {
         "title": "DevOps",
-        "description": "Docker, GitHub Actions, Git"
+        "description": "Docker, GitHub Actions, Git, CI/CD"
       },
       "tools": {
         "title": "Deploy",
-        "description": "Render, Vercel, Supabase"
+        "description": "Vercel, Render, Supabase, Swagger/OpenAPI"
       }
     },
     "certifications": {
@@ -75,6 +171,12 @@
           "year": "2025"
         },
         {
+          "name": "Java COMPLETO - Object-Oriented Programming + Projects",
+          "institution": "Udemy - Nélio Alves",
+          "hours": "54.5h",
+          "year": "2025"
+        },
+        {
           "name": "Frontend Web Development (HTML, CSS, JS)",
           "institution": "Udemy",
           "year": "2025"
@@ -82,11 +184,6 @@
         {
           "name": "Mobile App Development (React Native)",
           "institution": "DevPoint",
-          "year": "2024"
-        },
-        {
-          "name": "Object-Oriented Programming in Java",
-          "institution": "Udemy",
           "year": "2024"
         },
         {
