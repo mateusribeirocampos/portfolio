@@ -1,6 +1,7 @@
 import {
   Controller,
   Get,
+  Logger,
   Param,
   Res,
   HttpException,
@@ -12,6 +13,8 @@ import { GetIp, GetUserAgent } from '../../common/decorators/get-ip.decorator';
 
 @Controller('api/resume')
 export class ResumeController {
+  private readonly logger = new Logger(ResumeController.name);
+
   constructor(private readonly resumeService: ResumeService) {}
 
   @Get('download/:language')
@@ -22,7 +25,7 @@ export class ResumeController {
     @GetUserAgent() userAgent: string,
   ) {
     try {
-      const { filePath, fileName, mimeType } =
+      const { fileBuffer, fileName, mimeType } =
         await this.resumeService.downloadResume(language, ip, userAgent);
 
       res.setHeader('Content-Type', mimeType);
@@ -30,8 +33,15 @@ export class ResumeController {
         'Content-Disposition',
         `attachment; filename="${fileName}"`,
       );
-      res.sendFile(filePath);
-    } catch {
+      res.send(fileBuffer);
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      this.logger.error(
+        `Erro no download do currículo (${language})`,
+        error instanceof Error ? error.stack : String(error),
+      );
       throw new HttpException(
         'Erro ao baixar currículo',
         HttpStatus.INTERNAL_SERVER_ERROR,

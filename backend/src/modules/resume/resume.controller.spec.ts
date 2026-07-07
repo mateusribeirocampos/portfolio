@@ -12,7 +12,7 @@ const resumeServiceMock = {
 // Mock da Response do Express
 const createMockResponse = (): Partial<Response> => ({
   setHeader: jest.fn(),
-  sendFile: jest.fn(),
+  send: jest.fn(),
 });
 
 describe('ResumeController', () => {
@@ -31,7 +31,7 @@ describe('ResumeController', () => {
   describe('GET /api/resume/download/:language', () => {
     it('deve definir headers corretos e enviar o arquivo', async () => {
       const mockFileData = {
-        filePath: '/app/assets/resumes/resume-en-port.pdf',
+        fileBuffer: Buffer.from('pdf-data'),
         fileName: 'resume-en-port.pdf',
         mimeType: 'application/pdf',
       };
@@ -58,12 +58,12 @@ describe('ResumeController', () => {
         'Content-Disposition',
         'attachment; filename="resume-en-port.pdf"',
       );
-      expect(res.sendFile).toHaveBeenCalledWith(mockFileData.filePath);
+      expect(res.send).toHaveBeenCalledWith(mockFileData.fileBuffer);
     });
 
     it('deve usar o arquivo PT-BR para idioma pt-BR', async () => {
       const mockFileData = {
-        filePath: '/app/assets/resumes/resume-pt-br-port.pdf',
+        fileBuffer: Buffer.from('pdf-data'),
         fileName: 'resume-pt-br-port.pdf',
         mimeType: 'application/pdf',
       };

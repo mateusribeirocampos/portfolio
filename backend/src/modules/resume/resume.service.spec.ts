@@ -3,12 +3,15 @@ import { NotFoundException } from '@nestjs/common';
 import { ResumeService } from './resume.service';
 import { PrismaService } from '../prisma/prisma.service';
 
-// Mantém todas as funções reais do fs, mas substitui existsSync por um mock controlável
-jest.mock('fs', () => ({
-  ...jest.requireActual<typeof import('fs')>('fs'),
-  existsSync: jest.fn(),
-}));
-import * as fs from 'fs';
+// O service busca o PDF do frontend via fetch (fonte única em frontend/public)
+const fetchMock = jest.fn();
+global.fetch = fetchMock as unknown as typeof fetch;
+
+const pdfResponse = (ok: boolean) =>
+  ({
+    ok,
+    arrayBuffer: () => Promise.resolve(new ArrayBuffer(8)),
+  }) as unknown as Response;
 
 const prismaMock = {
   resumeDownload: {
@@ -36,7 +39,7 @@ describe('ResumeService', () => {
   describe('downloadResume', () => {
     it('deve registrar download e retornar arquivo PT-BR', async () => {
       prismaMock.resumeDownload.create.mockResolvedValue({});
-      (fs.existsSync as jest.Mock).mockReturnValue(true);
+      fetchMock.mockResolvedValue(pdfResponse(true));
 
       const result = await service.downloadResume('pt-BR', '127.0.0.1', 'Mozilla/5.0');
 
@@ -45,12 +48,15 @@ describe('ResumeService', () => {
       });
       expect(result.fileName).toBe('resume-pt-br-port.pdf');
       expect(result.mimeType).toBe('application/pdf');
-      expect(result.filePath).toContain('resume-pt-br-port.pdf');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/resume-pt-br-port.pdf'),
+      );
+      expect(result.fileBuffer).toBeInstanceOf(Buffer);
     });
 
     it('deve registrar download e retornar arquivo EN para idioma "en"', async () => {
       prismaMock.resumeDownload.create.mockResolvedValue({});
-      (fs.existsSync as jest.Mock).mockReturnValue(true);
+      fetchMock.mockResolvedValue(pdfResponse(true));
 
       const result = await service.downloadResume('en', '10.0.0.1', 'Chrome/91.0');
 
@@ -62,16 +68,16 @@ describe('ResumeService', () => {
 
     it('deve retornar arquivo EN para qualquer idioma diferente de pt-BR', async () => {
       prismaMock.resumeDownload.create.mockResolvedValue({});
-      (fs.existsSync as jest.Mock).mockReturnValue(true);
+      fetchMock.mockResolvedValue(pdfResponse(true));
 
       const result = await service.downloadResume('fr', '1.2.3.4', 'Firefox/89.0');
 
       expect(result.fileName).toBe('resume-en-port.pdf');
     });
 
-    it('deve lançar NotFoundException quando o arquivo não existe no disco', async () => {
+    it('deve lançar NotFoundException quando o frontend não retorna o arquivo', async () => {
       prismaMock.resumeDownload.create.mockResolvedValue({});
-      (fs.existsSync as jest.Mock).mockReturnValue(false);
+      fetchMock.mockResolvedValue(pdfResponse(false));
 
       await expect(
         service.downloadResume('en', '127.0.0.1', 'Mozilla/5.0'),
@@ -80,7 +86,7 @@ describe('ResumeService', () => {
 
     it('deve registrar o download no banco mesmo quando o arquivo não existe', async () => {
       prismaMock.resumeDownload.create.mockResolvedValue({});
-      (fs.existsSync as jest.Mock).mockReturnValue(false);
+      fetchMock.mockResolvedValue(pdfResponse(false));
 
       await service.downloadResume('en', '5.5.5.5', 'Bot/1.0').catch(() => {});
 
