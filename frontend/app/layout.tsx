@@ -5,14 +5,32 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Script from 'next/script';
 import { LayoutClient } from '@/components/layout-client';
-import { cookies } from 'next/headers';
-import { buildPageMetadata, getSiteUrl, resolveLocale } from '@/lib/seo';
+import { cookies, headers } from 'next/headers';
+import { JsonLd } from '@/components/json-ld';
+import {
+  buildPageMetadata,
+  buildPersonJsonLd,
+  buildWebSiteJsonLd,
+  getSiteUrl,
+  resolveLocale,
+} from '@/lib/seo';
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function generateMetadata(): Promise<Metadata> {
+// The proxy stamps x-app-locale from the URL (/pt-BR/*) or the NEXT_LOCALE
+// cookie, so crawlers without cookies still get pt-BR on /pt-BR routes.
+async function resolveRequestLocale(): Promise<string> {
+  const headerStore = await headers();
+  const headerLocale = headerStore.get('x-app-locale');
+  if (headerLocale) {
+    return headerLocale;
+  }
   const cookieStore = await cookies();
-  const locale = resolveLocale(cookieStore.get('NEXT_LOCALE')?.value);
+  return cookieStore.get('NEXT_LOCALE')?.value || 'en';
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = resolveLocale(await resolveRequestLocale());
 
   return {
     metadataBase: new URL(getSiteUrl()),
@@ -41,9 +59,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Get locale from cookie (set by middleware)
-  const cookieStore = await cookies();
-  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+  // Locale resolved from the proxy header (URL-aware) with cookie fallback
+  const locale = await resolveRequestLocale();
   const skipLinkLabel = locale === 'pt-BR' ? 'Pular para o conteúdo principal' : 'Skip to main content';
 
   return (
@@ -57,6 +74,8 @@ export default async function RootLayout({
           name="google-adsense-account"
           content="ca-pub-9569251321798167"
         ></meta>
+        <JsonLd data={buildPersonJsonLd()} />
+        <JsonLd data={buildWebSiteJsonLd()} />
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <a href="#main-content" className="skip-link">

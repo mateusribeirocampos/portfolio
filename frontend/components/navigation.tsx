@@ -12,6 +12,7 @@ import { BiWorld } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
 import { DecoderGlyphLetter } from "@/components/decoderLetter/DecoderGlyphLetter";
 import { glyphsM, glyphsR, glyphsC } from "@/components/decoderLetter/glyphs";
+import { INDEXABLE_CLEAN_PATHS, isPtBrPathname, stripPtBrPrefix, withPtBrPrefix } from "@/lib/locale-paths";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,12 +51,17 @@ export function Navigation() {
         closeMenu: 'Close navigation menu',
       };
 
+  // Keep internal links inside the /pt-BR URL variant when browsing it, so
+  // crawlers and users stay on the same language version.
+  const onPtBrPath = isPtBrPathname(pathname);
+  const localizePath = (href: string) => (onPtBrPath ? withPtBrPrefix(href) : href);
+
   const navItems = [
-    { href: '/', label: t("navigation.home") },
-    { href: '/projects', label: t("navigation.projects") },
-    { href: '/about', label: t("navigation.about") },
-    { href: '/blog', label: t("navigation.blog") },
-    { href: '/contact', label: t("navigation.contact") },
+    { href: localizePath('/'), label: t("navigation.home") },
+    { href: localizePath('/projects'), label: t("navigation.projects") },
+    { href: localizePath('/about'), label: t("navigation.about") },
+    { href: localizePath('/blog'), label: t("navigation.blog") },
+    { href: localizePath('/contact'), label: t("navigation.contact") },
   ];
 
   useEffect(() => {
@@ -86,7 +92,8 @@ export function Navigation() {
     };
   }, []);
 
-  // Handle language change via cookie (no URL change needed)
+  // Handle language change: persist the cookie and move to the URL variant
+  // of the target language (/about <-> /pt-BR/about)
   const handleLanguageChange = (locale: string, isMobile: boolean) => {
     if (isMobile) {
       setIsMobileLangDropdownOpen(false);
@@ -100,8 +107,17 @@ export function Navigation() {
     // Change the language immediately in i18next
     i18n.changeLanguage(locale);
 
-    // Refresh the page to apply the new locale
-    window.location.reload();
+    const cleanPath = stripPtBrPrefix(pathname);
+    const hasPtBrRoute = INDEXABLE_CLEAN_PATHS.includes(cleanPath);
+    const targetPath =
+      locale === 'pt-BR' && hasPtBrRoute ? withPtBrPrefix(cleanPath) : cleanPath;
+
+    if (targetPath === pathname) {
+      // Same URL for both languages (e.g. /admin): just re-render
+      window.location.reload();
+    } else {
+      window.location.assign(targetPath);
+    }
   };
 
   return (

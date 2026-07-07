@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { stripPtBrPrefix, withPtBrPrefix } from '@/lib/locale-paths';
+
 export type AppLocale = 'en' | 'pt-BR';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-mateusribeirocampos.vercel.app';
@@ -72,6 +74,34 @@ export function getSiteUrl(): string {
   return SITE_URL;
 }
 
+export function buildPersonJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Mateus Ribeiro de Campos',
+    alternateName: 'Mateus R Campos',
+    url: SITE_URL,
+    image: new URL(DEFAULT_OG_IMAGE, SITE_URL).toString(),
+    jobTitle: 'Backend Developer',
+    knowsAbout: ['Java', 'Spring Boot', 'Node.js', 'NestJS', 'React', 'Next.js', 'PostgreSQL', 'TypeScript'],
+    sameAs: [
+      'https://github.com/mateusribeirocampos',
+      'https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/',
+    ],
+  };
+}
+
+export function buildWebSiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Mateus R Campos Portfolio',
+    url: SITE_URL,
+    inLanguage: ['en', 'pt-BR'],
+    author: { '@type': 'Person', name: 'Mateus Ribeiro de Campos' },
+  };
+}
+
 export function buildPageMetadata({
   locale,
   page,
@@ -85,12 +115,19 @@ export function buildPageMetadata({
   const pageCopy = copy[resolvedLocale][page];
   const canonicalUrl = new URL(pathname, SITE_URL).toString();
   const ogLocale = resolvedLocale === 'pt-BR' ? 'pt_BR' : 'en_US';
+  const cleanPath = stripPtBrPrefix(pathname);
+  const ptBrPath = withPtBrPrefix(cleanPath);
 
   return {
     title: pageCopy.title,
     description: pageCopy.description,
     alternates: {
       canonical: pathname,
+      languages: {
+        en: cleanPath,
+        'pt-BR': ptBrPath,
+        'x-default': cleanPath,
+      },
     },
     openGraph: {
       type: 'website',

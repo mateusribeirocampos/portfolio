@@ -5,7 +5,7 @@
 **Backend Developer | Computer Science | Brazil**
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-brightgreen?style=for-the-badge&logo=vercel)](https://portfolio-mateusribeirocampos.vercel.app/)
-[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-11.0-E0234E?style=for-the-badge&logo=nestjs)](https://nestjs.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=for-the-badge&logo=postgresql)](https://supabase.com/)
@@ -58,7 +58,7 @@ My scientific background strengthened my analytical thinking and problem-solving
 
 | Category | Technology |
 |---|---|
-| Framework | Next.js 16.2 (App Router, SSR/SSG) |
+| Framework | Next.js 15.5 (App Router, SSR) + React 18.2 |
 | Language | TypeScript 5.8 |
 | Styling | Tailwind CSS 3.3, shadcn/ui, Radix UI |
 | Animations | Framer Motion, custom matrix rain, decoder text |
@@ -90,7 +90,7 @@ My scientific background strengthened my analytical thinking and problem-solving
 | Database | Supabase (PostgreSQL) |
 | CI / Keep-Alive | GitHub Actions |
 | Email | Resend (transactional email notifications) |
-| SEO | next-sitemap (auto sitemap + robots.txt) |
+| SEO | next-sitemap, hreflang alternates, JSON-LD (Person/WebSite) |
 | Package Manager | npm |
 
 ---
@@ -99,7 +99,7 @@ My scientific background strengthened my analytical thinking and problem-solving
 
 ```
 portfolio/
-├── frontend/                    # Next.js 16 Application
+├── frontend/                    # Next.js 15 Application
 │   ├── app/
 │   │   ├── page.tsx             # Home (with matrix rain, decoder animations)
 │   │   ├── about/               # Professional background & skills
@@ -117,7 +117,7 @@ portfolio/
 │   ├── public/locales/
 │   │   ├── en/                  # English translation files
 │   │   └── pt-BR/               # Brazilian Portuguese translation files
-│   ├── proxy.ts                 # Locale cookie routing + admin auth gate
+│   ├── middleware.ts            # Locale routing + admin auth gate
 │   └── next.config.ts          # CSP headers, image config, security
 │
 ├── backend/                     # NestJS REST API
@@ -147,10 +147,17 @@ portfolio/
 
 ### Internationalization (i18n)
 
-- English and Brazilian Portuguese use the same clean URLs
-- Legacy `/pt-BR` URLs redirect to the clean path and set the locale cookie
-- Cookie-based locale persistence (1-year expiry)
-- Proxy-driven locale routing
+- English is served at clean URLs (`/`, `/about`, …); Brazilian Portuguese has its own indexable URLs under `/pt-BR` (`/pt-BR/about`, …)
+- Both variants are cross-linked with `hreflang` alternates (`en`, `pt-BR`, `x-default`) so search engines index each language at its own URL
+- Cookie-based locale persistence (1-year expiry) keeps the chosen language on clean URLs
+- Middleware-driven locale routing (`x-app-locale` request header feeds the root layout); unknown `/pt-BR/*` paths redirect to the clean URL
+
+### SEO
+
+- `next-sitemap` generates `sitemap.xml` + `robots.txt` on every build (10 URLs, both language variants, `/admin` excluded)
+- Per-page metadata: title, description, canonical, Open Graph, Twitter Card, in both languages
+- JSON-LD structured data (`Person` + `WebSite`) rendered without `dangerouslySetInnerHTML`
+- Google Search Console verification via meta tag + HTML file
 
 ### Blog Integration Contract
 
@@ -365,6 +372,6 @@ ML-based image similarity and recommendation system.
 
 [portfolio-mateusribeirocampos.vercel.app](https://portfolio-mateusribeirocampos.vercel.app/) · [GitHub](https://github.com/mateusribeirocampos) · [LinkedIn](https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/)
 
-*Last updated: February 2026*
+*Last updated: July 2026*
 
 </div>
