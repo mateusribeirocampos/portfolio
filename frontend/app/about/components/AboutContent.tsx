@@ -174,7 +174,7 @@ export function AboutContent({
   ];
 
   return (
-    <main className="container py-12">
+    <div className="container mx-auto px-[15px] py-12">
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 flex flex-col gap-4">
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
@@ -408,6 +408,6 @@ export function AboutContent({
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

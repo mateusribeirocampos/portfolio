@@ -66,7 +66,7 @@ export function ContactContent({ copy }: { copy: ContactCopy }) {
   };
 
   return (
-    <div className="container py-12">
+    <div className="container mx-auto px-[15px] py-12">
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col gap-4 mb-12">
           <h1 className="text-3xl font-bold">{copy.title}</h1>

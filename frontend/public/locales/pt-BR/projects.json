@@ -1,7 +1,16 @@
 {
   "projects": {
-    "title": "Projetos",
-    "pTitle": "Uma coleção de projetos técnicos com foco em desenvolvimento backend Java Spring Boot, APIs REST e aplicações full-stack.",
+    "eyebrow": "Projetos / Engenharia aplicada",
+    "title": "Sistemas construídos de dentro para fora.",
+    "pTitle": "Uma seleção de APIs e produtos full stack apresentada pelas decisões de arquitetura, segurança, dados e entrega.",
+    "featuredTitle": "Projetos em destaque",
+    "featuredDescription": "Três contextos diferentes, com o backend ocupando o centro da solução.",
+    "architectureLabel": "Fluxo da solução",
+    "evidenceLabel": "Evidências técnicas",
+    "stackLabel": "Tecnologias",
+    "otherTitle": "Outros trabalhos",
+    "otherDescription": "Aplicações web, mobile e estudos que complementam minha atuação full stack.",
+    "sourceCode": "Código",
     "liveDemo": "Demonstração"
   }
 }
