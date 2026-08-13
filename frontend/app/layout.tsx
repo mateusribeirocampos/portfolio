@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import Script from 'next/script';
@@ -15,7 +15,19 @@ import {
   resolveLocale,
 } from '@/lib/seo';
 
-const inter = Inter({ subsets: ["latin"] });
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plex-sans",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
+  display: "swap",
+});
 
 // The proxy stamps x-app-locale from the URL (/pt-BR/*) or the NEXT_LOCALE
 // cookie, so crawlers without cookies still get pt-BR on /pt-BR routes.
@@ -62,6 +74,8 @@ export default async function RootLayout({
   // Locale resolved from the proxy header (URL-aware) with cookie fallback
   const locale = await resolveRequestLocale();
   const skipLinkLabel = locale === 'pt-BR' ? 'Pular para o conteúdo principal' : 'Skip to main content';
+  const machinePortfolioHref = '/portfolio.md?lang=' + (locale === 'pt-BR' ? 'pt-BR' : 'en');
+  const llmsHref = '/llms.txt?lang=' + (locale === 'pt-BR' ? 'pt-BR' : 'en');
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -76,8 +90,10 @@ export default async function RootLayout({
         ></meta>
         <JsonLd data={buildPersonJsonLd()} />
         <JsonLd data={buildWebSiteJsonLd()} />
+        <link rel="alternate" type="text/markdown" href={machinePortfolioHref} title="Machine-readable portfolio" />
+        <link rel="alternate" type="text/plain" href={llmsHref} title="LLM content index" />
       </head>
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
+      <body className={plexSans.variable + " " + plexMono.variable + " flex min-h-screen flex-col font-sans"}>
         <a href="#main-content" className="skip-link">
           {skipLinkLabel}
         </a>

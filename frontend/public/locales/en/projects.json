@@ -1,7 +1,16 @@
 {
   "projects": {
-    "title": "Projects",
-    "pTitle": "A collection of my technical projects, with a focus on Java Spring Boot backend development, REST APIs, and full-stack applications.",
-    "liveDemo": "Live Demo"
+    "eyebrow": "Projects / Applied engineering",
+    "title": "Systems built from the inside out.",
+    "pTitle": "A selection of APIs and full-stack products presented through their architecture, security, data, and delivery decisions.",
+    "featuredTitle": "Featured projects",
+    "featuredDescription": "Three different contexts with the backend at the center of the solution.",
+    "architectureLabel": "Solution flow",
+    "evidenceLabel": "Engineering evidence",
+    "stackLabel": "Technologies",
+    "otherTitle": "Other work",
+    "otherDescription": "Web, mobile, and study projects that complement my full-stack practice.",
+    "sourceCode": "Source",
+    "liveDemo": "Live demo"
   }
 }

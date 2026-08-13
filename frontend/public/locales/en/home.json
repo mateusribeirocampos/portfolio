@@ -1,16 +1,57 @@
 {
   "home": {
-    "title": "Hi, I'm Mateus R Campos",
-    "pTitle": "Backend Developer (Java, Spring Boot) | BSc in Computer Science | Node.js",
-    "contact_button": "Get in Touch",
-    "projects_button": "View Projects",
-    "subtitle": "Skills & Expertise",
-    "pSubtitle": "Java Developer focused on backend development with Spring Boot 3.5 and RESTful API architecture. Bachelor's in Computer Science combined with a background in international scientific research, bringing an analytical and methodical approach to software engineering.",
-    "TitleCard1": "Backend Java",
-    "pCard1": "Spring Boot 3.5, Spring Security, JPA, Hibernate, REST APIs",
-    "TitleCard2": "Frontend Web",
-    "pCard2": "React, TypeScript, Next.js, Tailwind CSS, Vite",
-    "TitleCard3": "Scientific Research",
-    "pCard3": "PhD in Entomology with statistical analysis, biological modeling, and scientific methodology applied to development."
+    "eyebrow": "Mateus R. Campos / Backend Developer",
+    "availability": "Available for backend opportunities",
+    "title": "Secure APIs and backend systems built to evolve.",
+    "description": "I build REST services with Java, Spring Boot, and Node.js, covering authentication, persistence, automated testing, and documentation. When the product calls for it, I also deliver the interface with React and Next.js.",
+    "projects_button": "View projects",
+    "contact_button": "Get in touch",
+    "github_button": "View GitHub",
+    "stack_label": "Core stack",
+    "stack": "Java 21 · Spring Boot · Node.js · PostgreSQL",
+    "trace": {
+      "request": "Request",
+      "request_value": "POST /api/resource",
+      "security": "Security",
+      "security_value": "JWT + roles",
+      "persistence": "Persistence",
+      "persistence_value": "PostgreSQL",
+      "response": "Response",
+      "response_value": "201 Created"
+    },
+    "evidence": {
+      "eyebrow": "Work you can inspect",
+      "title": "Backend demonstrated through products, not technology lists.",
+      "description": "Three projects showing security, data modeling, integrations, and operations in different contexts.",
+      "project_link": "View technical details"
+    },
+    "process": {
+      "eyebrow": "How I build",
+      "title": "From API contract to deployment.",
+      "description": "A delivery sequence grounded in behavior, security, and maintainability.",
+      "steps": {
+        "contract": {
+          "title": "Contract and domain",
+          "description": "I define resources, responsibilities, responses, and rules before coupling the implementation."
+        },
+        "security": {
+          "title": "Security and data",
+          "description": "Authentication, authorization, validation, and persistence are treated as part of the design."
+        },
+        "quality": {
+          "title": "Verifiable quality",
+          "description": "Automated tests and documentation protect critical flows and make change easier."
+        },
+        "delivery": {
+          "title": "Delivery and operations",
+          "description": "Containers, environment configuration, and actionable error reporting close the loop."
+        }
+      }
+    },
+    "closing": {
+      "eyebrow": "Next challenge",
+      "title": "I look for problems that deserve a clear, secure, and sustainable backend.",
+      "description": "I am open to backend and full-stack opportunities in teams that value technical quality, collaboration, and continuous learning."
+    }
   }
 }

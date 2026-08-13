@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer';
 import { Providers } from '@/providers';
 import MatrixRain from './matrixRain';
 import { PageTracker } from './page-tracker';
+import { MachineReadablePortfolio } from './machine-readable-portfolio';
 
 function ScrollToTop() {
   const pathname = usePathname();
@@ -28,10 +29,11 @@ export function LayoutClient({
       <ScrollToTop />
       <PageTracker />
       <MatrixRain />
+      <MachineReadablePortfolio lang={lang} />
       <div className="flex-1 flex flex-col">
         <Navigation />
         <main id="main-content" className="flex-1 flex flex-col" tabIndex={-1}>
-          <div className="container flex-1 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex-1 w-full">
             {children}
           </div>
         </main>

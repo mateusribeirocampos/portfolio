@@ -1,16 +1,57 @@
 {
   "home": {
-    "title": "Olá, eu sou Mateus R Campos",
-    "pTitle": "Desenvolvedor Backend (Java, Spring Boot) | Bacharel em Ciência da Computação | Node.js",
-    "contact_button": "Entrar em Contato",
-    "projects_button": "Ver Projetos",
-    "subtitle": "Habilidades e Especialidades",
-    "pSubtitle": "Desenvolvedor Java com foco em backend, especializado em Spring Boot 3.5 e arquitetura de APIs RESTful. Bacharel em Ciência da Computação com background em pesquisa científica internacional, trazendo uma abordagem analítica e metodológica para engenharia de software.",
-    "TitleCard1": "Backend Java",
-    "pCard1": "Spring Boot 3.5, Spring Security, JPA, Hibernate, REST APIs",
-    "TitleCard2": "Frontend Web",
-    "pCard2": "React, TypeScript, Next.js, Tailwind CSS, Vite",
-    "TitleCard3": "Pesquisa Científica",
-    "pCard3": "PhD em Entomologia com análise estatística, modelagem biológica e metodologia científica aplicada ao desenvolvimento."
+    "eyebrow": "Mateus R. Campos / Backend Developer",
+    "availability": "Disponível para oportunidades backend",
+    "title": "APIs seguras e sistemas backend feitos para evoluir.",
+    "description": "Desenvolvo serviços REST com Java, Spring Boot e Node.js, cobrindo autenticação, persistência, testes automatizados e documentação. Quando o produto exige, entrego também a interface em React e Next.js.",
+    "projects_button": "Ver projetos",
+    "contact_button": "Entrar em contato",
+    "github_button": "Ver GitHub",
+    "stack_label": "Stack principal",
+    "stack": "Java 21 · Spring Boot · Node.js · PostgreSQL",
+    "trace": {
+      "request": "Requisição",
+      "request_value": "POST /api/resource",
+      "security": "Segurança",
+      "security_value": "JWT + perfis",
+      "persistence": "Persistência",
+      "persistence_value": "PostgreSQL",
+      "response": "Resposta",
+      "response_value": "201 Created"
+    },
+    "evidence": {
+      "eyebrow": "Trabalho comprovável",
+      "title": "Backend demonstrado em produtos, não apenas em listas de tecnologias.",
+      "description": "Três projetos que mostram segurança, modelagem de dados, integrações e operação em contextos diferentes.",
+      "project_link": "Ver detalhes técnicos"
+    },
+    "process": {
+      "eyebrow": "Como construo",
+      "title": "Do contrato da API ao deploy.",
+      "description": "Uma sequência de trabalho orientada a comportamento, segurança e manutenção.",
+      "steps": {
+        "contract": {
+          "title": "Contrato e domínio",
+          "description": "Defino recursos, responsabilidades, respostas e regras antes de acoplar a implementação."
+        },
+        "security": {
+          "title": "Segurança e dados",
+          "description": "Trato autenticação, autorização, validação e persistência como partes do desenho."
+        },
+        "quality": {
+          "title": "Qualidade verificável",
+          "description": "Testes automatizados e documentação protegem os fluxos críticos e facilitam evolução."
+        },
+        "delivery": {
+          "title": "Entrega e operação",
+          "description": "Containerização, configuração por ambiente e observação dos erros fecham o ciclo."
+        }
+      }
+    },
+    "closing": {
+      "eyebrow": "Próximo desafio",
+      "title": "Procuro problemas que mereçam um backend claro, seguro e sustentável.",
+      "description": "Estou aberto a oportunidades backend e full stack em equipes que valorizem qualidade técnica, colaboração e aprendizado contínuo."
+    }
   }
 }

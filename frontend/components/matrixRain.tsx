@@ -9,54 +9,70 @@ const MatrixRain = () => {
     const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const glyphs = 'アァカサタナハマヤャラワガザダバパ0123456789{}[]/=><'.split('');
+    const protocolTokens = ['GET', 'POST', 'JWT', '200', '201', 'SQL', 'API'];
+    const fontSize = 13;
+    const columnWidth = 24;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let drops: number[] = [];
+    let animationFrame = 0;
+    let previousFrame = 0;
 
-    const chars = 'アァカサタナハマヤャラワガザダバパ0123456789'.split('');
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    // Definir o tipo explicitamente para number[]
-    const drops: number[] = Array.from({ length: Math.floor(columns) }, () => 1);
+    const resizeCanvas = () => {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(window.innerWidth * ratio);
+      canvas.height = Math.floor(window.innerHeight * ratio);
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+      const columns = Math.ceil(window.innerWidth / columnWidth);
+      drops = Array.from({ length: columns }, (_, index) => drops[index] ?? Math.random() * -30);
+    };
 
     const draw = () => {
-      // Obtém os valores CSS computados
       const computedStyle = getComputedStyle(document.documentElement);
       const transparentMatrix = computedStyle.getPropertyValue('--transparent-matrix');
       const fillStyle = computedStyle.getPropertyValue('--fillstyle');
-      
-      // Fundo semi-transparente para efeito de rastro
-      ctx.fillStyle = transparentMatrix;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Define a cor das letras
+      ctx.fillStyle = transparentMatrix;
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
       ctx.fillStyle = fillStyle;
-      ctx.font = `${fontSize}px monospace`;
+      ctx.font = fontSize + 'px monospace';
 
       drops.forEach((y: number, i: number) => {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        const x = i * fontSize;
+        const useProtocolToken = Math.random() > 0.965;
+        const source = useProtocolToken ? protocolTokens : glyphs;
+        const text = source[Math.floor(Math.random() * source.length)];
+        const x = i * columnWidth;
         ctx.fillText(text, x, y * fontSize);
 
-        if (y * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
+        if (y * fontSize > window.innerHeight && Math.random() > 0.975) {
+          drops[i] = Math.random() * -12;
         } else {
           drops[i]++;
         }
       });
     };
 
-    const interval = setInterval(draw, 50);
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const animate = (timestamp: number) => {
+      if (timestamp - previousFrame >= 58) {
+        draw();
+        previousFrame = timestamp;
+      }
+      animationFrame = window.requestAnimationFrame(animate);
     };
 
-    window.addEventListener('resize', handleResize);
+    resizeCanvas();
+    draw();
+    if (!reducedMotion) animationFrame = window.requestAnimationFrame(animate);
+
+    window.addEventListener('resize', resizeCanvas);
 
     return () => {
-      clearInterval(interval);
-      window.removeEventListener('resize', handleResize);
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener('resize', resizeCanvas);
     };
   }, []);
 
@@ -70,7 +86,7 @@ const MatrixRain = () => {
         zIndex: -1,
         width: '100%',
         height: '100%',
-        backgroundColor: 'transparent', // Removido o fundo preto fixo para usar as cores do tema
+        backgroundColor: 'transparent',
       }}
     />
   );
