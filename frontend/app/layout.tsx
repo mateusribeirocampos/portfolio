@@ -57,6 +57,9 @@ export async function generateMetadata(): Promise<Metadata> {
     ],
     verification: {
       google: "Wf-4O8RsQVfHJBbJF_d1-g5oypYCRD3T__7DkQ20I1c",
+      other: {
+        "msvalidate.01": "7FC91CE63CA6FBB0300E21DE106E9BE9",
+      },
     },
     ...buildPageMetadata({
       locale,
