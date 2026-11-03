@@ -4,7 +4,7 @@ import { stripPtBrPrefix, withPtBrPrefix } from '@/lib/locale-paths';
 
 export type AppLocale = 'en' | 'pt-BR';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-mateusribeirocampos.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mateusrcampos.com.br';
 const DEFAULT_OG_IMAGE = '/images/home/profilelinkedin.jpeg';
 
 type PageKey = 'home' | 'about' | 'projects' | 'blog' | 'contact';

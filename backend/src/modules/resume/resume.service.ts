@@ -4,7 +4,7 @@ import { PrismaService } from '../prisma/prisma.service';
 // Os PDFs vivem apenas em frontend/public/ (fonte única); o backend os busca
 // de lá para manter o tracking sem precisar de uma cópia própria em assets/.
 const FRONTEND_URL =
-  process.env.FRONTEND_URL || 'https://portfolio-mateusribeirocampos.vercel.app';
+  process.env.FRONTEND_URL || 'https://mateusrcampos.com.br';
 
 @Injectable()
 export class ResumeService {

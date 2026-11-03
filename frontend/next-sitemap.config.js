@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: 'https://portfolio-mateusribeirocampos.vercel.app',
+  siteUrl: 'https://mateusrcampos.com.br',
   generateRobotsTxt: true,
   changefreq: 'weekly',
   priority: 0.7,
