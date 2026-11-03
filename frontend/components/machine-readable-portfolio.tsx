@@ -19,7 +19,7 @@ import aboutEn from '@/public/locales/en/about.json';
 import aboutPtBr from '@/public/locales/pt-BR/about.json';
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-mateusribeirocampos.vercel.app';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://mateusrcampos.com.br';
 
 const uiCopy = {
   en: {

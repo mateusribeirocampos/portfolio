@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://portfolio-mateusribeirocampos.vercel.app
+Host: https://mateusrcampos.com.br
 
 # Sitemaps
-Sitemap: https://portfolio-mateusribeirocampos.vercel.app/sitemap.xml
+Sitemap: https://mateusrcampos.com.br/sitemap.xml

@@ -4,7 +4,7 @@
 
 **Backend Developer | Computer Science | Brazil**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-brightgreen?style=for-the-badge&logo=vercel)](https://portfolio-mateusribeirocampos.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-brightgreen?style=for-the-badge&logo=vercel)](https://mateusrcampos.com.br/)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-11.0-E0234E?style=for-the-badge&logo=nestjs)](https://nestjs.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -23,7 +23,7 @@
 
 This is not just a static portfolio — it's a **full-stack web application** demonstrating professional engineering practices end-to-end: from a performant Next.js frontend with internationalization to a secure NestJS REST API, a normalized PostgreSQL database, JWT-based admin authentication, and a real-time analytics dashboard.
 
-**Live URL**: [portfolio-mateusribeirocampos.vercel.app](https://portfolio-mateusribeirocampos.vercel.app/)
+**Live URL**: [mateusrcampos.com.br](https://mateusrcampos.com.br/)
 **Backend API**: [portfolio-backend-ns0j.onrender.com](https://portfolio-backend-ns0j.onrender.com)
 **GitHub**: [github.com/mateusribeirocampos](https://github.com/mateusribeirocampos)
 **LinkedIn**: [linkedin.com/in/mateus-ribeiro-de-campos-6a135331](https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/)
@@ -370,7 +370,7 @@ ML-based image similarity and recommendation system.
 **Open to junior positions in software development.**
 *Bridging analytical science with modern software engineering.*
 
-[portfolio-mateusribeirocampos.vercel.app](https://portfolio-mateusribeirocampos.vercel.app/) · [GitHub](https://github.com/mateusribeirocampos) · [LinkedIn](https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/)
+[mateusrcampos.com.br](https://mateusrcampos.com.br/) · [GitHub](https://github.com/mateusribeirocampos) · [LinkedIn](https://www.linkedin.com/in/mateus-ribeiro-de-campos-6a135331/)
 
 *Last updated: July 2026*
 
