@@ -5,7 +5,7 @@ const config = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 7000,
-  exclude: ['/admin', '/admin/*'],
+  exclude: ['/admin', '/admin/*', '/favicon.ico', '/icon.png', '/apple-icon.png'],
   // No lastmod: build time is not a real modification date, and a fake one
   // makes Google trust the sitemap less.
   transform: async (config, path) => {

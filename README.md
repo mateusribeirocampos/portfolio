@@ -265,6 +265,10 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
+The MRC favicon uses Next.js's `app/favicon.ico`, `app/icon.png` and
+`app/apple-icon.png` conventions. Source artwork and export instructions are in
+[frontend/assets/brand/README.md](frontend/assets/brand/README.md).
+
 ### Backend
 
 #### Local PostgreSQL with Docker Compose
