@@ -254,7 +254,7 @@ erDiagram
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22+
 - PostgreSQL database (or Supabase account)
 
 ### Frontend
@@ -267,11 +267,83 @@ npm run dev        # http://localhost:3000
 
 ### Backend
 
+#### Local PostgreSQL with Docker Compose
+
+Run the following from the repository root:
+
+```bash
+docker compose up -d --wait
+cd backend
+npm ci --include=optional
+cp -n .env.local.example .env.local
+npm run prisma:generate:local
+npm run prisma:migrate:local
+npm run start:dev:local       # http://localhost:3001
+```
+
+In another terminal, from the repository root, point the frontend at the local API:
+
+```bash
+cd frontend
+NEXT_PUBLIC_API_URL=http://localhost:3001 npm run dev
+```
+
+This override takes precedence over a deployed API URL in `frontend/.env.local`.
+Restart the frontend dev server when changing the API URL.
+
+The local scripts load `backend/.env.local` using Node's `--env-file` option.
+Nest also reads the existing `.env` for settings not supplied by `.env.local`;
+the example supplies local database/JWT settings and disables notification email.
+Node gives already-exported shell variables priority over `--env-file`: remove any
+exported `DATABASE_URL` and `DIRECT_URL` overrides before using these commands.
+The existing Supabase `.env` is not edited. The new database starts with empty
+tables; no Supabase records or admin accounts are copied. The migration command
+applies the existing versioned migrations to the database configured in `.env.local`.
+
+The PostgreSQL container publishes `127.0.0.1:5433`, leaving port `5432` available
+for the challenge project. The database files persist in `.local/postgres/`, relative
+to this repository. On this laptop the repository is under `/home`, so those files
+use the `/home` partition. The directory is ignored by Git; also exclude `.local/`
+when copying source with rsync. Use a PostgreSQL dump to transfer a running database,
+rather than copying its live data files.
+
+This bind mount moves only this database's data into the project directory.
+Docker images, build cache and container logs still use the Docker daemon's storage
+directory. The container is limited to 512 MiB RAM and one CPU for development;
+those limits should be reconsidered before performance tests.
+
+In the installed pgAdmin, register another server with:
+
+| Field | Value |
+| --- | --- |
+| Name | Portfolio local |
+| Host | `127.0.0.1` |
+| Port | `5433` |
+| Maintenance database | `portfolio` |
+| Username | `portfolio` |
+| Password | `portfolio_dev` (public development value) |
+| SSL mode | `disable` (local container only) |
+
+The pgAdmin application runs on the laptop and accesses the published port; a
+second pgAdmin container is not needed. The credentials above belong only to this
+development container. Changing `POSTGRES_PASSWORD` in Compose does not change the
+password of an already-initialized database.
+
+To stop the local database, run `docker compose stop` from the repository root.
+To remove its container/network, use `docker compose down`; the bind-mounted data
+directory remains. Both commands interrupt the local backend's database connection.
+To resume using Supabase, stop the local backend and run the existing
+`npm run start:dev` command from `backend/`, which reads `.env` without `.env.local`.
+
+#### Existing database / Supabase
+
 ```bash
 cd backend
 npm install
-cp .env.example .env      # Add DATABASE_URL, JWT_SECRET, ALLOW_USER_ADMIN, CORS_ORIGINS
-npx prisma migrate dev    # Apply migrations
+# Configure .env with DATABASE_URL, DIRECT_URL, JWT_SECRET and CORS_ORIGINS.
+npx prisma generate
+# Apply pending migrations only to the intended database:
+npx prisma migrate deploy
 npm run start:dev         # http://localhost:3001
 ```
 
