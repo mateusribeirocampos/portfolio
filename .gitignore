@@ -29,6 +29,10 @@ yarn.lock
 .env.production.local
 frontend/.env*
 backend/.env*
+!backend/.env.local.example
+
+# Local PostgreSQL data (bind-mounted by compose.yaml)
+/.local/
 
 # ===========================================
 # NEXT.JS FRONTEND SPECIFIC
